@@ -123,7 +123,7 @@ export const QURAN_RECITERS_ISLAMWAY = [
 ];
 export const QURAN_RECITERS = [
     {
-        id: 'misharyBinRashidAlafasy',
+        id: 'alafasy',
         quranReciter: 'مشاري بن راشد العفاسي',
         photo: 'https://quranmp3.jo1jo.com/al3fasi.webp',
     },
