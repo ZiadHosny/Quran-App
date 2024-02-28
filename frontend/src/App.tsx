@@ -12,7 +12,6 @@ export const App = () => {
   const loading = useAppSelector((state) => state.loading.loading);
 
   return (
-
     <Auth0Provider
       domain={domain}
       clientId={clientId}

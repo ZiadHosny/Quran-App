@@ -4,7 +4,6 @@ export const getFromEnv = () => {
     const port = Number(process.env.PORT) || 3000;
     const mode = process.env.MODE;
     const secret = process.env.SECRET;
-    const baseURL = process.env.BASE_URL;
     const clientID = process.env.CLIENT_ID;
     const issuerBaseURL = process.env.ISSUER_BASE_URL;
     const databaseURL = process.env.DATABASE_URL || '';
@@ -14,7 +13,6 @@ export const getFromEnv = () => {
         port,
         mode,
         secret,
-        baseURL,
         clientID,
         issuerBaseURL,
         databaseURL,

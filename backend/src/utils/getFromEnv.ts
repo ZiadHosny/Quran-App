@@ -8,7 +8,6 @@ export const getFromEnv = () => {
     const mode = process.env.MODE
 
     const secret = process.env.SECRET
-    const baseURL = process.env.BASE_URL
     const clientID = process.env.CLIENT_ID
     const issuerBaseURL = process.env.ISSUER_BASE_URL
 
@@ -21,7 +20,6 @@ export const getFromEnv = () => {
         port,
         mode,
         secret,
-        baseURL,
         clientID,
         issuerBaseURL,
         databaseURL,
