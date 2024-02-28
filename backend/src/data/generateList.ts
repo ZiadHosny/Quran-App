@@ -33,7 +33,7 @@ export const generateList = ({ quranReciter, photo, website = 'islamic', quranRe
         const url = generateUrl({ index: i, website, quranReciterInWebsite })
 
         list.push({
-            id: `${quranReciterInWebsite}-${i.toString()}`,
+            id: `${quranReciter}-${i.toString()}`,
             surahNumber: i,
             title: QURAN_SUWAR[i - 1],
             quranReciter,

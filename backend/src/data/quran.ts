@@ -14,11 +14,11 @@ export const getAllQuran = (): Map => {
             quranReciterInWebsite: id,
         })
     })
-    QURAN_RECITERS_ISLAMWAY.forEach(({ id, photo, quranReciter }) => {
+    QURAN_RECITERS_ISLAMWAY.forEach(({ id, photo, quranReciter, quranReciterInWebsite }) => {
         quran[id] = generateList({
             quranReciter,
             photo,
-            quranReciterInWebsite: '316',
+            quranReciterInWebsite,
             website: 'islamway'
         })
     })
