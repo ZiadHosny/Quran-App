@@ -1,30 +1,26 @@
-import { QURAN_RECITERS } from "../utils/constants.js";
+import { QURAN_RECITERS, QURAN_RECITERS_ISLAMWAY } from "../utils/constants.js";
 import { Surah } from "../utils/types.js";
 import { generateList } from "./generateList.js";
 interface Map {
     [key: string]: Surah[]
 }
 
-export const quran: Map = {
-    mahmoudkhalilAlHussary: generateList({
-        ...QURAN_RECITERS.mahmoudkhalilAlHussary,
-        website: 'islamway',
-        quranReciterInWebsite: '316',
-    }),
-    misharyBinRashidAlafasy: generateList({
-        ...QURAN_RECITERS.misharyBinRashidAlafasy,
-        quranReciterInWebsite: 'alafasy',
-    }),
-    abdulbasitmujawwad: generateList({
-        ...QURAN_RECITERS.abdulbasitmujawwad,
-        quranReciterInWebsite: 'abdulbasitmujawwad',
-    }),
-    abdulbasitmurattal: generateList({
-        ...QURAN_RECITERS.abdulbasitmurattal,
-        quranReciterInWebsite: 'abdulbasitmurattal',
-    }),
-    muhammadsiddiqalminshawimujawwad: generateList({
-        ...QURAN_RECITERS.muhammadsiddiqalminshawimujawwad,
-        quranReciterInWebsite: 'muhammadsiddiqalminshawimujawwad',
+export const getAllQuran = (): Map => {
+    const quran: Map = {}
+    QURAN_RECITERS.forEach(({ id, photo, quranReciter }) => {
+        quran[id] = generateList({
+            quranReciter,
+            photo,
+            quranReciterInWebsite: id,
+        })
     })
+    QURAN_RECITERS_ISLAMWAY.forEach(({ id, photo, quranReciter }) => {
+        quran[id] = generateList({
+            quranReciter,
+            photo,
+            quranReciterInWebsite: '316',
+            website: 'islamway'
+        })
+    })
+    return quran
 }
