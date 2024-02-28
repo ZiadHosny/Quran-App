@@ -1,14 +1,7 @@
-import { soraList } from "./soraList.js";
+import { QURAN_SUWAR } from '../utils/constants.js';
 import { Surah } from '../utils/types.js'
 
 type Website = 'islamway' | 'islamic'
-
-interface GenerateListProps {
-    quranReciter: string,
-    photo: string,
-    website?: Website,
-    quranReciterInWebsite: string
-}
 
 interface GenerateUrlProps {
     index: number,
@@ -26,15 +19,23 @@ const generateUrl = ({ index, website, quranReciterInWebsite }: GenerateUrlProps
         return 'Not Found'
 }
 
+interface GenerateListProps {
+    quranReciter: string,
+    photo: string,
+    website?: Website,
+    quranReciterInWebsite: string
+}
+
 export const generateList = ({ quranReciter, photo, website = 'islamic', quranReciterInWebsite }: GenerateListProps) => {
     const list: Surah[] = [];
 
-    for (let i = 1; i <= 144; i++) {
+    for (let i = 1; i <= 114; i++) {
         const url = generateUrl({ index: i, website, quranReciterInWebsite })
 
         list.push({
-            id: i.toString(),
-            title: soraList[i - 1],
+            id: `${quranReciterInWebsite}-${i.toString()}`,
+            surahNumber: i,
+            title: QURAN_SUWAR[i - 1],
             quranReciter,
             photo,
             url,
