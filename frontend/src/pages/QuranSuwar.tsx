@@ -17,7 +17,6 @@ export const QuranSuwar = () => {
   const { setCurrentSurah, setSuwar, currentSurah, setSurahDuration, setSurahProgress } = useSurah()
   const { isLoading, data: suwar } = useGetAllSuwarByQuranReciterQuery({ quranReciter: params.quranReciter! })
   const { getPlaylist } = usePlaylist()
-
   useEffect(() => {
     if (suwar) {
       setSuwar(suwar)

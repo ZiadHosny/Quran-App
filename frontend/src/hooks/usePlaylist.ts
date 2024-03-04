@@ -10,16 +10,27 @@ import {
 import { getToken } from '../utils/getToken';
 import { Result, SurahType } from '../utils/types';
 import { loadingToast, updateToastError, updateToastSuccess } from '../utils/toast';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { surahActions } from '../store/surah.store';
+import { useLocation } from 'react-router-dom';
 
 export const usePlaylist = () => {
+    const { playlist } = useAppSelector(state => state.surah)
+    const { setCurrentSurah, setSuwar } = useSurah()
+    const location = useLocation()
+    const dispatch = useAppDispatch()
     const { getIdTokenClaims } = useAuth0();
-    const { setPlaylist, playlist } = useSurah();
     const [addSurahToPlaylistFn] = useAddToPlaylistMutation()
     const [removeSurahToPlaylistFn] = useRemoveFromPlaylistMutation()
     const [getPlaylistFn] = useGetPlaylistMutation()
 
+    // setPlaylist
+    const setPlaylist = (playlist: SurahType[]) => {
+        dispatch(surahActions.setPlaylist(playlist))
+    }
+
     const addSurahToPlaylist = async ({ surah }: { surah: SurahType }) => {
-        const token= await getToken(getIdTokenClaims);
+        const token = await getToken(getIdTokenClaims);
         if (token) {
             const id = loadingToast();
             const res = await addSurahToPlaylistFn({ body: surah, token }) as Result
@@ -56,6 +67,10 @@ export const usePlaylist = () => {
             const playlist = data as SurahType[]
             if (playlist) {
                 setPlaylist(playlist)
+                if (location.pathname === '/myPlaylist') {
+                    setCurrentSurah(playlist[0])
+                    setSuwar(playlist)
+                }
             }
             return updateToastSuccess({ id, render: message })
         }
@@ -72,6 +87,8 @@ export const usePlaylist = () => {
     }
 
     return {
+        playlist,
+        setPlaylist,
         addSurahToPlaylist,
         removeSurahToPlaylist,
         getPlaylist,

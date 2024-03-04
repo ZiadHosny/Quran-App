@@ -14,7 +14,9 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
 
     const { addSurahToPlaylist, removeSurahToPlaylist, isInPlaylist: isInPlaylistFn } = usePlaylist()
     const { isAuthenticated, } = useAuth0();
-    const { setCurrentSurah, isCurrentSurah } = useSurah()
+    const { setCurrentSurah, currentSurah } = useSurah()
+
+    const isCurrentSurah = surah.id === currentSurah.id
 
     // isInPlaylist
     const isInPlaylist = isInPlaylistFn(surah.id)
@@ -24,11 +26,11 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
     }
     // Scroll to current Surah
     useEffect(() => {
-        if (isCurrentSurah(surah.surahNumber) && card.current) {
+        if (isCurrentSurah && card.current) {
             window.scrollTo({ top: card.current.offsetTop, behavior: 'smooth' })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isCurrentSurah])
+    }, [currentSurah])
     // add to playlist
     const addToPlaylist = async (e: any) => {
         e.stopPropagation()
@@ -41,13 +43,12 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
     }
     // download Surah
     const downloadSurah = async (e: any) => {
-        const url = surah.url 
-        saveAs(url, surah.title, { autoBom: true })
+        saveAs(surah.url, surah.title, { autoBom: true })
     }
 
     return (
         <div ref={card}
-            className={`surah ${isCurrentSurah(surah.surahNumber) ? 'activeSurah' : ''}`}
+            className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
             onClick={handleChangeSurah}>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">

@@ -9,16 +9,10 @@ import { usePlaylist } from '../hooks/usePlaylist';
 export const MyPlaylist = () => {
   const { setIsPlaying, setRepeatSection } = useControllers();
   const {
-    setCurrentSurah,
     setSurahDuration,
     setSurahProgress,
-    playlist,
   } = useSurah()
-  const { getPlaylist } = usePlaylist()
-
-  useEffect(() => {
-    setCurrentSurah(playlist[0]);
-  }, [playlist])
+  const { getPlaylist, playlist } = usePlaylist()
 
   useEffect(() => () => {
     setIsPlaying(false)
@@ -43,6 +37,8 @@ export const MyPlaylist = () => {
         </div>
       </>
       :
-      <div style={{ textAlign: 'center', fontSize: 20, color: 'darkgray', marginTop: 16 }}>Not Found Any Surah in Your Playlist</div>
+      <div style={{ textAlign: 'center', fontSize: 20, color: 'darkgray', marginTop: 16 }}>
+        Not Found Any Surah in Your Playlist
+      </div>
   )
 }

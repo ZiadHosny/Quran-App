@@ -3,7 +3,7 @@ import { surahActions } from "../store/surah.store"
 import { SurahType } from "../utils/types"
 
 export const useSurah = () => {
-    const { surahDuration, surahProgress, currentSurah, suwar, playlist } = useAppSelector(state => state.surah)
+    const { surahDuration, surahProgress, currentSurah, suwar } = useAppSelector(state => state.surah)
     const { isPlaying, isRepeat, isRandom } = useAppSelector(state => state.controllers)
 
     const dispatch = useAppDispatch()
@@ -15,10 +15,6 @@ export const useSurah = () => {
     // setSuwar
     const setSuwar = (suwar: SurahType[]) => {
         dispatch(surahActions.setSuwar(suwar))
-    }
-    // setPlaylist
-    const setPlaylist = (playlist: SurahType[]) => {
-        dispatch(surahActions.setPlaylist(playlist))
     }
     // surahDuration
     const setSurahDuration = (value: string) => {
@@ -54,11 +50,11 @@ export const useSurah = () => {
     };
     // nextSurah
     const nextSurah = () => {
-        if (currentSurah.surahNumber >= suwar.length - 1) {
+        if (getSurahIndexBySurahId(currentSurah.id) >= suwar.length - 1) {
             return setCurrentSurah(suwar[0]);
         }
         else {
-            const surah = getSurahBySurahNumber(currentSurah.surahNumber + 1)
+            const surah = suwar[getSurahIndexBySurahId(currentSurah.id) + 1]
             return setCurrentSurah(surah)
         }
     }
@@ -73,12 +69,13 @@ export const useSurah = () => {
     }
     // prevSurah
     const prevSurah = () => {
-        if (currentSurah.surahNumber <= 1) {
-            const surah = getSurahBySurahNumber(suwar.length)
+        console.log(getSurahIndexBySurahId(currentSurah.id), 'zzzzzzzz')
+        if (getSurahIndexBySurahId(currentSurah.id) < 1) {
+            const surah = suwar[suwar.length - 1]
             return setCurrentSurah(surah)
         }
         else {
-            const surah = getSurahBySurahNumber(currentSurah.surahNumber - 1)
+            const surah = suwar[getSurahIndexBySurahId(currentSurah.id) - 1]
             return setCurrentSurah(surah)
         }
     }
@@ -89,8 +86,8 @@ export const useSurah = () => {
             if (suwar.length === 1) return
             randomId = Math.floor(Math.random() * suwar.length)
         }
-        while (randomId === currentSurah.surahNumber);
-        setCurrentSurah(getSurahBySurahNumber(randomId))
+        while (randomId === getSurahIndexBySurahId(currentSurah.id));
+        setCurrentSurah(suwar[randomId])
     }
     // onSurahEnded
     const onSurahEnded = (audioElem: HTMLAudioElement | null) => {
@@ -105,16 +102,18 @@ export const useSurah = () => {
     const getSurahBySurahNumber = (surahNumber: number): SurahType => {
         return suwar.find((surah: SurahType) => surah.surahNumber === surahNumber)!
     }
+    // getSurahIndexBySurahId
+    const getSurahIndexBySurahId = (surahId: string): number => {
+        return suwar.findIndex((surah: SurahType) => surah.id === surahId)!
+    }
     // isCurrentSurah
-    const isCurrentSurah = (surahNumber: number) => {
-        return currentSurah.surahNumber === surahNumber
+    const isCurrentSurah = (id: string) => {
+        return currentSurah.id === id
     }
     return {
         currentSurah,
         setCurrentSurah,
-        setPlaylist,
         suwar,
-        playlist,
         setSuwar,
         surahDuration,
         setSurahDuration,
