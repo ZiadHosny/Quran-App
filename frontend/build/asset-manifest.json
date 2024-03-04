@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d850e1a3.css",
-    "main.js": "/static/js/main.ba742d92.js",
+    "main.css": "/static/css/main.b2984356.css",
+    "main.js": "/static/js/main.537add92.js",
+    "static/media/quran.png": "/static/media/quran.754a032755bc1ed76437.png",
     "index.html": "/index.html",
-    "main.d850e1a3.css.map": "/static/css/main.d850e1a3.css.map",
-    "main.ba742d92.js.map": "/static/js/main.ba742d92.js.map"
+    "main.b2984356.css.map": "/static/css/main.b2984356.css.map",
+    "main.537add92.js.map": "/static/js/main.537add92.js.map"
   },
   "entrypoints": [
-    "static/css/main.d850e1a3.css",
-    "static/js/main.ba742d92.js"
+    "static/css/main.b2984356.css",
+    "static/js/main.537add92.js"
   ]
 }

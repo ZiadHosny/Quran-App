@@ -3,20 +3,21 @@ import { catchAsyncError } from '../utils/catchAsyncError.js';
 import { AppError } from '../utils/AppError.js';
 import { UserModel } from '../models/user.model.js';
 export const auth = catchAsyncError(async (req, _, next) => {
-    const authorization = req.header('authorization');
-    const token = authorization?.split('Bearer ')[1];
+    const token = req.header('token');
     if (token) {
         try {
             const user = jwt.decode(token);
             const id = user?.sub;
             if (id) {
-                req.userId = id;
+                let user = await UserModel.findOne({ userId: id });
+                if (!user) {
+                    user = await UserModel.create({ userId: id });
+                }
+                req.user = user;
             }
             else {
                 return next(new AppError('Not authorized', 404));
             }
-            req.user = await UserModel.find({ where: { userId: id } });
-            // .select('-password');
             next();
         }
         catch (err) {

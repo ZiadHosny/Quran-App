@@ -4,15 +4,17 @@ import './player.scss'
 import { useControllers } from '../../hooks/useControllers';
 import { Slider } from './Slider';
 // import { useUpdateProgress } from '../../hooks/useUpdateProgress';
-import { playListPageState } from '../../atoms';
-import { useRecoilValue } from 'recoil';
 import { CurrentSurah } from './CurrentSurah';
 import { useSurahSlider } from '../../hooks/useSurahSlider';
 import { Controllers } from './Controllers';
 import { useSurah } from '../../hooks/useSurah';
 import { RepeatSection } from './RepeatSection';
+import { useParams } from 'react-router-dom';
+import { useProgress } from '../../hooks/useProgress';
 
 export const Player = () => {
+    const params = useParams()
+    const { saveProgress } = useProgress()
     // useControllers
     const {
         isPlaying,
@@ -41,12 +43,11 @@ export const Player = () => {
         onChangeSurahSlider,
         setSurahProgressFromLoggedInUser,
         getCurrentTime,
-        setSurahDurationFn
+        setSurahDurationFn,
     } = useSurahSlider()
 
     const imgRef = useRef<HTMLInputElement>(null);
     const audioElem = useRef<HTMLAudioElement>(null);
-    const playListPage = useRecoilValue(playListPageState)
     // const [repeatSection, setRepeatSection] = useState(false)
     // const [startSection, setStartSection] = useState(0)
     // const [endSection, setEndSection] = useState(100)
@@ -76,13 +77,10 @@ export const Player = () => {
             if (repeatSection.end <= surahSlider && repeatSection.times === 1) {
                 setIsPlaying(false)
                 setRepeatSection({ times: 0 })
-                return
-            }
-            if (repeatSection.end <= surahSlider) {
+            } else if (repeatSection.end <= surahSlider && repeatSection.times > 1) {
                 audioElem.current.currentTime = repeatSection.start * duration / 100
                 setSurahSlider(repeatSection.start)
-                setRepeatSection({ times: repeatSection.times - 1 })
-                return
+                return setRepeatSection({ times: repeatSection.times - 1 })
             }
         }
         updateSurahSlider(currentTime, duration)
@@ -103,22 +101,24 @@ export const Player = () => {
 
     // Save User Progress
     // useEffect(() => {
-    //     const intervalId = setInterval(async () => {
-    //         updateProgress({
-    //             surah: currentSong,
-    //             volume: Math.trunc(volume),
-    //             audioElem: audioElem.current,
-    //             random: isRandom,
-    //             repeat: isRepeat
-    //         })
-    //     }, 5000)
-    //     return () => clearInterval(intervalId);
-    // }, [currentSong, volume, isRandom, isRepeat, updateProgress])
+    //     console.log('--------- save Progress ----------')
 
-    // useEffect(() => {
-    //     setRepeatSection({ isRepeat: false })
-    // }, [repeatSection.isRepeat])
-
+    //     const fn = async () => {
+    //         const intervalId = setInterval(async () => {
+    //             console.log(volume, 'setInterval')
+    //             if (params.quranReciter) {
+    //                 await saveProgress({
+    //                     audioElem: audioElem.current,
+    //                     quranReciter: params.quranReciter,
+    //                 })
+    //             }
+    //         }, 5000)
+    //         return () => clearInterval(intervalId);
+    //     }
+    //     fn()
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
+    // onChangeVolume
     useEffect(() => {
         onChangeVolume(audioElem.current, volume)
     }, [onChangeVolume, volume])

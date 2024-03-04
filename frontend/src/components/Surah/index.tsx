@@ -1,88 +1,74 @@
 import { useEffect, useRef } from 'react'
-import { SurahType } from '../../utils/types'
-import { useSurah } from '../../hooks/useSurah'
 import { IoMdAddCircle } from 'react-icons/io'
 import { AiFillCheckCircle } from 'react-icons/ai'
-// import { useAddSongPlaylist } from '../../hooks/useAddSongPlaylist'
+import { MdDownloadForOffline } from "react-icons/md";
 import { useAuth0 } from '@auth0/auth0-react'
-import { playListSongsState } from '../../atoms'
-// import { useGetUserPlayList } from '../../hooks/useGetUserPlayList'
-// import { useRemoveSongFromPlaylist } from '../../hooks/useRemoveSongFromPlaylist'
+import { saveAs } from 'file-saver'
 import './surah.scss'
+import { SurahType } from '../../utils/types'
+import { useSurah } from '../../hooks/useSurah'
+import { usePlaylist } from '../../hooks/usePlaylist'
 
 export const Surah = ({ surah }: { surah: SurahType }) => {
-
-    const { isAuthenticated, } = useAuth0();
     const card = useRef<HTMLInputElement>(null);
-    // const { changeSong, currentSong, currentIndex } = useSong()
+
+    const { addSurahToPlaylist, removeSurahToPlaylist, isInPlaylist: isInPlaylistFn } = usePlaylist()
+    const { isAuthenticated, } = useAuth0();
     const { setCurrentSurah, isCurrentSurah } = useSurah()
-    // const [{ value: songAdded }, addSongToPlaylist] = useAddSongPlaylist()
-    // const playlist = useRecoilValue(playListSongsState)
-    // const [{ }, getPlaylist] = useGetUserPlayList()
-    // const [{ value: songDeleted }, removeSong] = useRemoveSongFromPlaylist()
 
-    let inPlayList = false
-    let songId: number | undefined = undefined
-
-    // if (playlist.length > 0) {
-    //     const playlistIndexes = playlist.map((e) => e.index)
-    //     if (playlistIndexes.includes(song.index)) {
-    //         inPlayList = true
-    //         const songId = playlist.find((e) => e.index === song.index)?.id
-    //     }
-    // }
-
-    // let isCurrentSong = currentSong.index === index
-
-    // if (inPlayList) {
-    //     isCurrentSong = currentSong.title === song.title
-    // }
-
+    // isInPlaylist
+    const isInPlaylist = isInPlaylistFn(surah.id)
+    // on click to Surah
     const handleChangeSurah = () => {
         setCurrentSurah(surah)
     }
-
-    // useEffect(() => {
-    //     changeSong(currentIndex)
-    // }, [currentIndex])
-
-    // useEffect(() => {
-    //     if (isCurrentSong && card.current) {
-    //         window.scrollTo({ top: card.current.offsetTop, behavior: 'smooth' })
-    //     }
-    // }, [isCurrentSong])
-
-    // useEffect(() => {
-    //     if (songDeleted || songAdded) {
-    //         getPlaylist()
-    //     }
-    // }, [songDeleted, songAdded])
+    // Scroll to current Surah
+    useEffect(() => {
+        if (isCurrentSurah(surah.surahNumber) && card.current) {
+            window.scrollTo({ top: card.current.offsetTop, behavior: 'smooth' })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isCurrentSurah])
+    // add to playlist
+    const addToPlaylist = async (e: any) => {
+        e.stopPropagation()
+        await addSurahToPlaylist({ surah })
+    }
+    // remove from playlist
+    const removeFromPlaylist = async (e: any) => {
+        e.stopPropagation()
+        await removeSurahToPlaylist({ surahId: surah.id })
+    }
+    // download Surah
+    const downloadSurah = async (e: any) => {
+        const url = surah.url 
+        saveAs(url, surah.title, { autoBom: true })
+    }
 
     return (
-        <div ref={card} className={`surah ${isCurrentSurah(surah.surahNumber) ? 'activeSurah' : ''}`} onClick={handleChangeSurah}>
+        <div ref={card}
+            className={`surah ${isCurrentSurah(surah.surahNumber) ? 'activeSurah' : ''}`}
+            onClick={handleChangeSurah}>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
                 <h3 className="title">{surah.title}</h3>
                 <p className="author">{surah.quranReciter}</p>
             </div>
-            {/* {isAuthenticated ?
-                <div className="option">
-                    {inPlayList ?
-                        <AiFillCheckCircle size={30} onClick={(e) => {
-                            e.stopPropagation()
-                            if (songId) {
-                                removeSong({ id: songId })
-                            }
-                        }} />
-                        :
-                        <IoMdAddCircle size={30} onClick={(e) => {
-                            e.stopPropagation()
-                            addSongToPlaylist({ song })
-                        }} />
-                    }
-                </div> :
-                <></>
-            } */}
-        </div>
+            <div className="option">
+                <MdDownloadForOffline size={30} onClick={downloadSurah} />
+                {isAuthenticated ?
+                    <>
+                        {
+                            isInPlaylist ?
+                                <AiFillCheckCircle size={30} onClick={removeFromPlaylist} />
+                                :
+                                <IoMdAddCircle size={30} onClick={addToPlaylist} />
+                        }
+                    </>
+                    :
+                    <></>
+                }
+            </div>
+        </div >
     )
 }

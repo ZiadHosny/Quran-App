@@ -15,41 +15,11 @@ export interface SurahType {
     photo: string,
 }
 
-export type SongType = {
-    index: number,
-    title: string,
-    singer: string,
-    file_format: string,
-    url: string,
-    photo: string,
-    id: string
-}
-
-export interface Song {
-    id: string,
-    title: string,
-    url: string,
-    singer: string,
-    photo: string,
-}
-
-export type updateUserProgressData = {
-    song: SongType,
+export type UserProgress = {
+    currentSurah: SurahType
+    currentMin: string,
+    quranReciterId: string,
     volume: number,
-    random: boolean,
-    repeat: boolean,
-    audioElem: HTMLAudioElement | null
-}
-
-export type UserProgressData = {
-    title: string,
-    singer: string,
-    file_format: string,
-    url: string,
-    photo: string,
-    index: number,
-    volume: number,
-    current_min: string,
     random: boolean,
     repeat: boolean
 }
@@ -58,3 +28,7 @@ export type SurahElemInput = {
     surahElem: RefObject<HTMLAudioElement>
 }
 
+export type Result = {
+    error: { data: { err: string } },
+    data: { data: any, message: string }
+}

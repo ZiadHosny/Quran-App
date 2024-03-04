@@ -10,9 +10,9 @@ export const globalErrorMiddleware = (err, _, res, __) => {
 };
 const prodMode = (err, res) => {
     const statusCode = err.statusCode || 500;
-    res.status(statusCode).json({ err: err.message });
+    return res.status(statusCode).json({ err: err.message });
 };
 const devMode = (err, res) => {
     const statusCode = err.statusCode || 500;
-    res.status(statusCode).json({ err: err.message, stack: err.stack });
+    return res.status(statusCode).json({ err: err.message, stack: err.stack });
 };

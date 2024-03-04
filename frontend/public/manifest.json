@@ -3,43 +3,43 @@
   "name": "Quran App",
   "icons": [
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "16x16",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "24x24",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "32x32",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "64x64",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "144x144",
       "purpose": "any"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "256x256",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.png",
+      "src": "images/quran.jpeg",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

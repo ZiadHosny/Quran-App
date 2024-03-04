@@ -1,64 +1,102 @@
 import { UserModel } from '../../models/user.model.js';
 import { catchAsyncError } from "../../utils/catchAsyncError.js";
-// export const updateUserProgress = async (req: Request, res: Response) => {
-//     const { userId } = req as any
-//     const { song, volume, currentMin, random, repeat } = req.body
-//     const { title, file_format, index, photo, singer, url } = song as SongType
-//     const user = await userProgress.findOne({ where: { userId: userId } })
-//     if (user) {
-//         user.update({
-//             title, file_format, index, photo, singer, url, volume, current_min: currentMin, random, repeat,
-//         }).then(() => {
-//             console.log('Updated Successfully', title, currentMin)
-//             res.json({ message: 'Updated Successfully' })
-//         }).catch((e) => {
-//             console.log(e)
-//         })
-//     }
-//     else {
-//         userProgress.create({
-//             userId: userId,
-//             title,
-//             file_format,
-//             index,
-//             photo,
-//             singer,
-//             url,
-//             volume,
-//             current_min: currentMin,
-//             random,
-//             repeat,
-//         }).then(() => {
-//             res.json({ message: 'add UserProgress Successfully' })
-//         }).catch((e) => {
-//             console.log(e)
-//         })
-//     }
-// }
-// export const getUserProgress = async (req: Request, res: Response) => {
-//     const { userId } = req as any
-//     const user = await UserModel.findOne({ where: { userId } }, { userProgress })
-//     if (user) {
-//         res.json(user)
-//     }
-// }
-export const addSurahToUserPlaylist = catchAsyncError(async (req, res) => {
-    const userId = req.userId;
-    console.log(userId, 'xxxxxxxxx');
-    const { surah } = req.body;
-    const { id, surahNumber, title, photo, quranReciter, url } = surah;
-    const surahInDB = await UserModel.findOne({ where: { userId } });
-    if (surahInDB) {
-        return res.json({ message: 'Surah Is Already Exist' });
+import { sendResponse } from "../../utils/response.js";
+import { AppError } from "../../utils/AppError.js";
+// PUT User Progress 
+export const saveUserProgress = catchAsyncError(async (req, res) => {
+    const { body, user } = req;
+    const { currentSurah, currentMin, random, repeat, volume, quranReciterId } = body;
+    await UserModel.findByIdAndUpdate(user._id, {
+        userProgress: {
+            currentSurah,
+            quranReciterId,
+            currentMin,
+            random,
+            repeat,
+            volume,
+        }
+    });
+    sendResponse({
+        res,
+        message: 'Save User Progress Successfully',
+        status: 200
+    });
+});
+// GET User Progress
+export const getUserProgress = catchAsyncError(async (req, res, next) => {
+    const { user } = req;
+    const userProgress = user.userProgress;
+    console.log(userProgress, 'user Progress');
+    if (userProgress) {
+        sendResponse({
+            res,
+            message: 'Get User Progress Successfully',
+            status: 200,
+            data: userProgress
+        });
     }
-    const user = await UserModel.findOne({ where: { userId } });
-    // .select('playlist')
-    console.log(user, 'zzzzzzzz');
-    res.json({ saasd: user });
-    // UserModel.create({ userId: userId, title, file_format, index, photo, singer, url })
-    //     .then(() => {
-    //         res.json({ message: 'add Surah To User Playist Successfully' })
-    //     }).catch((e) => {
-    //         console.log(e)
-    //     })
+    else {
+        return next(new AppError('Cant Found User Progress', 400));
+    }
+});
+// Put Surah To Playlist
+export const addSurahToUserPlaylist = catchAsyncError(async (req, res, next) => {
+    const { user, body } = req;
+    const currentSurah = body;
+    const playlist = user.playlist;
+    console.log(playlist, 'zzzzzz');
+    const found = playlist.find((surah) => surah.id === currentSurah.id);
+    console.log(found, 'found');
+    if (found) {
+        return next(new AppError('Surah Is Already Exist In Playlist', 400));
+    }
+    await UserModel.findByIdAndUpdate(user._id, {
+        playlist: [
+            currentSurah,
+            ...playlist
+        ]
+    });
+    sendResponse({
+        res,
+        message: 'add Surah To User Playlist Successfully',
+        status: 200,
+    });
+});
+// DELETE Surah To Playlist
+export const removeSurahToUserPlaylist = catchAsyncError(async (req, res, next) => {
+    const { user, body } = req;
+    const surahId = body.surahId;
+    const playlist = user.playlist;
+    console.log(surahId);
+    playlist.filter((surah) => {
+        console.log(surahId, surahId);
+        surah.id !== surahId;
+    });
+    const newList = playlist.filter((surah) => surah.id !== surahId);
+    await UserModel.findByIdAndUpdate(user._id, {
+        playlist: [
+            ...newList
+        ]
+    });
+    sendResponse({
+        res,
+        message: 'remove Surah From User Playlist Successfully',
+        status: 200,
+    });
+});
+// GET User Progress
+export const getUserPlaylist = catchAsyncError(async (req, res, next) => {
+    const { user } = req;
+    const playlist = user.playlist;
+    if (playlist) {
+        sendResponse({
+            res,
+            message: 'Get User Playlist Successfully',
+            status: 200,
+            data: playlist
+        });
+    }
+    else {
+        return next(new AppError('Cant Found User Playlist', 400));
+    }
 });

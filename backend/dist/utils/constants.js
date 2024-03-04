@@ -142,7 +142,8 @@ export const QURAN_RECITERS_ISLAMWAY = [
     {
         id: 'HazzaAlBalushi',
         quranReciter: 'هزاع البلوشي',
-        quranReciterInWebsite: '3964/12851/160',
+        //3964/12851/160
+        quranReciterInWebsite: '3964/12851/128',
         photo: 'https://ar.islamway.net/uploads/authors/3964.jpg',
     },
 ];
@@ -177,11 +178,11 @@ export const QURAN_RECITERS = [
         quranReciter: 'محمد محمود الطبلاوي',
         photo: 'https://upload.wikimedia.org/wikipedia/ar/0/08/%D9%85%D8%AD%D9%85%D8%AF_%D9%85%D8%AD%D9%85%D9%88%D8%AF_%D8%A7%D9%84%D8%B7%D8%A8%D9%84%D8%A7%D9%88%D9%8A.jpeg',
     },
-    {
-        id: 'abdurahmanmesaad',
-        quranReciter: 'عبد الرحمن مسعد',
-        photo: 'https://i.pinimg.com/564x/bc/8f/2b/bc8f2b7a713d2021b9258475d67b588a.jpg',
-    },
+    // {
+    //     id: 'abdurahmanmesaad',
+    //     quranReciter: 'عبد الرحمن مسعد',
+    //     photo: 'https://i.pinimg.com/564x/bc/8f/2b/bc8f2b7a713d2021b9258475d67b588a.jpg',
+    // },
 ];
 const abdelrahmanmosadIds = [
     '010',

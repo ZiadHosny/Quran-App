@@ -18,13 +18,30 @@ html {
     font-family: "Poppins", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #838383;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #949494
+}
+
 .container {
     position: relative;
     max-width: 480px;
     margin: 0 auto;
+    margin-top: 60px;
 }
 
 .playlist {
-    margin-top: 508px;
+    margin-top: 500px;
     padding: 12px;
 }

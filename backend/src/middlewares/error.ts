@@ -12,10 +12,10 @@ export const globalErrorMiddleware = (err: any, _: Request, res: Response, __: N
 
 const prodMode = (err: any, res: Response) => {
     const statusCode = err.statusCode || 500
-    res.status(statusCode).json({ err: err.message })
+    return res.status(statusCode).json({ err: err.message })
 }
 
 const devMode = (err: any, res: Response) => {
     const statusCode = err.statusCode || 500
-    res.status(statusCode).json({ err: err.message, stack: err.stack })
+    return res.status(statusCode).json({ err: err.message, stack: err.stack })
 }

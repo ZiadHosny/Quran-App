@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
-import { RecoilRoot } from 'recoil';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { BrowserRouter } from 'react-router-dom';
 // import * as serviceWorker from './serviceWorker.js'
 
 const root = ReactDOM.createRoot(
@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <RecoilRoot>
+      <BrowserRouter>
         <App />
-      </RecoilRoot>
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );

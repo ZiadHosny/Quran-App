@@ -1,9 +1,5 @@
 import { apiSlice } from "./api.store";
-import { QuranReciterType, SurahType } from "../utils/types";
-
-// const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
-
-// const token = { headers: { token: userInfo?.token } }
+import { QuranReciterType, SurahType, UserProgress } from "../utils/types";
 
 export type GetAllTasksProps = {
     dir?: string,
@@ -28,7 +24,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
                 }
             },
             transformResponse: (res: any) => {
-                return res
+                return res.data
             },
         }),
         getAllSuwarByQuranReciter: builder.query<SurahType[], getAllSuwarByQuranReciterProps>({
@@ -36,61 +32,72 @@ const taskApiSlice = apiSlice.injectEndpoints({
                 return {
                     url: `/quran/${quranReciter}/suwar`,
                     method: 'GET',
-                    // ...token,
                 }
             },
             transformResponse: (res: any) => {
-                return res
+                return res.data
             }
         }),
-        // createTask: builder.mutation({
-        //     query: (data) => ({
-        //         url: `${Task_URL}/`,
-        //         method: 'POST',
-        //         body: data,
-        //         ...token
-        //     }),
-        // }),
-        // updateTask: builder.mutation({
-        //     query: ({ body, taskId }: { body: Task, taskId: string }) => ({
-        //         url: `${Task_URL}/${taskId}`,
-        //         method: 'PUT',
-        //         body: body,
-        //         ...token
-        //     }),
-        // }),
-        // deleteTask: builder.mutation({
-        //     query: (id: string) => ({
-        //         url: `${Task_URL}/${id}`,
-        //         method: 'DELETE',
-        //         ...token
-        //     }),
-        // }),
-        // markAsImportant: builder.mutation({
-        //     query: ({ id, important }: { id: string, important: boolean }) => ({
-        //         url: `${Task_URL}/${id}/important`,
-        //         method: 'PATCH',
-        //         body: { important },
-        //         ...token
-        //     }),
-        // }),
-        // markAsCompleted: builder.mutation({
-        //     query: ({ id, completed }: { id: string, completed: boolean }) => ({
-        //         url: `${Task_URL}/${id}/completed`,
-        //         method: 'PATCH',
-        //         body: { completed },
-        //         ...token
-        //     }),
-        // }),
+        saveProgress: builder.mutation({
+            query: ({ body, token }: { body: UserProgress, token: string }) => {
+                console.log(body, 'zzzz')
+
+                return {
+                    url: `/user/progress`,
+                    method: 'PUT',
+                    body: body,
+                    headers: { token }
+                }
+            }
+        }),
+        getProgress: builder.mutation<{ data: { userProgress: UserProgress } }, { token: string }>({
+            query: ({ token }) => ({
+                url: `/user/progress`,
+                method: 'GET',
+                headers: { token }
+            }),
+        }),
+        addToPlaylist: builder.mutation({
+            query: ({ body, token }: { body: SurahType, token: string }) => {
+                console.log(body)
+
+                return {
+                    url: `/user/playlist`,
+                    method: 'PUT',
+                    body: body,
+                    headers: { token }
+                }
+            }
+        }),
+        removeFromPlaylist: builder.mutation({
+            query: ({ surahId, token }: { surahId: string, token: string }) => {
+                return {
+                    url: `/user/playlist`,
+                    method: 'DELETE',
+                    body: { surahId },
+                    headers: { token }
+                }
+            }
+        }),
+        getPlaylist: builder.mutation<{ data: { playlist: SurahType[] } }, { token: string }>({
+            query: ({ token }) => ({
+                url: `/user/playlist`,
+                method: 'GET',
+                headers: { token }
+            }),
+            transformResponse: (res: any) => {
+                return res
+            },
+        }),
     })
 })
 
 export const {
     useGetAllQuranRecitersQuery,
     useGetAllSuwarByQuranReciterQuery,
-    // useCreateTaskMutation,
-    // useDeleteTaskMutation,
-    // useUpdateTaskMutation,
-    // useMarkAsCompletedMutation,
-    // useMarkAsImportantMutation
+    useSaveProgressMutation,
+    useGetProgressMutation,
+    useAddToPlaylistMutation,
+    useGetPlaylistMutation,
+    useRemoveFromPlaylistMutation,
 } = taskApiSlice

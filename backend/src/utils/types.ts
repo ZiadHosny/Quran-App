@@ -1,10 +1,8 @@
 import { Request } from 'express'
-import { Document } from 'mongoose'
-import { UserModel } from '../models/user.model.js'
+import { Types } from 'mongoose'
 
 export interface AuthRequest extends Request {
-    userId: any
-    user: any
+    user: User & { _id: Types.ObjectId }
 }
 
 export interface Surah {
@@ -23,7 +21,9 @@ export interface QuranReciter {
 }
 
 export type UserProgress = {
+    currentSurah: Surah
     currentMin: string,
+    quranReciterId: string,
     volume: number,
     random: boolean,
     repeat: boolean
@@ -32,7 +32,6 @@ export type UserProgress = {
 export type User = {
     userId: string
     playlist: [Surah]
-    currentSong: Surah
     userProgress: UserProgress
 }
 

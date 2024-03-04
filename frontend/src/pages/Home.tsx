@@ -1,16 +1,14 @@
 import { useEffect } from 'react'
 import { QuranReciter } from '../components/QuranReciter'
 import { useGetAllQuranRecitersQuery } from '../store/quran.store'
-import { useAppDispatch } from '../store/hooks';
-import { loadingActions } from '../store/loading.store';
+import { useLoading } from '../hooks/useLoading';
 
 export const Home = () => {
-  const { isLoading, data: quranReciters } = useGetAllQuranRecitersQuery({})
-  const dispatch = useAppDispatch();
-
+  const { isLoading, data: quranReciters } = useGetAllQuranRecitersQuery({});
+  const { setLoading } = useLoading();
   useEffect(() => {
-    dispatch(loadingActions.loading(isLoading))
-  }, [isLoading, dispatch])
+    setLoading(isLoading)
+  }, [isLoading, setLoading])
 
   return (
     <main>

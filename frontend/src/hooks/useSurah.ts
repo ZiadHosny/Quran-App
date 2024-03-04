@@ -3,7 +3,7 @@ import { surahActions } from "../store/surah.store"
 import { SurahType } from "../utils/types"
 
 export const useSurah = () => {
-    const { surahDuration, surahProgress, currentSurah, suwar } = useAppSelector(state => state.surah)
+    const { surahDuration, surahProgress, currentSurah, suwar, playlist } = useAppSelector(state => state.surah)
     const { isPlaying, isRepeat, isRandom } = useAppSelector(state => state.controllers)
 
     const dispatch = useAppDispatch()
@@ -15,6 +15,10 @@ export const useSurah = () => {
     // setSuwar
     const setSuwar = (suwar: SurahType[]) => {
         dispatch(surahActions.setSuwar(suwar))
+    }
+    // setPlaylist
+    const setPlaylist = (playlist: SurahType[]) => {
+        dispatch(surahActions.setPlaylist(playlist))
     }
     // surahDuration
     const setSurahDuration = (value: string) => {
@@ -67,7 +71,7 @@ export const useSurah = () => {
         }
         handlePlayAndPause(audioElem)
     }
-    // prevSong
+    // prevSurah
     const prevSurah = () => {
         if (currentSurah.surahNumber <= 1) {
             const surah = getSurahBySurahNumber(suwar.length)
@@ -108,7 +112,9 @@ export const useSurah = () => {
     return {
         currentSurah,
         setCurrentSurah,
+        setPlaylist,
         suwar,
+        playlist,
         setSuwar,
         surahDuration,
         setSurahDuration,

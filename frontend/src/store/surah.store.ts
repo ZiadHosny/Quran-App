@@ -6,7 +6,8 @@ type surahType = {
   surahProgress: number,
   currentSurah: SurahType,
   surahSlider: number,
-  suwar: SurahType[]
+  suwar: SurahType[],
+  playlist: SurahType[],
 }
 
 const initialState: surahType = {
@@ -14,7 +15,8 @@ const initialState: surahType = {
   surahProgress: 0,
   currentSurah: {} as SurahType,
   surahSlider: 0,
-  suwar: []
+  suwar: [],
+  playlist: []
 };
 
 const surahSlice = createSlice({
@@ -35,6 +37,9 @@ const surahSlice = createSlice({
     },
     setSuwar(state, action) {
       state.suwar = action.payload;
+    },
+    setPlaylist(state, action) {
+      state.playlist = action.payload;
     },
   },
 });

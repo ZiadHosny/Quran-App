@@ -1,15 +1,19 @@
-import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Bounce, ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+import './app.scss'
 import { clientId, domain } from "./utils/envs"
 import { Router } from './Router';
-import './app.scss'
-import { useAppSelector } from './store/hooks';
 import { Loading } from './components/Loading';
+import { Navbar } from './components/Navbar';
+import { useLoading } from './hooks/useLoading';
+
 
 
 export const App = () => {
   const isBrowser = typeof window !== "undefined"
-  const loading = useAppSelector((state) => state.loading.loading);
+  const { loading } = useLoading()
 
   return (
     <Auth0Provider
@@ -17,12 +21,19 @@ export const App = () => {
       clientId={clientId}
       cacheLocation='localstorage'
       authorizationParams={{
-        redirect_uri: isBrowser ? window.location.origin : ''
+        redirect_uri: isBrowser ? window.location.origin : '/'
       }}>
-      {/* <Navbar /> */}
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <Navbar />
+      <main>
+        <div className='container'>
+          <Router />
+        </div>
+      </main>
+      <ToastContainer
+        theme={'light'}
+        autoClose={1000}
+        transition={Bounce}
+      />
       {loading ? <Loading /> : <></>}
     </Auth0Provider>
   );

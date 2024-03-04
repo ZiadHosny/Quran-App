@@ -29,7 +29,11 @@ const SurahSchema = new Schema<Surah>({
 })
 
 const UserProgressSchema = new Schema<UserProgress>({
+    currentSurah: SurahSchema,
     currentMin: {
+        type: String,
+    },
+    quranReciterId: {
         type: String,
     },
     volume: {
@@ -50,7 +54,6 @@ const UserSchema = new Schema<User>({
         ...StringRequiredType
     },
     playlist: [SurahSchema],
-    currentSong: SurahSchema,
     userProgress: UserProgressSchema
 }, {
     timestamps: true
