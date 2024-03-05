@@ -1,6 +1,6 @@
 {
   "name": "quran",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "",
   "main": "backend/index.ts",
   "type": "module",
@@ -18,9 +18,7 @@
   "pre-commit": [
     "ts.check",
     "build-backend",
-    "add-dist",
-    "build-frontend",
-    "add-build"
+    "add-dist"
   ],
   "author": "",
   "license": "ISC",
