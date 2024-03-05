@@ -30,15 +30,13 @@ export const QuranSuwar = () => {
     setLoading(isLoading)
   }, [isLoading, setLoading])
 
-  useEffect(() => () => {
-    console.log('out useEffect')
+  useEffect(() => {
     setCurrentSurah({} as SurahType);
     setIsPlaying(false)
     setSurahDuration('')
     setSurahProgress(0)
     setRepeatSection({ times: 0, isRepeat: false, end: 100, start: 0 })
     const fn = async () => {
-      console.log('in useEffect')
       await getPlaylist()
     }
     fn()

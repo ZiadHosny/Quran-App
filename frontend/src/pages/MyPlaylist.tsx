@@ -14,14 +14,12 @@ export const MyPlaylist = () => {
   } = useSurah()
   const { getPlaylist, playlist } = usePlaylist()
 
-  useEffect(() => () => {
-    console.log('out useEffect')
+  useEffect(() => {
     setIsPlaying(false)
     setSurahDuration('')
     setSurahProgress(0)
     setRepeatSection({ times: 0, isRepeat: false, end: 100, start: 0 })
     const fn = async () => {
-      console.log('in useEffect')
       await getPlaylist()
     }
     fn()
