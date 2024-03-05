@@ -15,6 +15,7 @@ export const MyPlaylist = () => {
   const { getPlaylist, playlist } = usePlaylist()
 
   useEffect(() => () => {
+    console.log('out useEffect')
     setIsPlaying(false)
     setSurahDuration('')
     setSurahProgress(0)

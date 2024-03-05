@@ -31,6 +31,7 @@ export const QuranSuwar = () => {
   }, [isLoading, setLoading])
 
   useEffect(() => () => {
+    console.log('out useEffect')
     setCurrentSurah({} as SurahType);
     setIsPlaying(false)
     setSurahDuration('')
