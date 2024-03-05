@@ -8,6 +8,7 @@ import { Router } from './Router';
 import { Loading } from './components/Loading';
 import { Navbar } from './components/Navbar';
 import { useLoading } from './hooks/useLoading';
+import { Footer } from './components/Footer';
 
 
 
@@ -29,6 +30,7 @@ export const App = () => {
           <Router />
         </div>
       </main>
+      <Footer />
       <ToastContainer
         theme={'light'}
         autoClose={1000}

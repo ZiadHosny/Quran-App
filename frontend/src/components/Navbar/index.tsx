@@ -21,16 +21,15 @@ export const Navbar = () => {
         await loginWithRedirect()
     }
 
-    useEffect(() => {
-        const fn = async () => {
-            if (isAuthenticated) {
-                await getProgress()
-            }
-        }
-        fn()
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuthenticated])
+    // useEffect(() => {
+    //     const fn = async () => {
+    //         if (isAuthenticated) {
+    //             await getProgress()
+    //         }
+    //     }
+    //     fn()
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [isAuthenticated])
 
     const enableNotifications = async () => {
         await subscribe()

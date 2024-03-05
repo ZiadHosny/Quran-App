@@ -20,6 +20,7 @@ export const MyPlaylist = () => {
     setSurahProgress(0)
     setRepeatSection({ times: 0, isRepeat: false, end: 100, start: 0 })
     const fn = async () => {
+      console.log('in useEffect')
       await getPlaylist()
     }
     fn()
@@ -37,7 +38,17 @@ export const MyPlaylist = () => {
         </div>
       </>
       :
-      <div style={{ textAlign: 'center', fontSize: 20, color: 'darkgray', marginTop: 16 }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        width: '100%',
+        marginTop: 16,
+        color: 'darkgray',
+        textAlign: 'center',
+        fontSize: 20,
+      }}>
         Not Found Any Surah in Your Playlist
       </div>
   )

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { IoMdAddCircle } from 'react-icons/io'
-import { AiFillCheckCircle } from 'react-icons/ai'
+import { CgPlayListRemove } from "react-icons/cg";
 import { MdDownloadForOffline } from "react-icons/md";
 import { useAuth0 } from '@auth0/auth0-react'
 import { saveAs } from 'file-saver'
@@ -56,12 +56,11 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                 <p className="author">{surah.quranReciter}</p>
             </div>
             <div className="option">
-                <MdDownloadForOffline size={30} onClick={downloadSurah} />
                 {isAuthenticated ?
                     <>
                         {
                             isInPlaylist ?
-                                <AiFillCheckCircle size={30} onClick={removeFromPlaylist} />
+                                <CgPlayListRemove size={30} onClick={removeFromPlaylist} />
                                 :
                                 <IoMdAddCircle size={30} onClick={addToPlaylist} />
                         }
@@ -69,6 +68,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     :
                     <></>
                 }
+                <MdDownloadForOffline size={30} onClick={downloadSurah} />
             </div>
         </div >
     )

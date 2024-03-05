@@ -37,6 +37,7 @@ export const QuranSuwar = () => {
     setSurahProgress(0)
     setRepeatSection({ times: 0, isRepeat: false, end: 100, start: 0 })
     const fn = async () => {
+      console.log('in useEffect')
       await getPlaylist()
     }
     fn()
