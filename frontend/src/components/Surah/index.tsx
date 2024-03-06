@@ -8,6 +8,7 @@ import './surah.scss'
 import { SurahType } from '../../utils/types'
 import { useSurah } from '../../hooks/useSurah'
 import { usePlaylist } from '../../hooks/usePlaylist'
+import { addZeros } from '../../utils/addZeros';
 
 export const Surah = ({ surah }: { surah: SurahType }) => {
     const card = useRef<HTMLInputElement>(null);
@@ -50,6 +51,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
         <div ref={card}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
             onClick={handleChangeSurah}>
+            <h3 className="title">{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
                 <h3 className="arabic-font title">{surah.title}</h3>

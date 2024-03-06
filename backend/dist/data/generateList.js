@@ -1,6 +1,7 @@
+import { addZeros } from '../utils/addZeros.js';
 import { QURAN_SUWAR } from '../utils/constants.js';
 const generateUrl = ({ index, website, quranReciterInWebsite }) => {
-    const id = index.toString().padStart(3, '0');
+    const id = addZeros({ number: index, numOfZeros: 3 });
     if (website === 'islamway')
         return `https://download.quran.islamway.net/quran3/${quranReciterInWebsite}/${id}.mp3`;
     else if (website === 'mp3quran')
