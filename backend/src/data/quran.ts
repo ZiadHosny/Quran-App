@@ -1,4 +1,4 @@
-import { QURAN_RECITERS, QURAN_RECITERS_ISLAMWAY } from "../utils/constants.js";
+import { QURAN_RECITERS, QURAN_RECITERS_ISLAMWAY, QURAN_RECITERS_MP3_QURAN } from "../utils/constants.js";
 import { Surah } from "../utils/types.js";
 import { generateList } from "./generateList.js";
 interface Map {
@@ -20,6 +20,14 @@ export const getAllQuran = (): Map => {
             photo,
             quranReciterInWebsite,
             website: 'islamway'
+        })
+    })
+    QURAN_RECITERS_MP3_QURAN.forEach(({ id, photo, quranReciter, quranReciterInWebsite }) => {
+        quran[id] = generateList({
+            quranReciter,
+            photo,
+            quranReciterInWebsite,
+            website: 'mp3quran'
         })
     })
     return quran

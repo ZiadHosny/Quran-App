@@ -1,7 +1,8 @@
+import { addZeros } from '../utils/addZeros.js';
 import { QURAN_SUWAR } from '../utils/constants.js';
 import { Surah } from '../utils/types.js'
 
-type Website = 'islamway' | 'islamic'
+type Website = 'islamway' | 'islamic' | 'mp3quran'
 
 interface GenerateUrlProps {
     index: number,
@@ -10,9 +11,11 @@ interface GenerateUrlProps {
 }
 
 const generateUrl = ({ index, website, quranReciterInWebsite }: GenerateUrlProps) => {
-    const id = index.toString().padStart(3, '0');
+    const id = addZeros({ number: index, numOfZeros: 3 });
     if (website === 'islamway')
         return `https://download.quran.islamway.net/quran3/${quranReciterInWebsite}/${id}.mp3`
+    else if (website === 'mp3quran')
+        return `https://server11.mp3quran.net/${quranReciterInWebsite}/${id}.mp3`
     else if (website === 'islamic')
         return `https://cdn.islamic.network/quran/audio-surah/128/ar.${quranReciterInWebsite}/${index}.mp3`
     else

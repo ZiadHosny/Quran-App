@@ -58,11 +58,11 @@ export const usePlaylist = () => {
     const getPlaylist = async () => {
         const token = await getToken(getIdTokenClaims);
         if (token) {
-            const id = loadingToast()
+            // const id = loadingToast()
             const res = await getPlaylistFn({ token }) as Result
-            if (res.error) {
-                return updateToastError({ id, render: res.error.data.err })
-            }
+            // if (res.error) {
+            //     return updateToastError({ id, render: res.error.data.err })
+            // }
             const { data, message } = res.data
             const playlist = data as SurahType[]
             if (playlist) {
@@ -72,7 +72,7 @@ export const usePlaylist = () => {
                     setSuwar(playlist)
                 }
             }
-            return updateToastSuccess({ id, render: message })
+            // return updateToastSuccess({ id, render: message })
         }
     }
 

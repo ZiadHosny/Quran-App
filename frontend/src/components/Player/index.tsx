@@ -11,6 +11,7 @@ import { useSurah } from '../../hooks/useSurah';
 import { RepeatSection } from './RepeatSection';
 import { useParams } from 'react-router-dom';
 import { useProgress } from '../../hooks/useProgress';
+import { toast } from 'react-toastify';
 
 export const Player = () => {
     const params = useParams()
@@ -96,6 +97,7 @@ export const Player = () => {
     }
     // Handle Play and Pause
     useEffect(() => {
+        // checkMP3Url(currentSurah.url)
         handlePlayAndPause(audioElem.current);
     }, [isPlaying, currentSurah, handlePlayAndPause]);
 
@@ -118,6 +120,11 @@ export const Player = () => {
     //     fn()
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [])
+
+    const onError = () => {
+        toast.error('لا يمكن تشغيل السورة في الوقت الحالي')
+    }
+
     // onChangeVolume
     useEffect(() => {
         onChangeVolume(audioElem.current, volume)
@@ -152,6 +159,7 @@ export const Player = () => {
                 onTimeUpdate={onTimeUpdate}
                 onLoadedData={onLoadedData}
                 onEnded={handleOnEnded}
+                onError={onError}
                 ref={audioElem} >
             </audio>
         </div>
