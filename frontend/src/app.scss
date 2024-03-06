@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Katibeh&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Katibeh&family=Signika+Negative:wght@300..700&display=swap');
+
+
+
 :root {
     --primary-color: #130808;
     --text-color: #333;
@@ -15,7 +20,16 @@ body {
 
 html {
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+
+    font-family: "Signika Negative", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.arabic-font {
+    font-family: "Katibeh", serif;
+    font-weight: 500;
+    font-size: 22px;
 }
 
 ::-webkit-scrollbar {

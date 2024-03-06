@@ -3,6 +3,8 @@ const generateUrl = ({ index, website, quranReciterInWebsite }) => {
     const id = index.toString().padStart(3, '0');
     if (website === 'islamway')
         return `https://download.quran.islamway.net/quran3/${quranReciterInWebsite}/${id}.mp3`;
+    else if (website === 'mp3quran')
+        return `https://server11.mp3quran.net/${quranReciterInWebsite}/${id}.mp3`;
     else if (website === 'islamic')
         return `https://cdn.islamic.network/quran/audio-surah/128/ar.${quranReciterInWebsite}/${index}.mp3`;
     else

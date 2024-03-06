@@ -52,8 +52,8 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
             onClick={handleChangeSurah}>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
-                <h3 className="title">{surah.title}</h3>
-                <p className="author">{surah.quranReciter}</p>
+                <h3 className="arabic-font title">{surah.title}</h3>
+                <p className="arabic-font author">{surah.quranReciter}</p>
             </div>
             <div className="option">
                 {isAuthenticated ?

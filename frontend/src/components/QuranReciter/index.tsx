@@ -7,7 +7,7 @@ export const QuranReciter = ({ quranReciter }: { quranReciter: QuranReciterType 
         <NavLink to={quranReciter.id} className={`quranReciter`}>
             <div className="authorImage" style={{ backgroundImage: `url(${quranReciter.photo})` }}></div>
             <div className="body">
-                <p className="author">{quranReciter.quranReciter}</p>
+                <p className="arabic-font author">{quranReciter.quranReciter}</p>
             </div>
         </NavLink>
     )
