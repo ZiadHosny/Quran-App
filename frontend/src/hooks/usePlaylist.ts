@@ -57,7 +57,6 @@ export const usePlaylist = () => {
 
     const getPlaylist = async () => {
         const token = await getToken(getIdTokenClaims);
-        console.log(token, 'token')
         if (token) {
             const id = loadingToast()
             const res = await getPlaylistFn({ token }) as Result

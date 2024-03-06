@@ -71,7 +71,6 @@ export const useProgress = () => {
     const saveProgress = async ({ audioElem, quranReciter }:
         { audioElem: HTMLAudioElement | null, quranReciter: string }) => {
         const token = await getToken(getIdTokenClaims)
-        console.log(quranReciter, currentSurah, volume)
         if (token && quranReciter && currentSurah.id) {
             saveProgressFn({
                 body: {

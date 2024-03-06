@@ -2,7 +2,7 @@ import { Request } from 'express'
 import { Types } from 'mongoose'
 
 export interface AuthRequest extends Request {
-    user: User & { _id: Types.ObjectId }
+    user: User & { _id: Types.ObjectId },
 }
 
 export interface Surah {
@@ -30,7 +30,11 @@ export type UserProgress = {
 }
 
 export type User = {
-    userId: string
+    userId: string,
+    name: string,
+    email: string,
+    picture: string,
+    locale: string,
     playlist: [Surah]
     userProgress: UserProgress
 }

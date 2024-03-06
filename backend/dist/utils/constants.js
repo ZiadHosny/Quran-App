@@ -128,12 +128,6 @@ export const QURAN_RECITERS_ISLAMWAY = [
         photo: 'https://ar.islamway.net/uploads/authors/maher-al-mueaqly.jpg',
     },
     {
-        id: 'muhammadsiddiqalminshawimurattal',
-        quranReciter: 'محمد صديق المنشاوي (مرتل)',
-        quranReciterInWebsite: '133/128',
-        photo: 'https://ar.islamway.net/uploads/authors/1032.jpg',
-    },
-    {
         id: 'mahmoudalielbana',
         quranReciter: 'محمود علي البنا',
         quranReciterInWebsite: '518',
@@ -146,8 +140,31 @@ export const QURAN_RECITERS_ISLAMWAY = [
         quranReciterInWebsite: '3964/12851/128',
         photo: 'https://ar.islamway.net/uploads/authors/3964.jpg',
     },
+    {
+        id: 'SaadElGhamidi',
+        quranReciter: 'سعد الغامدي',
+        quranReciterInWebsite: '442/32',
+        photo: 'https://ar.islamway.net/uploads/authors/saad-bin-said-alghamdy.jpg',
+    },
+    // {
+    //     id: 'IslamSobhi',
+    //     quranReciter: 'اسلام صبحي',
+    //     quranReciterInWebsite: '4873/17440/64',
+    //     photo: 'https://ar.islamway.net/uploads/authors/saad-bin-said-alghamdy.jpg',
+    // },
+    {
+        id: 'muhammadsiddiqalminshawimurattal',
+        quranReciter: 'محمد صديق المنشاوي (مرتل)',
+        quranReciterInWebsite: '133/128',
+        photo: 'https://ar.islamway.net/uploads/authors/1032.jpg',
+    },
 ];
 export const QURAN_RECITERS = [
+    {
+        id: 'muhammadsiddiqalminshawimujawwad',
+        quranReciter: 'محمد صديق المنشاوي (مجود)',
+        photo: 'https://ar.islamway.net/uploads/authors/1032.jpg',
+    },
     {
         id: 'alafasy',
         quranReciter: 'مشاري بن راشد العفاسي',
@@ -164,11 +181,6 @@ export const QURAN_RECITERS = [
         photo: 'https://ar.islamway.net/uploads/authors/abdul-baset-abdul-samad.jpg',
     },
     {
-        id: 'muhammadsiddiqalminshawimujawwad',
-        quranReciter: 'محمد صديق المنشاوي (مجود)',
-        photo: 'https://ar.islamway.net/uploads/authors/1032.jpg',
-    },
-    {
         id: 'ahmedalajmi',
         quranReciter: 'أحمد علي العجمي',
         photo: 'https://ar.islamway.net/uploads/authors/ahmad-bin-ali-al-ajmy.jpg',
@@ -178,6 +190,21 @@ export const QURAN_RECITERS = [
         quranReciter: 'محمد محمود الطبلاوي',
         photo: 'https://upload.wikimedia.org/wikipedia/ar/0/08/%D9%85%D8%AD%D9%85%D8%AF_%D9%85%D8%AD%D9%85%D9%88%D8%AF_%D8%A7%D9%84%D8%B7%D8%A8%D9%84%D8%A7%D9%88%D9%8A.jpeg',
     },
+    {
+        id: 'abdullahkhayat',
+        quranReciter: 'عبد الله خياط',
+        photo: 'https://ar.islamway.net/uploads/authors/abdullah-bin-khayat.jpg',
+    },
+    {
+        id: 'muhammadayyub',
+        quranReciter: 'محمد ايوب',
+        photo: 'https://ar.islamway.net/uploads/authors/mohammad-ayyoob-bin-mohammad-yousuf.jpg',
+    },
+    {
+        id: 'yousufbinnoahahmad',
+        quranReciter: 'يوسف بن نوح',
+        photo: 'https://ar.islamway.net/uploads/authors/1405.jpg',
+    }
     // {
     //     id: 'abdurahmanmesaad',
     //     quranReciter: 'عبد الرحمن مسعد',

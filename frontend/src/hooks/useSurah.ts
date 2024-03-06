@@ -69,7 +69,6 @@ export const useSurah = () => {
     }
     // prevSurah
     const prevSurah = () => {
-        console.log(getSurahIndexBySurahId(currentSurah.id), 'zzzzzzzz')
         if (getSurahIndexBySurahId(currentSurah.id) < 1) {
             const surah = suwar[suwar.length - 1]
             return setCurrentSurah(surah)

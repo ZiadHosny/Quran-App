@@ -4,12 +4,11 @@ import { BiSolidPlaylist } from 'react-icons/bi'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from 'react-router-dom';
 
-import './accountMenu.scss'
-
 export const AccountMenu = () => {
     const menuRef = useRef<HTMLInputElement>(null);
     const [isOpen, setIsOpen] = useState(false);
     const { user, logout } = useAuth0();
+
     const location = useLocation();
     // const changeSong = () => { }
 
@@ -40,30 +39,35 @@ export const AccountMenu = () => {
             logoutParams: { returnTo: window.location.origin }
         })
     }
+
+    const Menu = () => (
+        <div className="menu active" ref={menuRef} >
+            <h3>{user?.name}</h3>
+            <ul >
+                <li >
+                    <Link
+                        style={{ color: 'gray', textDecoration: 'none', cursor: 'pointer' }}
+                        to={'/myPlaylist'}>
+                        <BiSolidPlaylist style={{ marginRight: 10 }} />
+                        My Playlist
+                    </Link>
+                </li>
+                <li className='logout' onClick={onclickLogout} >
+                    <FiLogOut style={{ marginRight: 10 }} />
+                    <div>Log out</div>
+                </li>
+            </ul>
+        </div>
+    )
+
     return (
         <div className="action">
             <div className="profile" onClick={menuToggle}>
                 <img src={user?.picture} alt='userPicture' />
             </div>
-            {isOpen && (
-                <div className="menu active" ref={menuRef} >
-                    <h3>{user?.name}</h3>
-                    <ul >
-                        <li >
-                            <Link
-                                style={{ color: 'gray', textDecoration: 'none', cursor: 'pointer' }}
-                                to={'/myPlaylist'}>
-                                <BiSolidPlaylist style={{ marginRight: 10 }} />
-                                My Playlist
-                            </Link>
-                        </li>
-                        <li className='logout' onClick={onclickLogout} >
-                            <FiLogOut style={{ marginRight: 10 }} />
-                            <div>Log out</div>
-                        </li>
-                    </ul>
-                </div>
-            )}
+            {isOpen && <Menu />}
         </div>
     )
+
+
 }

@@ -2,13 +2,18 @@ import express from "express";
 
 import { addSurahToUserPlaylist, getUserPlaylist, getUserProgress, removeSurahToUserPlaylist, saveUserProgress } from "./userRouter.controller.js";
 import { auth } from "../../middlewares/auth.js";
+import { validation } from "../../middlewares/validation.js";
+import { RemoveSurahSchema, SurahSchema, progressSchema } from "./userRouter.schema.js";
 
-const Router = express.Router()
+const router = express.Router()
 
-Router.put('/playlist', auth, addSurahToUserPlaylist)
-Router.delete('/playlist', auth, removeSurahToUserPlaylist)
-Router.get('/playlist', auth, getUserPlaylist)
-Router.put('/progress', auth, saveUserProgress)
-Router.get('/progress', auth, getUserProgress)
+router.route('/playlist')
+    .put(auth, validation(SurahSchema), addSurahToUserPlaylist)
+    .delete(auth, validation(RemoveSurahSchema), removeSurahToUserPlaylist)
+    .get(auth, getUserPlaylist)
 
-export const userRouter = Router
+router.route('/progress')
+    .put(auth, validation(progressSchema), saveUserProgress)
+    .get(auth, getUserProgress)
+
+export const userRouter = router

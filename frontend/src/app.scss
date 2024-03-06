@@ -39,10 +39,23 @@ html {
     max-width: 480px;
     margin: 0 auto;
     margin-top: 60px;
-    min-height: 80vh
+    min-height: 100vh
 }
 
 .playlist {
     margin-top: 500px;
     padding: 12px;
+}
+
+
+.flex-center-sb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-center-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

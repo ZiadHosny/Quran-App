@@ -48,6 +48,18 @@ const UserSchema = new Schema({
     userId: {
         ...StringRequiredType
     },
+    name: {
+        type: String,
+    },
+    email: {
+        type: String,
+    },
+    picture: {
+        type: String,
+    },
+    locale: {
+        type: String,
+    },
     playlist: [SurahSchema],
     userProgress: UserProgressSchema
 }, {

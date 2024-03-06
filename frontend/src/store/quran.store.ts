@@ -40,13 +40,11 @@ const taskApiSlice = apiSlice.injectEndpoints({
         }),
         saveProgress: builder.mutation({
             query: ({ body, token }: { body: UserProgress, token: string }) => {
-                console.log(body, 'zzzz')
-
                 return {
                     url: `/user/progress`,
                     method: 'PUT',
                     body: body,
-                    headers: { token }
+                    headers: { authorization: token }
                 }
             }
         }),
@@ -54,18 +52,16 @@ const taskApiSlice = apiSlice.injectEndpoints({
             query: ({ token }) => ({
                 url: `/user/progress`,
                 method: 'GET',
-                headers: { token }
+                headers: { authorization: token }
             }),
         }),
         addToPlaylist: builder.mutation({
             query: ({ body, token }: { body: SurahType, token: string }) => {
-                console.log(body)
-
                 return {
                     url: `/user/playlist`,
                     method: 'PUT',
                     body: body,
-                    headers: { token }
+                    headers: { authorization: token }
                 }
             }
         }),
@@ -75,7 +71,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
                     url: `/user/playlist`,
                     method: 'DELETE',
                     body: { surahId },
-                    headers: { token }
+                    headers: { authorization: token }
                 }
             }
         }),
@@ -83,7 +79,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
             query: ({ token }) => ({
                 url: `/user/playlist`,
                 method: 'GET',
-                headers: { token }
+                headers: { authorization: token }
             }),
             transformResponse: (res: any) => {
                 return res

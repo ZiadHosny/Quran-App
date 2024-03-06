@@ -26,7 +26,6 @@ export const saveUserProgress = catchAsyncError(async (req, res) => {
 export const getUserProgress = catchAsyncError(async (req, res, next) => {
     const { user } = req;
     const userProgress = user.userProgress;
-    console.log(userProgress, 'user Progress');
     if (userProgress) {
         sendResponse({
             res,
@@ -44,9 +43,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req, res, next) => 
     const { user, body } = req;
     const currentSurah = body;
     const playlist = user.playlist;
-    console.log(playlist, 'zzzzzz');
     const found = playlist.find((surah) => surah.id === currentSurah.id);
-    console.log(found, 'found');
     if (found) {
         return next(new AppError('Surah Is Already Exist In Playlist', 400));
     }
@@ -67,11 +64,6 @@ export const removeSurahToUserPlaylist = catchAsyncError(async (req, res, next) 
     const { user, body } = req;
     const surahId = body.surahId;
     const playlist = user.playlist;
-    console.log(surahId);
-    playlist.filter((surah) => {
-        console.log(surahId, surahId);
-        surah.id !== surahId;
-    });
     const newList = playlist.filter((surah) => surah.id !== surahId);
     await UserModel.findByIdAndUpdate(user._id, {
         playlist: [
