@@ -19,7 +19,7 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
 });
 export const getQuranReciters = catchAsyncError(async (req, res) => {
     const userAgent = req.headers["user-agent"];
-    if (req.hostname === 'localhost') {
+    if (req.hostname !== 'localhost') {
         if (req.user) {
             await ViewModel.create({
                 userId: req.user.userId,
@@ -41,7 +41,7 @@ export const getQuranReciters = catchAsyncError(async (req, res) => {
         data: allQuranReciters()
     });
 });
-export const getViews = catchAsyncError(async (req, res) => {
+export const getViews = catchAsyncError(async (_, res) => {
     const views = await ViewModel.find();
     return sendResponse({
         res,

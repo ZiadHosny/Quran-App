@@ -28,7 +28,7 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req: Request, res:
 export const getQuranReciters = catchAsyncError(async (req: AuthRequest, res: Response) => {
 
     const userAgent = req.headers["user-agent"]
-    if (req.hostname === 'localhost') {
+    if (req.hostname !== 'localhost') {
         if (req.user) {
             await ViewModel.create({
                 userId: req.user.userId,
@@ -50,7 +50,7 @@ export const getQuranReciters = catchAsyncError(async (req: AuthRequest, res: Re
     })
 })
 
-export const getViews = catchAsyncError(async (req: AuthRequest, res: Response) => {
+export const getViews = catchAsyncError(async (_: AuthRequest, res: Response) => {
 
     const views = await ViewModel.find()
 
