@@ -1,6 +1,6 @@
-import { addZeros } from "../../utils/addZeros.js"
-import { QURAN_SUWAR } from "../../utils/constants/suwar.js"
-import { Surah, SuwarMap } from "../../utils/types.js"
+import { addZeros } from "../../../utils/addZeros.js"
+import { QURAN_SUWAR } from "../../../utils/constants/suwar.js"
+import { Surah, SuwarMap } from "../../../utils/types.js"
 
 export const ABDELRAHMAN_MOSAD = 'https://download.tvquran.com/download/recitations/372/303'
 

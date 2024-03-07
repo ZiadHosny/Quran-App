@@ -1,5 +1,5 @@
-import { addZeros } from "../../utils/addZeros.js";
-import { QURAN_SUWAR } from "../../utils/constants/suwar.js";
+import { addZeros } from "../../../utils/addZeros.js";
+import { QURAN_SUWAR } from "../../../utils/constants/suwar.js";
 export const ABDELRAHMAN_MOSAD = 'https://download.tvquran.com/download/recitations/372/303';
 const abdelrahmanMosadNumbers = [
     32,
