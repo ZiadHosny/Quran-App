@@ -14,10 +14,14 @@ export interface Surah {
     photo: string,
 }
 
-export interface QuranReciter {
-    id: string,
-    quranReciter: string,
-    photo: string,
+export type User = {
+    userId: string,
+    name: string,
+    email: string,
+    picture: string,
+    locale: string,
+    playlist: [Surah]
+    userProgress: UserProgress
 }
 
 export type UserProgress = {
@@ -29,13 +33,32 @@ export type UserProgress = {
     repeat: boolean
 }
 
-export type User = {
-    userId: string,
-    name: string,
-    email: string,
-    picture: string,
-    locale: string,
-    playlist: [Surah]
-    userProgress: UserProgress
+// QuranReciter
+export interface QuranReciter {
+    id: string,
+    quranReciter: string,
+    photo: string,
 }
 
+export interface QuranReciterInWebsite extends QuranReciter {
+    quranReciterInWebsite?: string
+}
+
+export interface QuranRecitersWithWebsite {
+    quranReciters: QuranReciterInWebsite[],
+    website: Website
+}
+
+export type Website =
+    'islamway' |
+    'islamic' |
+    'mp3quran' |
+    'surahQuran' |
+    'tvQuran' |
+    'server7' |
+    'server6' |
+    'server11'
+
+export interface SuwarMap {
+    [key: string]: Surah[]
+}

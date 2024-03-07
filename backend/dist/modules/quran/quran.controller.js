@@ -1,6 +1,5 @@
 import { catchAsyncError } from '../../utils/catchAsyncError.js';
-import { getAllQuran } from "../../data/quran.js";
-import { QURAN_RECITERS, QURAN_RECITERS_ISLAMWAY, QURAN_RECITERS_MP3_QURAN } from "../../utils/constants.js";
+import { allQuranReciters, getAllQuran } from "../../data/quran.js";
 import { sendResponse } from "../../utils/response.js";
 export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
     const paramId = req.params.id;
@@ -8,12 +7,11 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
     // if (paramId === 'abdurahmanmesaad') {
     //     suwar = getAbdurahmanmesaad()
     // } else {
-    suwar = getAllQuran()[paramId];
     // }
-    '';
+    suwar = getAllQuran()[paramId];
     return sendResponse({
         res,
-        message: 'get ALl Suwar successfully ',
+        message: 'get ALl Suwar successfully',
         status: 200,
         data: suwar
     });
@@ -21,8 +19,8 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
 export const getQuranReciters = catchAsyncError(async (_, res) => {
     return sendResponse({
         res,
-        message: 'get Quran Reciters successfully ',
+        message: 'get Quran Reciters successfully',
         status: 200,
-        data: [...QURAN_RECITERS_ISLAMWAY, ...QURAN_RECITERS, ...QURAN_RECITERS_MP3_QURAN]
+        data: allQuranReciters()
     });
 });

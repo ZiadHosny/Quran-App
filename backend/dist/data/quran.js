@@ -1,29 +1,32 @@
-import { QURAN_RECITERS, QURAN_RECITERS_ISLAMWAY, QURAN_RECITERS_MP3_QURAN } from "../utils/constants.js";
-import { generateList } from "./generateList.js";
+import { getIslamic, islamic } from "./quranReciters/islamic.js";
+import { getServer7, getServer6, getServer11, server6, server7, server11 } from "./quranReciters/mp3Quran.js";
+import { getIslamway, islamway } from "./quranReciters/islamway.js";
+import { getSurahQuran, surahQuran } from "./quranReciters/surahQuran.js";
+import { reciterAbdelrahmanMosad, getAbdelrahmanMosad } from "./quranReciters/abdelrahmanMosad.js";
 export const getAllQuran = () => {
-    const quran = {};
-    QURAN_RECITERS.forEach(({ id, photo, quranReciter }) => {
-        quran[id] = generateList({
-            quranReciter,
-            photo,
-            quranReciterInWebsite: id,
-        });
-    });
-    QURAN_RECITERS_ISLAMWAY.forEach(({ id, photo, quranReciter, quranReciterInWebsite }) => {
-        quran[id] = generateList({
-            quranReciter,
-            photo,
-            quranReciterInWebsite,
-            website: 'islamway'
-        });
-    });
-    QURAN_RECITERS_MP3_QURAN.forEach(({ id, photo, quranReciter, quranReciterInWebsite }) => {
-        quran[id] = generateList({
-            quranReciter,
-            photo,
-            quranReciterInWebsite,
-            website: 'mp3quran'
-        });
-    });
-    return quran;
+    return {
+        ...getIslamic(),
+        ...getIslamway(),
+        ...getSurahQuran(),
+        ...getServer7(),
+        ...getServer6(),
+        ...getServer11(),
+        ...getAbdelrahmanMosad(),
+    };
+};
+export const allQuranReciters = () => {
+    const allReciters = [
+        ...islamic,
+        ...islamway,
+        ...surahQuran,
+        ...server7,
+        ...server6,
+        ...server11,
+        reciterAbdelrahmanMosad,
+    ];
+    return allReciters.map(({ id, photo, quranReciter }) => ({
+        id,
+        quranReciter,
+        photo,
+    }));
 };
