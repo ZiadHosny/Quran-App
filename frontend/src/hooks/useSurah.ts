@@ -1,13 +1,17 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 import { surahActions } from "../store/surah.store"
-import { SurahType } from "../utils/types"
+import { QuranReciterType, SurahType } from "../utils/types"
 
 export const useSurah = () => {
-    const { surahDuration, surahProgress, currentSurah, suwar } = useAppSelector(state => state.surah)
+    const { surahDuration, surahProgress, currentSurah, suwar, quranReciters, } = useAppSelector(state => state.surah)
     const { isPlaying, isRepeat, isRandom } = useAppSelector(state => state.controllers)
 
     const dispatch = useAppDispatch()
 
+    // setQuranReciters
+    const setQuranReciters = (quranReciters: QuranReciterType[]) => {
+        dispatch(surahActions.setQuranReciters(quranReciters))
+    }
     // setCurrentSurah
     const setCurrentSurah = (surah: SurahType) => {
         dispatch(surahActions.setCurrentSurah(surah))
@@ -98,9 +102,9 @@ export const useSurah = () => {
         }
     }
     // getSurahBySurahNumber
-    const getSurahBySurahNumber = (surahNumber: number): SurahType => {
-        return suwar.find((surah: SurahType) => surah.surahNumber === surahNumber)!
-    }
+    // const getSurahBySurahNumber = (surahNumber: number): SurahType => {
+    //     return suwar.find((surah: SurahType) => surah.surahNumber === surahNumber)!
+    // }
     // getSurahIndexBySurahId
     const getSurahIndexBySurahId = (surahId: string): number => {
         return suwar.findIndex((surah: SurahType) => surah.id === surahId)!
@@ -124,5 +128,7 @@ export const useSurah = () => {
         handleNextSurah,
         prevSurah,
         onSurahEnded,
+        quranReciters,
+        setQuranReciters,
     }
 }

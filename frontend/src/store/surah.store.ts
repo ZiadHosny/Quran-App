@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SurahType } from "../utils/types";
+import { QuranReciterType, SurahType } from "../utils/types";
 
 type surahType = {
   surahDuration: string,
@@ -8,6 +8,7 @@ type surahType = {
   surahSlider: number,
   suwar: SurahType[],
   playlist: SurahType[],
+  quranReciters: QuranReciterType[]
 }
 
 const initialState: surahType = {
@@ -16,7 +17,8 @@ const initialState: surahType = {
   currentSurah: {} as SurahType,
   surahSlider: 0,
   suwar: [],
-  playlist: []
+  playlist: [],
+  quranReciters: [],
 };
 
 const surahSlice = createSlice({
@@ -41,6 +43,9 @@ const surahSlice = createSlice({
     setPlaylist(state, action) {
       state.playlist = action.payload;
     },
+    setQuranReciters(state, action) {
+      state.quranReciters = action.payload
+    }
   },
 });
 

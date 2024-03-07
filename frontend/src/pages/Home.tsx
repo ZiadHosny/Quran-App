@@ -1,14 +1,20 @@
 import { useEffect } from 'react'
 import { QuranReciter } from '../components/QuranReciter'
-import { useGetAllQuranRecitersQuery } from '../store/quran.store'
-import { useLoading } from '../hooks/useLoading';
+import { useProgress } from '../hooks/useProgress';
+import { useSurah } from '../hooks/useSurah';
 
 export const Home = () => {
-  const { isLoading, data: quranReciters } = useGetAllQuranRecitersQuery({});
-  const { setLoading } = useLoading();
+  const { getAllQuranReciters } = useProgress();
+  const { quranReciters } = useSurah()
+
   useEffect(() => {
-    setLoading(isLoading)
-  }, [isLoading, setLoading])
+    const fn = async () => {
+      await getAllQuranReciters()
+    }
+    fn()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   return (
     <main>

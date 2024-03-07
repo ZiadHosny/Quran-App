@@ -33,6 +33,13 @@ export type UserProgress = {
     repeat: boolean
 }
 
+export type View = {
+    userAgent: string,
+    userId?: string
+    name?: string,
+    email?: string
+}
+
 // QuranReciter
 export interface QuranReciter {
     id: string,

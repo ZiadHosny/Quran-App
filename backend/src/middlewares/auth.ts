@@ -13,7 +13,6 @@ interface JwtUser extends JwtPayload {
 }
 
 export const auth = catchAsyncError(async (req: AuthRequest, _: Response, next: NextFunction) => {
-    // const token = req.header('token')
     const authorization = req.header('authorization')?.split('Bearer ')[1]
     if (authorization) {
         try {

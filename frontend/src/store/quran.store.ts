@@ -16,11 +16,12 @@ export type getAllSuwarByQuranReciterProps = {
 
 const taskApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getAllQuranReciters: builder.query<QuranReciterType[], any>({
-            query: () => {
+        getAllQuranReciters: builder.mutation<QuranReciterType[], { token: string }>({
+            query: ({ token }) => {
                 return {
                     url: `/quran/quranReciters`,
                     method: 'GET',
+                    headers: { authorization: token }
                 }
             },
             transformResponse: (res: any) => {
@@ -89,7 +90,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-    useGetAllQuranRecitersQuery,
+    useGetAllQuranRecitersMutation,
     useGetAllSuwarByQuranReciterQuery,
     useSaveProgressMutation,
     useGetProgressMutation,

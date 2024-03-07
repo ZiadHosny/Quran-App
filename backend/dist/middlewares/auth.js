@@ -3,7 +3,6 @@ import { catchAsyncError } from '../utils/catchAsyncError.js';
 import { AppError } from '../utils/AppError.js';
 import { UserModel } from '../models/user.model.js';
 export const auth = catchAsyncError(async (req, _, next) => {
-    // const token = req.header('token')
     const authorization = req.header('authorization')?.split('Bearer ')[1];
     if (authorization) {
         try {

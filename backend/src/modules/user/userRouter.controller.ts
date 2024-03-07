@@ -72,7 +72,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req: AuthRequest, r
 })
 // DELETE Surah To Playlist
 export const removeSurahToUserPlaylist = catchAsyncError(async (req: AuthRequest, res: Response, next: NextFunction) => {
-
+    
     const { user, body } = req
     const surahId = body.surahId
     const playlist = user.playlist

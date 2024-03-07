@@ -3,12 +3,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import { useControllers } from './useControllers';
 import { useSurah } from './useSurah';
-import { useGetProgressMutation, useSaveProgressMutation } from '../store/quran.store';
+import { useGetAllQuranRecitersMutation, useGetProgressMutation, useSaveProgressMutation } from '../store/quran.store';
 import { getToken } from '../utils/getToken';
-import { Result, UserProgress } from '../utils/types';
+import { QuranReciterType, Result, UserProgress } from '../utils/types';
 import { useNavigate } from 'react-router-dom';
 import { useSurahSlider } from './useSurahSlider';
 import { loadingToast, updateToastError, updateToastSuccess } from '../utils/toast';
+import { useLoading } from './useLoading';
 
 export const useProgress = () => {
     const navigate = useNavigate();
@@ -21,16 +22,36 @@ export const useProgress = () => {
         volume,
     } = useControllers();
 
+    const { setLoading } = useLoading()
+
     const {
         currentSurah,
         setSurahProgress,
         setCurrentSurah,
+        setQuranReciters,
     } = useSurah();
     const { getIdTokenClaims } = useAuth0();
 
+    const [getAllQuranRecitersFn] = useGetAllQuranRecitersMutation()
     const [getProgressFn] = useGetProgressMutation()
     const [saveProgressFn] = useSaveProgressMutation()
     const { getCurrentTimeInMilliSecond } = useSurahSlider()
+
+    const getAllQuranReciters = async () => {
+        setLoading(true)
+
+        const token = await getToken(getIdTokenClaims);
+        const res = await getAllQuranRecitersFn({ token }) as { data: QuranReciterType[] }
+
+        if (res.data) {
+            const allQuranReciters = res.data
+            setQuranReciters(allQuranReciters)
+        } else {
+            setQuranReciters([])
+        }
+
+        setLoading(false)
+    }
 
     const getProgress = async () => {
 
@@ -86,5 +107,5 @@ export const useProgress = () => {
         }
     }
 
-    return { getProgress, saveProgress }
+    return { getProgress, saveProgress, getAllQuranReciters }
 }
