@@ -64,7 +64,8 @@ export type Website =
     'tvQuran' |
     'server7' |
     'server6' |
-    'server11'
+    'server11' |
+    'server13'
 
 export interface SuwarMap {
     [key: string]: Surah[]

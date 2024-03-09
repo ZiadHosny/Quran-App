@@ -1,5 +1,5 @@
 import { getIslamic, islamic } from "./quranReciters/islamic.js";
-import { getServer7, getServer6, getServer11, server6, server7, server11 } from "./quranReciters/mp3Quran.js";
+import { getServer7, getServer6, getServer11, server6, server7, server11, server13, getServer13 } from "./quranReciters/mp3Quran.js";
 import { getIslamway, islamway } from "./quranReciters/islamway.js";
 import { getSurahQuran, surahQuran } from "./quranReciters/surahQuran.js";
 import { reciterAbdelrahmanMosad, getAbdelrahmanMosad } from "./quranReciters/singles/abdelrahmanMosad.js";
@@ -12,6 +12,7 @@ export const getAllQuran = () => {
         ...getServer7(),
         ...getServer6(),
         ...getServer11(),
+        ...getServer13(),
         ...getAbdelrahmanMosad(),
         ...getAhmedKhadr()
     };
@@ -24,6 +25,7 @@ export const allQuranReciters = () => {
         ...server7,
         ...server6,
         ...server11,
+        ...server13,
         reciterAbdelrahmanMosad,
         reciterAhmedKhadr,
     ];

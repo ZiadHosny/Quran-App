@@ -3,7 +3,7 @@ import { QURAN_SUWAR } from '../utils/constants/suwar.js';
 import { QuranReciterInWebsite, QuranRecitersWithWebsite, Surah, SuwarMap, Website } from '../utils/types.js'
 import { ISLAMIC } from './quranReciters/islamic.js';
 import { ISLAMWAY } from './quranReciters/islamway.js';
-import { SERVER11, SERVER6, SERVER7, server11 } from './quranReciters/mp3Quran.js';
+import { SERVER11, SERVER13, SERVER6, SERVER7, server11 } from './quranReciters/mp3Quran.js';
 import { SURAH_QURAN } from './quranReciters/surahQuran.js';
 
 interface GenerateUrlProps {
@@ -26,6 +26,8 @@ const generateUrl = ({ index, website, quranReciterInWebsite }: GenerateUrlProps
         return `${SERVER6}/${quranReciterInWebsiteWithSurahId}`
     else if (website === 'server11')
         return `${SERVER11}/${quranReciterInWebsiteWithSurahId}`
+    else if (website === 'server13')
+        return `${SERVER13}/${quranReciterInWebsiteWithSurahId}`
     else if (website === 'surahQuran')
         return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
     else

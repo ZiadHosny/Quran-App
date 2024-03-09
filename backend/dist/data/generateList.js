@@ -2,7 +2,7 @@ import { addZeros } from '../utils/addZeros.js';
 import { QURAN_SUWAR } from '../utils/constants/suwar.js';
 import { ISLAMIC } from './quranReciters/islamic.js';
 import { ISLAMWAY } from './quranReciters/islamway.js';
-import { SERVER11, SERVER6, SERVER7 } from './quranReciters/mp3Quran.js';
+import { SERVER11, SERVER13, SERVER6, SERVER7 } from './quranReciters/mp3Quran.js';
 import { SURAH_QURAN } from './quranReciters/surahQuran.js';
 const generateUrl = ({ index, website, quranReciterInWebsite }) => {
     const id = addZeros({ number: index, numOfZeros: 3 });
@@ -17,6 +17,8 @@ const generateUrl = ({ index, website, quranReciterInWebsite }) => {
         return `${SERVER6}/${quranReciterInWebsiteWithSurahId}`;
     else if (website === 'server11')
         return `${SERVER11}/${quranReciterInWebsiteWithSurahId}`;
+    else if (website === 'server13')
+        return `${SERVER13}/${quranReciterInWebsiteWithSurahId}`;
     else if (website === 'surahQuran')
         return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`;
     else
