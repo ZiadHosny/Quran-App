@@ -5,14 +5,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './navbar.scss'
 import { AccountMenu } from './AccountMenu';
-import { UseNotification } from '../../hooks/UseNotification';
+// import { UseNotification } from '../../hooks/UseNotification';
 import { useProgress } from '../../hooks/useProgress';
+import { Search } from './Search';
 
 export const Navbar = () => {
     const navigate = useNavigate()
     const { loginWithRedirect, isAuthenticated } = useAuth0();
     const { getProgress } = useProgress()
-    const [{ }, subscribe] = UseNotification()
+    // const [{ }, subscribe] = UseNotification()
     const { getIdTokenClaims } = useAuth0()
 
     const onClickLogin = async () => {
@@ -29,9 +30,9 @@ export const Navbar = () => {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [isAuthenticated])
 
-    const enableNotifications = async () => {
-        await subscribe()
-    }
+    // const enableNotifications = async () => {
+    //     await subscribe()
+    // }
 
     const clickHomeIcon = () => {
         navigate('/')
@@ -44,6 +45,12 @@ export const Navbar = () => {
                 src={'/images/quran64.png'}
                 alt='quranImg'
                 onClick={clickHomeIcon} />
+            <div style={{
+                backgroundColor: 'transparent',
+                marginRight: '2.5em'
+            }}>
+                <Search />
+            </div>
             <div>
                 {isAuthenticated ?
                     <AccountMenu />
@@ -53,7 +60,7 @@ export const Navbar = () => {
                     </button>
                 }
             </div>
-        </nav>
+        </nav >
     )
 }
 
