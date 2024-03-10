@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './navbar.scss'
 import { AccountMenu } from './AccountMenu';
 import { UseNotification } from '../../hooks/UseNotification';
-import quranImg from '../../utils/images/quran.png'
 import { useProgress } from '../../hooks/useProgress';
 
 export const Navbar = () => {
@@ -40,8 +39,9 @@ export const Navbar = () => {
 
     return (
         <nav className='flex-center-sb'>
-            <img className='logo'
-                src={quranImg}
+            <img
+                className='logo'
+                src={'/images/quran64.png'}
                 alt='quranImg'
                 onClick={clickHomeIcon} />
             <div>

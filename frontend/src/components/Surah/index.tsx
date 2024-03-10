@@ -70,7 +70,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     :
                     <></>
                 }
-                <MdDownloadForOffline size={30} onClick={downloadSurah} />
+                <MdDownloadForOffline style={{ color: 'green' }} size={30} onClick={downloadSurah} />
             </div>
         </div >
     )

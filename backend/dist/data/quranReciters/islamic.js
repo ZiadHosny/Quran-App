@@ -6,13 +6,9 @@ export const islamic = [
         quranReciter: 'محمد صديق المنشاوي (مجود)',
         photo: 'https://ar.islamway.net/uploads/authors/1032.jpg',
     }, {
-        id: 'alafasy',
-        quranReciter: 'مشاري بن راشد العفاسي',
-        photo: 'https://quranmp3.jo1jo.com/al3fasi.webp',
-    }, {
         id: 'abdulbasitmujawwad',
         quranReciter: 'عبد الباسط عبد الصمد (مجود)',
-        photo: 'https://ar.islamway.net/uploads/authors/abdul-baset-abdul-samad.jpg',
+        photo: 'https://i.pinimg.com/564x/c2/c5/57/c2c5579d6becfccbb4e98f6bcf008127.jpg',
     }, {
         id: 'abdulbasitmurattal',
         quranReciter: 'عبد الباسط عبد الصمد (مرتل)',
@@ -41,5 +37,5 @@ export const islamic = [
 ];
 export const getIslamic = () => generateSuwarForReciter({
     quranReciters: islamic,
-    website: "islamic"
+    website: "islamic",
 });

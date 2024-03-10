@@ -1,52 +1,50 @@
 {
   "short_name": "Quran",
   "name": "Quran App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#f5f5f5",
   "icons": [
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran16.png",
       "type": "image/png",
       "sizes": "16x16",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran24.png",
       "type": "image/png",
       "sizes": "24x24",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran32.png",
       "type": "image/png",
       "sizes": "32x32",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran64.png",
       "type": "image/png",
       "sizes": "64x64",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran128.png",
       "type": "image/png",
       "sizes": "144x144",
-      "purpose": "any"
-    },
-    {
-      "src": "images/quran.jpeg",
-      "type": "image/png",
-      "sizes": "256x256",
       "purpose": "maskable"
     },
     {
-      "src": "images/quran.jpeg",
+      "src": "images/quran256.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
+      "sizes": "256x256"
+    },
+    {
+      "src": "images/quran512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

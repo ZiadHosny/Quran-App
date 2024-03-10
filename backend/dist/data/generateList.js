@@ -1,36 +1,29 @@
 import { addZeros } from '../utils/addZeros.js';
 import { QURAN_SUWAR } from '../utils/constants/suwar.js';
 import { ISLAMIC } from './quranReciters/islamic.js';
-import { ISLAMWAY } from './quranReciters/islamway.js';
-import { SERVER11, SERVER13, SERVER6, SERVER7 } from './quranReciters/mp3Quran.js';
-import { SURAH_QURAN } from './quranReciters/surahQuran.js';
-const generateUrl = ({ index, website, quranReciterInWebsite }) => {
+const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl }) => {
     const id = addZeros({ number: index, numOfZeros: 3 });
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
     if (website === 'islamic')
         return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`;
-    else if (website === 'islamway')
-        return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
-    else if (website === 'server7')
-        return `${SERVER7}/${quranReciterInWebsiteWithSurahId}`;
-    else if (website === 'server6')
-        return `${SERVER6}/${quranReciterInWebsiteWithSurahId}`;
-    else if (website === 'server11')
-        return `${SERVER11}/${quranReciterInWebsiteWithSurahId}`;
-    else if (website === 'server13')
-        return `${SERVER13}/${quranReciterInWebsiteWithSurahId}`;
-    else if (website === 'surahQuran')
-        return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`;
+    else if (website === 'mp3quran' && websiteUrl) {
+        return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
+    }
     else
         return 'WebsiteNotFound';
+    // else if (website === 'islamway')
+    //     return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`
+    // else if (website === 'surahQuran')
+    //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };
-export const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite, }) => {
+export const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite, websiteUrl }) => {
     const list = [];
     for (let i = 1; i <= 114; i++) {
         const url = generateUrl({
             index: i,
             website,
-            quranReciterInWebsite: quranReciterInWebsite ?? id
+            quranReciterInWebsite: quranReciterInWebsite ?? id,
+            websiteUrl,
         });
         list.push({
             id: `${id}-${i.toString()}`,
@@ -45,13 +38,14 @@ export const generateList = ({ id, quranReciter, photo, website, quranReciterInW
 };
 export const generateSuwarForReciter = ({ quranReciters, website }) => {
     let quran = {};
-    quranReciters.forEach(({ id, photo, quranReciter, quranReciterInWebsite }) => {
+    quranReciters.forEach(({ id, photo, quranReciter, quranReciterInWebsite, websiteUrl }) => {
         quran[id] = generateList({
             id,
             quranReciter,
             photo,
             quranReciterInWebsite,
             website,
+            websiteUrl
         });
     });
     return quran;

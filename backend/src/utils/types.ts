@@ -48,12 +48,13 @@ export interface QuranReciter {
 }
 
 export interface QuranReciterInWebsite extends QuranReciter {
-    quranReciterInWebsite?: string
+    quranReciterInWebsite?: string,
+    websiteUrl?: string,
 }
 
 export interface QuranRecitersWithWebsite {
     quranReciters: QuranReciterInWebsite[],
-    website: Website
+    website: Website,
 }
 
 export type Website =
@@ -62,10 +63,13 @@ export type Website =
     'mp3quran' |
     'surahQuran' |
     'tvQuran' |
-    'server7' |
     'server6' |
+    'server7' |
+    'server8' |
+    'server10' |
     'server11' |
-    'server13'
+    'server13' |
+    'server14'
 
 export interface SuwarMap {
     [key: string]: Surah[]
