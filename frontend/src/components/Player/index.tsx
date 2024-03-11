@@ -12,6 +12,7 @@ import { RepeatSection } from './RepeatSection';
 import { useParams } from 'react-router-dom';
 import { useProgress } from '../../hooks/useProgress';
 import { toast } from 'react-toastify';
+import { cantPlaySurahRightNow } from '../../utils/strings';
 
 export const Player = () => {
     const params = useParams()
@@ -32,6 +33,7 @@ export const Player = () => {
         handlePlayAndPause,
         resizeSingerImage,
         onSurahEnded,
+        setSurahDuration,
     } = useSurah()
     // handle Volume
     const handleOnchangeVolume = (event: any) => {
@@ -58,7 +60,7 @@ export const Player = () => {
 
     const currentTime = getCurrentTime(audioElem.current)
 
-    // get Song Duration And set Song Progress From Logged In User
+    // get Surah Duration And set Surah Progress From Logged In User
     const onLoadedData = (event: any) => {
         const duration = event.currentTarget.duration
         setSurahDurationFn(duration)
@@ -66,11 +68,11 @@ export const Player = () => {
     }
 
     // handle surah Slider
-    const handleOnChangeSongSlider = (event: any) => {
+    const handleOnChangeSurahSlider = (event: any) => {
         onChangeSurahSlider(audioElem.current, event.target.value)
     }
 
-    // Update current Song Time
+    // Update current Surah Time
     const onTimeUpdate = (event: any) => {
         const { currentTime, duration } = event.currentTarget
 
@@ -97,7 +99,6 @@ export const Player = () => {
     }
     // Handle Play and Pause
     useEffect(() => {
-        // checkMP3Url(currentSurah.url)
         handlePlayAndPause(audioElem.current);
     }, [isPlaying, currentSurah, handlePlayAndPause]);
 
@@ -121,10 +122,14 @@ export const Player = () => {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [])
 
+    // on Surah Error
     const onError = () => {
-        toast.error('لا يمكن تشغيل السورة في الوقت الحالي')
+        toast.error(cantPlaySurahRightNow)
     }
-
+    // onLoad Start
+    const onLoadStart = () => {
+        setSurahDuration("Loading")
+    }
     // onChangeVolume
     useEffect(() => {
         onChangeVolume(audioElem.current, volume)
@@ -143,7 +148,7 @@ export const Player = () => {
             <CurrentSurah imgRef={imgRef} surah={currentSurah} />
             <Controllers surahElem={audioElem} />
             <Slider onChange={handleOnchangeVolume} percentage={volume} volume />
-            <Slider onChange={handleOnChangeSongSlider}
+            <Slider onChange={handleOnChangeSurahSlider}
                 percentage={surahSlider}
                 startSection={repeatSection.start}
                 endSection={repeatSection.end}
@@ -156,6 +161,7 @@ export const Player = () => {
             <audio
                 style={{ display: 'none' }}
                 src={currentSurah.url}
+                onLoadStart={onLoadStart}
                 onTimeUpdate={onTimeUpdate}
                 onLoadedData={onLoadedData}
                 onEnded={handleOnEnded}

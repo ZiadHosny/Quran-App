@@ -10,7 +10,6 @@ export const AccountMenu = () => {
     const { user, logout } = useAuth0();
 
     const location = useLocation();
-    // const changeSong = () => { }
 
     const menuToggle = () => {
         setIsOpen(!isOpen);
