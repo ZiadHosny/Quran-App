@@ -32,6 +32,7 @@ export const AccountMenu = () => {
     useEffect(() => {
         setIsOpen(false)
     }, [location])
+    
     // logout
     const onclickLogout = () => {
         logout({

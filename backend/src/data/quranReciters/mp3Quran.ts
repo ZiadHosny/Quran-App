@@ -72,6 +72,12 @@ export const mp3Quran: QuranReciterInWebsite[] = [
         quranReciterInWebsite: 'minsh',
         server: 10
     }, {
+        id: 'hatemFared',
+        quranReciter: 'حاتم فريد',
+        photo: 'https://ar.islamway.net/uploads/authors/hatem-fareed-alwaer.JPG',
+        quranReciterInWebsite: 'hatem',
+        server: 11
+    }, {
         id: 'yasser',
         quranReciter: 'ياسر الدوسري',
         photo: 'https://ar.islamway.net/uploads/authors/yasser-al-dosary.jpg',
