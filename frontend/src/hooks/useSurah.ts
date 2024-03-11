@@ -3,11 +3,25 @@ import { surahActions } from "../store/surah.store"
 import { QuranReciterType, SurahType } from "../utils/types"
 
 export const useSurah = () => {
-    const { surahDuration, surahProgress, currentSurah, suwar, quranReciters, } = useAppSelector(state => state.surah)
+    const {
+        surahDuration,
+        surahProgress,
+        currentSurah,
+        suwar,
+        quranReciters,
+        searchedQuranReciters,
+        searchedSuwar,
+        searchTerm,
+    } = useAppSelector(state => state.surah)
+
     const { isPlaying, isRepeat, isRandom } = useAppSelector(state => state.controllers)
 
     const dispatch = useAppDispatch()
 
+    // set searched Term
+    const setSearchTerm = (searchTerm: string) => {
+        dispatch(surahActions.setSearchTerm(searchTerm))
+    }
     // setQuranReciters
     const setQuranReciters = (quranReciters: QuranReciterType[]) => {
         dispatch(surahActions.setQuranReciters(quranReciters))
@@ -109,10 +123,25 @@ export const useSurah = () => {
     const getSurahIndexBySurahId = (surahId: string): number => {
         return suwar.findIndex((surah: SurahType) => surah.id === surahId)!
     }
+    // setSearchedQuranReciters
+    const setSearchedQuranReciters = (quranReciters: QuranReciterType[]) => {
+        dispatch(surahActions.setSearchedQuranReciters(quranReciters))
+    }
+    // setSearchedSuwar
+    const setSearchedSuwar = (suwar: SurahType[]) => {
+        dispatch(surahActions.setSearchedSuwar(suwar))
+    }
     // isCurrentSurah
     const isCurrentSurah = (id: string) => {
         return currentSurah.id === id
     }
+    // quranRecitersFilter
+    const quranRecitersFilter = searchTerm ?
+        searchedQuranReciters : quranReciters
+    // quranSuwarFilter
+    const quranSuwarFilter = searchTerm ?
+        searchedSuwar : suwar
+
     return {
         currentSurah,
         setCurrentSurah,
@@ -130,5 +159,13 @@ export const useSurah = () => {
         onSurahEnded,
         quranReciters,
         setQuranReciters,
+        setSearchedQuranReciters,
+        setSearchedSuwar,
+        searchedQuranReciters,
+        searchedSuwar,
+        searchTerm,
+        setSearchTerm,
+        quranRecitersFilter,
+        quranSuwarFilter
     }
 }

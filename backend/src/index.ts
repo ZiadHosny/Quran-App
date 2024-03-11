@@ -8,6 +8,7 @@ import { baseRouter } from './modules/baseRouter.js';
 import { globalErrorMiddleware } from './middlewares/error.js'
 import { userRouter } from './modules/user/userRouter.router.js';
 import { morganMiddleware } from './middlewares/morgan.js';
+import { notificationRouter } from './modules/sendNotification/notification.router.js';
 
 const { port } = getFromEnv()
 
@@ -21,6 +22,7 @@ app.use(morganMiddleware)
 
 app.use('/quran', quranRouter)
 app.use('/user', userRouter)
+app.use('/notification', notificationRouter )
 app.use('/', baseRouter)
 app.use(invalidRouter)
 app.use(globalErrorMiddleware)

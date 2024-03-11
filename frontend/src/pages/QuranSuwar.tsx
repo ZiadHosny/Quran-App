@@ -14,7 +14,14 @@ export const QuranSuwar = () => {
   const params = useParams();
   const { setIsPlaying, setRepeatSection } = useControllers();
   const { setLoading } = useLoading()
-  const { setCurrentSurah, setSuwar, currentSurah, setSurahDuration, setSurahProgress } = useSurah()
+  const {
+    setCurrentSurah,
+    setSuwar,
+    currentSurah,
+    setSurahDuration,
+    setSurahProgress,
+    quranSuwarFilter
+  } = useSurah()
   const { isLoading, data: suwar } = useGetAllSuwarByQuranReciterQuery({ quranReciter: params.quranReciter! })
   const { getPlaylist } = usePlaylist()
   useEffect(() => {
@@ -44,13 +51,12 @@ export const QuranSuwar = () => {
   }, []);
 
   return (
-    suwar ?
+    quranSuwarFilter ?
       <>
         <Player />
         <div className='playlist'>
-          {suwar.map((surah) => (
-            <Surah key={surah.id} surah={surah} />
-          ))}
+          {quranSuwarFilter.map((surah) => (
+            <Surah key={surah.id} surah={surah} />))}
         </div>
       </>
       :

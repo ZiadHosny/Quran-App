@@ -9,6 +9,9 @@ type surahType = {
   suwar: SurahType[],
   playlist: SurahType[],
   quranReciters: QuranReciterType[]
+  searchedSuwar: SurahType[],
+  searchedQuranReciters: QuranReciterType[],
+  searchTerm: string,
 }
 
 const initialState: surahType = {
@@ -19,6 +22,9 @@ const initialState: surahType = {
   suwar: [],
   playlist: [],
   quranReciters: [],
+  searchedSuwar: [],
+  searchedQuranReciters: [],
+  searchTerm: '',
 };
 
 const surahSlice = createSlice({
@@ -45,6 +51,15 @@ const surahSlice = createSlice({
     },
     setQuranReciters(state, action) {
       state.quranReciters = action.payload
+    },
+    setSearchedQuranReciters(state, action) {
+      state.searchedQuranReciters = action.payload
+    },
+    setSearchedSuwar(state, action) {
+      state.searchedSuwar = action.payload
+    },
+    setSearchTerm(state, action) {
+      state.searchTerm = action.payload
     }
   },
 });

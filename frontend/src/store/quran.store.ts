@@ -86,6 +86,15 @@ const taskApiSlice = apiSlice.injectEndpoints({
                 return res
             },
         }),
+        sendNotification: builder.mutation({
+            query: ({ subscription }: { subscription: any }) => {
+                return {
+                    url: `/notification/subscribe`,
+                    method: 'POST',
+                    body: { subscription },
+                }
+            }
+        }),
     })
 })
 
@@ -97,4 +106,5 @@ export const {
     useAddToPlaylistMutation,
     useGetPlaylistMutation,
     useRemoveFromPlaylistMutation,
+    useSendNotificationMutation,
 } = taskApiSlice

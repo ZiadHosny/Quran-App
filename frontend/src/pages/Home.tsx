@@ -5,21 +5,20 @@ import { useSurah } from '../hooks/useSurah';
 
 export const Home = () => {
   const { getAllQuranReciters } = useProgress();
-  const { quranReciters } = useSurah()
+  const { quranRecitersFilter } = useSurah()
 
   useEffect(() => {
     const fn = async () => {
       await getAllQuranReciters()
     }
     fn()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
 
   return (
     <main>
       <div className='container'>
-        {quranReciters?.map((quranReciter) => (
+        {quranRecitersFilter.map((quranReciter) => (
           <QuranReciter key={quranReciter.id} quranReciter={quranReciter} />
         ))}
       </div>

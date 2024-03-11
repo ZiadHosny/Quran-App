@@ -1,44 +1,41 @@
-// import { useAsyncFn } from 'react-use'
-// import { backendUrl, publicKey } from '../utils/envs';
+import { useSendNotificationMutation } from '../store/quran.store';
+import { publicKey } from '../utils/envs';
 
-// export const UseNotification = () => {
+export const UseNotification = () => {
+    const [sendNotificationFn] = useSendNotificationMutation()
 
-//     const subscribe = useAsyncFn(async (): Promise<void> => {
+    const sendNotification = async () => {
 
-//         if ("serviceWorker" in navigator) {
+        if ("serviceWorker" in navigator) {
 
-//             console.log("Registering service worker...");
+            console.log("Registering service worker...");
 
-//             let register = await navigator.serviceWorker.ready;
+            let register = await navigator.serviceWorker.ready;
 
-//             console.log("Service Worker Registered...");
+            console.log("Service Worker Registered...");
 
-//             console.log("Registering Push...");
+            console.log("Registering Push...");
+
+            const subscription = await register.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: publicKey
+            }).catch((e) => {
+                console.log(e)
+            })
+
+            console.log("Push Registered...");
+
+            console.log("Sending Push...");
+
+            await sendNotificationFn({ subscription })
+
+            console.log("Push Sent...");
+        }
 
 
-//             const subscription = await register.pushManager.subscribe({
-//                 userVisibleOnly: true,
-//                 applicationServerKey: publicKey
-//             }).catch((e) => {
-//                 console.log(e)
-//             })
+    }
 
-//             console.log("Push Registered...");
 
-//             console.log("Sending Push...");
 
-//             await fetch(`${backendUrl}/notification/subscribe`, {
-//                 method: "POST",
-//                 body: JSON.stringify(subscription),
-//                 headers: {
-//                     "content-type": "application/json"
-//                 }
-//             });
-
-//             console.log("Push Sent...");
-//         }
-
-//     }, [backendUrl])
-
-//     return subscribe;
-// }
+    return { sendNotification }
+}
