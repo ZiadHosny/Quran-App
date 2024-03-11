@@ -1,19 +1,17 @@
 import { useEffect } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom';
 import './navbar.scss'
 import { AccountMenu } from './AccountMenu';
-// import { UseNotification } from '../../hooks/UseNotification';
 import { useProgress } from '../../hooks/useProgress';
 import { Search } from './Search';
+import { UseNotification } from '../../hooks/UseNotification';
 
 export const Navbar = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { sendNotification } = UseNotification()
     const { loginWithRedirect, isAuthenticated } = useAuth0();
     const { getProgress } = useProgress()
-    // const [{ }, subscribe] = UseNotification()
     const { getIdTokenClaims } = useAuth0()
 
     const onClickLogin = async () => {
@@ -30,12 +28,9 @@ export const Navbar = () => {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [isAuthenticated])
 
-    // const enableNotifications = async () => {
-    //     await subscribe()
-    // }
-
-    const clickHomeIcon = () => {
+    const clickHomeIcon = async () => {
         navigate('/')
+        await sendNotification()
     }
 
     return (

@@ -91,7 +91,7 @@ const taskApiSlice = apiSlice.injectEndpoints({
                 return {
                     url: `/notification/subscribe`,
                     method: 'POST',
-                    body: { subscription },
+                    body: subscription,
                 }
             }
         }),

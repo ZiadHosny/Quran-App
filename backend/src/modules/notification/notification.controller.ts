@@ -3,6 +3,7 @@ import webpush from 'web-push'
 import { getFromEnv } from "../../utils/getFromEnv.js";
 
 export const sendNotification = (req: Request, res: Response) => {
+    console.log('email, publicKey, privateKey')
 
     const { publicKey, privateKey } = getFromEnv()
     const email = 'ziadhosny007@gmail.com'

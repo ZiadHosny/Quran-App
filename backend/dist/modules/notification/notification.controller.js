@@ -1,6 +1,7 @@
 import webpush from 'web-push';
 import { getFromEnv } from "../../utils/getFromEnv.js";
 export const sendNotification = (req, res) => {
+    console.log('email, publicKey, privateKey');
     const { publicKey, privateKey } = getFromEnv();
     const email = 'ziadhosny007@gmail.com';
     webpush.setVapidDetails(`mailto:${email}`, publicKey, privateKey);

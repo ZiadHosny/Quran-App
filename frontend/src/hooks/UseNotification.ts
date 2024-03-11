@@ -31,11 +31,6 @@ export const UseNotification = () => {
 
             console.log("Push Sent...");
         }
-
-
     }
-
-
-
     return { sendNotification }
 }

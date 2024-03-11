@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "src/pages/QuranSuwar.tsx"
+    "public/service-worker.js"
   ]
 }
