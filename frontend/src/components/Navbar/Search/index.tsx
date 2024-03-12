@@ -1,4 +1,4 @@
-import { FormEvent, useEffect } from 'react'
+import { FormEvent, MouseEvent, useEffect } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { useLocation } from 'react-router-dom'
 import './search.scss'
@@ -16,8 +16,8 @@ export const Search = () => {
         setSearchTerm(searchTerm)
     }
 
-    const onMouseOut = (e: FormEvent<HTMLInputElement>) => {
-        setSearchTerm('')
+    const onMouseOut = (e: MouseEvent<HTMLInputElement>) => {
+        e.currentTarget.blur()
     }
 
     useEffect(() => {
@@ -28,16 +28,16 @@ export const Search = () => {
     return (
         <div className="box">
             <form name="search">
-                <input type="text"
+                <input
+                    type="text"
                     className="input"
                     name="txt"
                     value={searchTerm}
                     onChange={onSearch}
-                // onMouseOut={onMouseOut}
+                    onMouseOut={onMouseOut}
                 />
             </form>
-            <FaSearch className='icon'/>
-            {/* <i className="fas fa-search"></i> */}
+            <FaSearch className='icon' />
         </div>
     )
 }

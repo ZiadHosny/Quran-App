@@ -18,7 +18,7 @@
 }
 
 .box:hover input {
-    width: 350px;
+    width: 400px;
     background: #000000;
     border-radius: 10px;
 }
@@ -36,4 +36,10 @@
 .box:hover .icon {
     opacity: 0;
     z-index: -1;
+}
+
+@media only screen and (max-width: 600px) {
+    .box:hover input {
+        width: 200px;
+    }
 }
