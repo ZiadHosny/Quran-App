@@ -1,7 +1,6 @@
 import { addZeros } from '../utils/addZeros.js';
 import { QURAN_SUWAR } from '../utils/constants/suwar.js';
 import { QuranReciterInWebsite, QuranRecitersWithWebsite, Surah, SuwarMap, Website } from '../utils/types.js'
-import { ISLAMIC } from './quranReciters/islamic.js';
 
 interface GenerateUrlProps {
     index: number,
@@ -13,16 +12,15 @@ const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl }: Gene
     const id = addZeros({ number: index, numOfZeros: 3 });
 
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`
-    if (website === 'islamic')
-        return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
-    else if (website === 'mp3quran' && websiteUrl) {
+    if (website === 'mp3quran' && websiteUrl) {
         return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`
     }
     else
         return 'WebsiteNotFound'
+    // if (website === 'islamic')
+    //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
     // else if (website === 'islamway')
     //     return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`
-
     // else if (website === 'surahQuran')
     //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 }
