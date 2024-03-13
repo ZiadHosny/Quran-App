@@ -13,6 +13,7 @@ export interface SurahType {
     url: string,
     quranReciter: string,
     photo: string,
+    surahPlayedCount?: number
 }
 
 export type UserProgress = {

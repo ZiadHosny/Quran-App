@@ -13,10 +13,12 @@ import { useParams } from 'react-router-dom';
 import { useProgress } from '../../hooks/useProgress';
 import { toast } from 'react-toastify';
 import { cantPlaySurahRightNow } from '../../utils/strings';
+import { useMostPlayed } from '../../hooks/useMostPlayed';
 
 export const Player = () => {
     const params = useParams()
     const { saveProgress } = useProgress()
+    const { addSurahToMostPlayed } = useMostPlayed()
     // useControllers
     const {
         isPlaying,
@@ -97,6 +99,10 @@ export const Player = () => {
             onSurahEnded(audioElem.current)
         }
     }
+    // onPlay
+    const onPlay = async () => {
+        await addSurahToMostPlayed({ surah: currentSurah })
+    }
     // Handle Play and Pause
     useEffect(() => {
         handlePlayAndPause(audioElem.current);
@@ -166,9 +172,10 @@ export const Player = () => {
                 onLoadedData={onLoadedData}
                 onEnded={handleOnEnded}
                 onError={onError}
-                ref={audioElem} >
-            </audio>
-        </div>
+                onPlay={onPlay}
+                ref={audioElem}
+            />
+        </div >
     )
 }
 

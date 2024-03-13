@@ -4,6 +4,7 @@ import { allQuranReciters, getAllQuran } from "../../data/quran.js";
 import { sendResponse } from "../../utils/response.js";
 import { AuthRequest, Surah } from "../../utils/types.js";
 import { ViewModel } from "../../models/view.model.js";
+import { SurahPlayedModel } from "../../models/surah.model.js";
 
 export const getAllSuwarQuranReciter = catchAsyncError(async (req: Request, res: Response) => {
     const paramId = req.params.id
@@ -71,5 +72,45 @@ export const getCountViews = catchAsyncError(async (_: AuthRequest, res: Respons
         message: 'get Count Views successfully',
         status: 200,
         data: { countViews }
+    })
+})
+
+export const playSurah = catchAsyncError(async (req: AuthRequest, res: Response) => {
+    const surah = req.body as Surah
+    const { id, photo, quranReciter, surahNumber, title, url } = surah
+
+    const surahPlayed = await SurahPlayedModel.findOneAndUpdate(
+        { id }, { $inc: { surahPlayedCount: 1 } }
+    );
+
+    if (!surahPlayed) {
+        await SurahPlayedModel.create({
+            id,
+            photo,
+            quranReciter,
+            surahNumber,
+            title,
+            url,
+            surahPlayedCount: 1
+        })
+    }
+
+    return sendResponse({
+        res,
+        message: 'Surah added To DB successfully',
+        status: 200,
+    })
+})
+
+export const mostPlayed = catchAsyncError(async (_: AuthRequest, res: Response) => {
+
+    const suwarPlayed = await SurahPlayedModel.find({})
+        .sort('-surahPlayedCount');
+
+    return sendResponse({
+        res,
+        message: 'get Suwar Played DB successfully',
+        status: 200,
+        data: suwarPlayed
     })
 })

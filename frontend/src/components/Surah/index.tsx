@@ -49,6 +49,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
 
     return (
         <div ref={card}
+            style={{ position: 'relative', zIndex: -10 }}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
             onClick={handleChangeSurah}>
             <h3 className="title">{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
@@ -71,6 +72,13 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     <></>
                 }
                 <MdDownloadForOffline style={{ color: 'green' }} size={30} onClick={downloadSurah} />
+            </div>
+            <div style={{
+                position: 'absolute',
+                bottom: 5,
+                right: 5,
+            }}>
+                {surah.surahPlayedCount}
             </div>
         </div >
     )

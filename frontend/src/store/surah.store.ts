@@ -8,6 +8,7 @@ type surahType = {
   surahSlider: number,
   suwar: SurahType[],
   playlist: SurahType[],
+  mostPlayed: SurahType[],
   quranReciters: QuranReciterType[]
   searchedSuwar: SurahType[],
   searchedQuranReciters: QuranReciterType[],
@@ -21,6 +22,7 @@ const initialState: surahType = {
   surahSlider: 0,
   suwar: [],
   playlist: [],
+  mostPlayed: [],
   quranReciters: [],
   searchedSuwar: [],
   searchedQuranReciters: [],
@@ -60,6 +62,9 @@ const surahSlice = createSlice({
     },
     setSearchTerm(state, action) {
       state.searchTerm = action.payload
+    },
+    setMostPlayed(state, action) {
+      state.mostPlayed = action.payload
     }
   },
 });

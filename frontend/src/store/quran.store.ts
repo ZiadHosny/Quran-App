@@ -86,6 +86,25 @@ const taskApiSlice = apiSlice.injectEndpoints({
                 return res
             },
         }),
+        getMostPlayed: builder.mutation<{ data: { mostPlayed: SurahType[] } }, void>({
+            query: () => ({
+                url: `/quran/mostPlayed`,
+                method: 'GET',
+            }),
+            transformResponse: (res: any) => {
+                return res
+            },
+        }),
+        addSurahMostPlayed: builder.mutation({
+            query: ({ body }: { body: SurahType }) => ({
+                url: `/quran/playSurah`,
+                method: 'POST',
+                body,
+            }),
+            transformResponse: (res: any) => {
+                return res
+            },
+        }),
         sendNotification: builder.mutation({
             query: ({ subscription }: { subscription: any }) => {
                 return {
@@ -107,4 +126,6 @@ export const {
     useGetPlaylistMutation,
     useRemoveFromPlaylistMutation,
     useSendNotificationMutation,
+    useGetMostPlayedMutation,
+    useAddSurahMostPlayedMutation,
 } = taskApiSlice
