@@ -128,6 +128,12 @@ const mp3QuranReciter = [
         photo: 'https://i.pinimg.com/564x/fa/8f/f8/fa8ff84527ff6c1611e304f94b1bf96d.jpg',
         server: 8,
     }, {
+        id: 'ahmad_hozefy',
+        quranReciter: 'أحمد الحذيفي',
+        photo: 'https://i.pinimg.com/564x/b2/de/79/b2de79bfc03b77ff5de3b68cd810d9b0.jpg',
+        quranReciterInWebsite: 'ahmad_huth',
+        server: 8,
+    }, {
         id: 'trablsi',
         quranReciter: 'أحمد الطرابلسي',
         photo: 'https://i.pinimg.com/564x/d3/c2/9c/d3c29cc03198c3c15d380af048b2d68b.jpg',
