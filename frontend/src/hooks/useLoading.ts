@@ -1,5 +1,7 @@
+import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { loadingActions } from "../store/loading.store";
+import { dismissToast, loadingToast } from "../utils/toast";
 
 export const useLoading = () => {
     const { loading } = useAppSelector(state => state.loading)
@@ -7,6 +9,12 @@ export const useLoading = () => {
 
     // setLoading
     const setLoading = (value: boolean) => {
+        let id = undefined
+        if (value) {
+            id = loadingToast()
+        } else {
+            dismissToast(id);
+        }
         dispatch(loadingActions.setLoading(value))
     }
 

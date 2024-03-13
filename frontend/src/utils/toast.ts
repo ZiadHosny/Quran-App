@@ -33,6 +33,10 @@ export const loadingToast = (msg?: string) => {
     return toast.loading(msg ?? loadingMsg)
 }
 
+export const dismissToast = (id: string | undefined) => {
+    return toast.dismiss(id)
+}
+
 export const updateToastSuccess = ({ id, render }: { id: Id, render: string }) => {
     toast.update(id, { render, type: 'success', isLoading: false, autoClose: 1000 })
 }

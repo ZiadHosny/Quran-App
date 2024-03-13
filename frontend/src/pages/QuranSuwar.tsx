@@ -35,7 +35,8 @@ export const QuranSuwar = () => {
 
   useEffect(() => {
     setLoading(isLoading)
-  }, [isLoading, setLoading])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading])
 
   useEffect(() => {
     setCurrentSurah({} as SurahType);
