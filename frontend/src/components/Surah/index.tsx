@@ -49,7 +49,6 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
 
     return (
         <div ref={card}
-            style={{ position: 'relative', zIndex: -10 }}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
             onClick={handleChangeSurah}>
             <h3 className="title">{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
