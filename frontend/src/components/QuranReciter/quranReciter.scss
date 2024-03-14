@@ -3,10 +3,10 @@
     align-items: center;
     text-decoration: none;
     margin-bottom: 12px;
-    background-color: #fff;
+    background-color: var(--white-color);
     padding: 8px 16px;
     border-radius: 5px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     color: var(--text-color);
 
     :hover {
@@ -21,7 +21,7 @@
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        background-color: #fff;
+        background-color: var(--white-color);
         background-size: cover;
         margin: 0 8px;
     }

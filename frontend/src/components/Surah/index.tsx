@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
-import { IoMdAddCircle } from 'react-icons/io'
-import { CgPlayListRemove } from "react-icons/cg";
-import { MdDownloadForOffline } from "react-icons/md";
+import { MdLibraryAddCheck } from "react-icons/md";
+import { FaDownload } from "react-icons/fa";
+import { MdLibraryAdd } from "react-icons/md";
 import { useAuth0 } from '@auth0/auth0-react'
 import { saveAs } from 'file-saver'
 import './surah.scss'
@@ -51,7 +51,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
         <div ref={card}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
             onClick={handleChangeSurah}>
-            <h3 className="title">{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
+            <h3>{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
                 <h3 className="arabic-font title">{surah.title}</h3>
@@ -62,22 +62,21 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     <>
                         {
                             isInPlaylist ?
-                                <CgPlayListRemove size={30} onClick={removeFromPlaylist} />
+                                <MdLibraryAddCheck size={26} onClick={removeFromPlaylist} />
                                 :
-                                <IoMdAddCircle size={30} onClick={addToPlaylist} />
+                                <MdLibraryAdd size={26} onClick={addToPlaylist} />
                         }
                     </>
                     :
                     <></>
                 }
-                <MdDownloadForOffline style={{ color: 'green' }} size={30} onClick={downloadSurah} />
+                <FaDownload
+                    className='download'
+                    size={25}
+                    onClick={downloadSurah} />
             </div>
-            <div style={{
-                position: 'absolute',
-                bottom: 5,
-                right: 5,
-            }}>
-                {surah.surahPlayedCount}
+            <div className='surahPlayedCount'>
+                {surah.surahPlayedCount} views
             </div>
         </div >
     )

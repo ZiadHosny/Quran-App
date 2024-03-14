@@ -5,9 +5,15 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1;
-    color: white;
+    color: var(--white-color);
     text-align: center;
     margin-top: 4px;
     gap: 10px;
     font-weight: 700;
+
+
+    .link {
+        cursor: pointer;
+        color: var(--white-color);
+    }
 }

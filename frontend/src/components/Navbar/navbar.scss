@@ -11,8 +11,13 @@ nav {
         cursor: pointer;
     }
 
+    .search-container {
+        background-color: transparent;
+        margin-right: 2.5em;
+    }
+
     .login {
-        background-color: white;
+        background-color: var(--white-color);
         width: 100px;
         height: 80%;
         border-radius: 10px;
@@ -20,8 +25,13 @@ nav {
         cursor: pointer
     }
 
-    .logout {
+    .link {
         cursor: pointer;
+        color: gray;
+        text-decoration: none;
+    }
+
+    .logout {
         color: red;
     }
 

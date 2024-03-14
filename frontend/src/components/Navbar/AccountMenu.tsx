@@ -32,7 +32,7 @@ export const AccountMenu = () => {
     useEffect(() => {
         setIsOpen(false)
     }, [location])
-    
+
     // logout
     const onclickLogout = () => {
         logout({
@@ -46,13 +46,13 @@ export const AccountMenu = () => {
             <ul >
                 <li >
                     <Link
-                        style={{ color: 'gray', textDecoration: 'none', cursor: 'pointer' }}
+                        className='link'
                         to={'/myPlaylist'}>
                         <BiSolidPlaylist style={{ marginRight: 10 }} />
                         My Playlist
                     </Link>
                 </li>
-                <li className='logout' onClick={onclickLogout} >
+                <li className='link logout' onClick={onclickLogout} >
                     <FiLogOut style={{ marginRight: 10 }} />
                     <div>Log out</div>
                 </li>

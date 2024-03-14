@@ -4,6 +4,7 @@ import { useControllers } from '../hooks/useControllers';
 import { useMostPlayed } from '../hooks/useMostPlayed';
 import { Player } from '../components/Player';
 import { Surah } from '../components/Surah';
+import { thereIsNoSurah } from '../utils/strings';
 
 export const MostPlayed = () => {
     const { setIsPlaying, setRepeatSection } = useControllers();
@@ -36,18 +37,8 @@ export const MostPlayed = () => {
                 </div>
             </>
             :
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-                width: '100%',
-                marginTop: 16,
-                color: 'darkgray',
-                textAlign: 'center',
-                fontSize: 20,
-            }}>
-                Not Found Any Surah in Most Played Section
+            <div className='noSurah'>
+                {thereIsNoSurah}
             </div>
     )
 }

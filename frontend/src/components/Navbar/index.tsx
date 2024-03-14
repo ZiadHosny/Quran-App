@@ -39,10 +39,7 @@ export const Navbar = () => {
                 src={'/images/quran64.png'}
                 alt='quranImg'
                 onClick={clickHomeIcon} />
-            <div style={{
-                backgroundColor: 'transparent',
-                marginRight: '2.5em'
-            }}>
+            <div className="search-container">
                 <Search />
             </div>
             <div>
@@ -57,19 +54,3 @@ export const Navbar = () => {
         </nav >
     )
 }
-
-
-{/* <div style={{ width: '30%', display: 'flex', justifyContent: 'space-between', padding: '0 10px', alignItems: 'center' }}>
-                <AiOutlineHome color='white' size={30} style={{ cursor: 'pointer' }} onClick={() => {
-                    enableNotifications()
-                    // setPlayListPage(false)
-                }} />
-                <AiOutlineHome color='white' size={30} style={{ cursor: 'pointer' }} onClick={() => {
-                    enableNotifications()
-                    // setPlayListPage(false)
-                }} />
-                <AiOutlineHome color='white' size={30} style={{ cursor: 'pointer' }} onClick={() => {
-                    enableNotifications()
-                    // setPlayListPage(false)
-                }} />
-            </div> */}

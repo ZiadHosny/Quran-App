@@ -5,13 +5,10 @@ export const Footer = () => {
 
     return (
         <footer className='flex-center-center'>
-            <p
-                style={{ cursor: 'pointer', }} >
-                <a style={{ color: 'white' }}
-                    href="https://ziadhosny.vercel.app/">
-                    Ziad Hosny
-                </a>
-            </p> |
+            <a className='link' href="https://ziadhosny.vercel.app/">
+                Ziad Hosny
+            </a>
+            |
             <p>Version : {VERSION}</p>
         </footer>
     )

@@ -5,6 +5,7 @@ import { useSurah } from '../hooks/useSurah';
 import { useControllers } from '../hooks/useControllers';
 import { Surah } from '../components/Surah';
 import { usePlaylist } from '../hooks/usePlaylist';
+import { thereIsNoSurah } from '../utils/strings';
 
 export const MyPlaylist = () => {
   const { setIsPlaying, setRepeatSection } = useControllers();
@@ -37,18 +38,8 @@ export const MyPlaylist = () => {
         </div>
       </>
       :
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        width: '100%',
-        marginTop: 16,
-        color: 'darkgray',
-        textAlign: 'center',
-        fontSize: 20,
-      }}>
-        Not Found Any Surah in Your Playlist
+      <div className='noSurah'>
+        {thereIsNoSurah}
       </div>
   )
 }
