@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks"
-import { surahActions } from "../store/surah.store"
+import { DownloadProgress, surahActions } from "../store/surah.store"
 import { QuranReciterType, SurahType } from "../utils/types"
 
 export const useSurah = () => {
@@ -12,6 +12,7 @@ export const useSurah = () => {
         searchedQuranReciters,
         searchedSuwar,
         searchTerm,
+        downloadProgress,
     } = useAppSelector(state => state.surah)
 
     const { isPlaying, isRepeat, isRandom } = useAppSelector(state => state.controllers)
@@ -33,6 +34,10 @@ export const useSurah = () => {
     // setSuwar
     const setSuwar = (suwar: SurahType[]) => {
         dispatch(surahActions.setSuwar(suwar))
+    }
+    // set Download Progress
+    const setDownloadProgress = ({ step, surahId, reciterId, surahNumber }: DownloadProgress) => {
+        dispatch(surahActions.setDownloadProgress({ step, surahId }))
     }
     // surahDuration
     const setSurahDuration = (value: string) => {
@@ -166,6 +171,8 @@ export const useSurah = () => {
         searchTerm,
         setSearchTerm,
         quranRecitersFilter,
-        quranSuwarFilter
+        quranSuwarFilter,
+        setDownloadProgress,
+        downloadProgress
     }
 }

@@ -129,6 +129,11 @@ const mp3QuranReciter: Mp3Quran[] = [
         quranReciterInWebsite: 'noah',
         server: 8,
     }, {
+        id: 'ahmad_nu',
+        quranReciter: 'أحمد نعينع',
+        photo: 'https://i.pinimg.com/564x/e7/5f/e1/e75fe1583ffecf9e2a78d0593f66cac4.jpg',
+        server: 11,
+    }, {
         id: 'jbrl',
         quranReciter: 'محمد جبريل',
         photo: 'https://i.pinimg.com/564x/fa/8f/f8/fa8ff84527ff6c1611e304f94b1bf96d.jpg',

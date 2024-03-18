@@ -33,7 +33,7 @@ export const loadingToast = (msg?: string) => {
     return toast.loading(msg ?? loadingMsg)
 }
 
-export const dismissToast = (id: string | undefined) => {
+export const dismissToast = (id: string | undefined | Id) => {
     return toast.dismiss(id)
 }
 

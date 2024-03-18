@@ -9,13 +9,14 @@ import { SurahType } from '../../utils/types'
 import { useSurah } from '../../hooks/useSurah'
 import { usePlaylist } from '../../hooks/usePlaylist'
 import { addZeros } from '../../utils/addZeros';
+import { dismissToast, loadingToast } from '../../utils/toast';
 
 export const Surah = ({ surah }: { surah: SurahType }) => {
     const card = useRef<HTMLInputElement>(null);
 
     const { addSurahToPlaylist, removeSurahToPlaylist, isInPlaylist: isInPlaylistFn } = usePlaylist()
     const { isAuthenticated, } = useAuth0();
-    const { setCurrentSurah, currentSurah } = useSurah()
+    const { setCurrentSurah, currentSurah, setDownloadProgress, downloadProgress } = useSurah()
 
     const isCurrentSurah = surah.id === currentSurah.id
 
@@ -44,7 +45,38 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
     }
     // download Surah
     const downloadSurah = async (e: any) => {
-        saveAs(surah.url, surah.title, { autoBom: true })
+        const id = loadingToast()
+        const res = await fetch(surah.url)
+
+        const contentLength = res.headers.get('Content-Length')
+        const totalLength = parseInt(contentLength ?? '0')
+
+        if (!res.body) return;
+
+        const reader = res.body.getReader()
+        const chunks = []
+        let receivedLength = 0
+
+        while (true) {
+            const { done, value } = await reader.read()
+            if (done) {
+                setDownloadProgress({ step: 0 })
+                console.log('done')
+                break
+            }
+            receivedLength += value.length
+
+            const step = receivedLength / totalLength * 100
+            console.log(currentSurah.id)
+            setDownloadProgress({ step, surahId: surah.id })
+            chunks.push(value)
+        }
+
+        const blob = new Blob(chunks, { type: 'audio/mp3' })
+
+        saveAs(blob, `${surah.quranReciter} - ${surah.title}`, { autoBom: true })
+
+        dismissToast(id)
     }
 
     return (
@@ -70,14 +102,29 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     :
                     <></>
                 }
-                <FaDownload
-                    className='download'
-                    size={25}
-                    onClick={downloadSurah} />
+                {downloadProgress.surahId === surah.id ?
+                    <h3 className='downloadProgress'>
+                        %{
+                            addZeros({
+                                number: Math.trunc(downloadProgress.step),
+                                numOfZeros: 2
+                            })
+                        }
+                    </h3>
+                    :
+                    <FaDownload
+                        className='download'
+                        size={25}
+                        onClick={downloadSurah} />
+                }
+
             </div>
-            <div className='surahPlayedCount'>
-                {surah.surahPlayedCount} views
-            </div>
+            {surah.surahPlayedCount ?
+                <div className='surahPlayedCount'>
+                    {surah.surahPlayedCount} views
+                </div>
+                : <></>
+            }
         </div >
     )
 }

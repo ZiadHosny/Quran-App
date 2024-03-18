@@ -20,7 +20,7 @@ export const App = () => {
         redirect_uri: isBrowser ? window.location.origin : '/'
       }}>
       <Navbar />
-      <main>
+      <main style={{ position: 'relative' }}>
         <div className='container'>
           <Router />
         </div>
