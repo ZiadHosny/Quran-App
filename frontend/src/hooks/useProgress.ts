@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSurahSlider } from './useSurahSlider';
 import { loadingToast, updateToastError, updateToastSuccess } from '../utils/toast';
 import { useLoading } from './useLoading';
+import { loadingReciters } from '../utils/strings';
 
 export const useProgress = () => {
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ export const useProgress = () => {
     const { getCurrentTimeInMilliSecond } = useSurahSlider()
 
     const getAllQuranReciters = async () => {
-        setLoading(true)
+        const id = setLoading({ msg: loadingReciters })
 
         const token = await getToken(getIdTokenClaims);
         const res = await getAllQuranRecitersFn({ token }) as { data: QuranReciterType[] }
@@ -50,7 +51,7 @@ export const useProgress = () => {
             setQuranReciters([])
         }
 
-        setLoading(false)
+        setLoading({ id })
     }
 
     const getProgress = async () => {

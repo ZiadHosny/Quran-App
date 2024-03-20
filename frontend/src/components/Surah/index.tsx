@@ -3,22 +3,24 @@ import { MdLibraryAddCheck } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
 import { useAuth0 } from '@auth0/auth0-react'
-import { saveAs } from 'file-saver'
 import './surah.scss'
 import { SurahType } from '../../utils/types'
 import { useSurah } from '../../hooks/useSurah'
 import { usePlaylist } from '../../hooks/usePlaylist'
 import { addZeros } from '../../utils/addZeros';
-import { dismissToast, loadingToast } from '../../utils/toast';
+import { useDownload } from '../../hooks/useDownload';
 
 export const Surah = ({ surah }: { surah: SurahType }) => {
     const card = useRef<HTMLInputElement>(null);
 
     const { addSurahToPlaylist, removeSurahToPlaylist, isInPlaylist: isInPlaylistFn } = usePlaylist()
     const { isAuthenticated, } = useAuth0();
-    const { setCurrentSurah, currentSurah, setDownloadProgress, downloadProgress } = useSurah()
+    const { checkDownload, downloadSurah } = useDownload()
+    const { setCurrentSurah, currentSurah } = useSurah()
 
     const isCurrentSurah = surah.id === currentSurah.id
+
+    const downloadProgress = checkDownload(surah.id)
 
     // isInPlaylist
     const isInPlaylist = isInPlaylistFn(surah.id)
@@ -44,45 +46,14 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
         await removeSurahToPlaylist({ surahId: surah.id })
     }
     // download Surah
-    const downloadSurah = async (e: any) => {
-        const id = loadingToast()
-        const res = await fetch(surah.url)
-
-        const contentLength = res.headers.get('Content-Length')
-        const totalLength = parseInt(contentLength ?? '0')
-
-        if (!res.body) return;
-
-        const reader = res.body.getReader()
-        const chunks = []
-        let receivedLength = 0
-
-        while (true) {
-            const { done, value } = await reader.read()
-            if (done) {
-                setDownloadProgress({ step: 0 })
-                console.log('done')
-                break
-            }
-            receivedLength += value.length
-
-            const step = receivedLength / totalLength * 100
-            console.log(currentSurah.id)
-            setDownloadProgress({ step, surahId: surah.id })
-            chunks.push(value)
-        }
-
-        const blob = new Blob(chunks, { type: 'audio/mp3' })
-
-        saveAs(blob, `${surah.quranReciter} - ${surah.title}`, { autoBom: true })
-
-        dismissToast(id)
+    const downloadSurahFn = async () => {
+        await downloadSurah({ surah })
     }
 
     return (
         <div ref={card}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
-            onClick={handleChangeSurah}>
+            onClick={handleChangeSurah} >
             <h3>{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
@@ -102,7 +73,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     :
                     <></>
                 }
-                {downloadProgress.surahId === surah.id ?
+                {downloadProgress ?
                     <h3 className='downloadProgress'>
                         %{
                             addZeros({
@@ -115,15 +86,16 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     <FaDownload
                         className='download'
                         size={25}
-                        onClick={downloadSurah} />
+                        onClick={downloadSurahFn} />
                 }
 
             </div>
-            {surah.surahPlayedCount ?
-                <div className='surahPlayedCount'>
-                    {surah.surahPlayedCount} views
-                </div>
-                : <></>
+            {
+                surah.surahPlayedCount ?
+                    <div className='surahPlayedCount'>
+                        {surah.surahPlayedCount} views
+                    </div>
+                    : <></>
             }
         </div >
     )

@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  loading: false,
-};
+// type LoadingState = {
+//   id: string
+// };
+
+const initialState: string[] = []
 
 const loadingSlice = createSlice({
   name: "loading",
-  initialState: initialState,
+  initialState: { loading: initialState },
   reducers: {
     setLoading(state, action) {
-      state.loading = action.payload;
+      state.loading.push(action.payload)
     },
+    removeLoading(state, action) {
+      state.loading = state.loading.filter((id) => id !== action.payload)
+    }
   },
 });
 

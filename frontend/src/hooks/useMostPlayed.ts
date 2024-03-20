@@ -1,14 +1,15 @@
 import { useSurah } from './useSurah';
 import { useAddSurahMostPlayedMutation, useGetMostPlayedMutation } from '../store/quran.store';
 import { Result, SurahType } from '../utils/types';
+import { getMostPlayedSuccess } from '../utils/strings'
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { surahActions } from '../store/surah.store';
-import { loadingToast, updateToastError, updateToastSuccess } from '../utils/toast';
-import { toast } from 'react-toastify';
+import { useLoading } from './useLoading';
 
 export const useMostPlayed = () => {
 
     const { mostPlayed } = useAppSelector(state => state.surah)
+    const { setLoading } = useLoading()
     const { setCurrentSurah, setSuwar } = useSurah()
     const dispatch = useAppDispatch()
     const [getMostPlayedFn] = useGetMostPlayedMutation()
@@ -21,7 +22,7 @@ export const useMostPlayed = () => {
 
     // getMostPlayed
     const getMostPlayed = async () => {
-        const id = loadingToast()
+        const id = setLoading({ msg: getMostPlayedSuccess })
         const res = await getMostPlayedFn() as Result
 
         const { data } = res.data
@@ -31,17 +32,16 @@ export const useMostPlayed = () => {
             setCurrentSurah(mostPlayed[0])
             setSuwar(mostPlayed)
         }
-        toast.dismiss(id)
+        setLoading({ id })
     }
 
     // addSurahToMostPlayed
     const addSurahToMostPlayed = async ({ surah }: { surah: SurahType }) => {
-        // const id = loadingToast();
-        await addSurahToMostPlayedFn({ body: surah }) as Result
-        // if (res.error) {
-        //     return updateToastError({ id, render: res.error.data.err })
-        // }
-        // return updateToastSuccess({ id, render: res.data.message })
+        try {
+            await addSurahToMostPlayedFn({ body: surah }) as Result
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return {

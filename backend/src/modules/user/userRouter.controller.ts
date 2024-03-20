@@ -53,6 +53,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req: AuthRequest, r
 
     const playlist = user.playlist
     const found = playlist.find((surah) => surah.id === currentSurah.id)
+    
     if (found) {
         return next(new AppError('Surah Is Already Exist In Playlist', 400))
     }
@@ -66,7 +67,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req: AuthRequest, r
 
     sendResponse({
         res,
-        message: 'add Surah To User Playlist Successfully',
+        message: 'تم اضافة السورة في قائمة التشغيل',
         status: 200,
     })
 })
@@ -87,7 +88,7 @@ export const removeSurahToUserPlaylist = catchAsyncError(async (req: AuthRequest
 
     sendResponse({
         res,
-        message: 'remove Surah From User Playlist Successfully',
+        message: 'تم مسح السورة بنجاح',
         status: 200,
     })
 })

@@ -13,7 +13,7 @@ type surahType = {
   searchedSuwar: SurahType[],
   searchedQuranReciters: QuranReciterType[],
   searchTerm: string,
-  downloadProgress: DownloadProgress,
+  downloadProgress: DownloadProgress[],
 }
 
 export type DownloadProgress = {
@@ -35,12 +35,7 @@ const initialState: surahType = {
   searchedSuwar: [],
   searchedQuranReciters: [],
   searchTerm: '',
-  downloadProgress: {
-    step: 0,
-    surahId: undefined,
-    reciterId: undefined,
-    surahNumber: 0,
-  }
+  downloadProgress: []
 };
 
 const surahSlice = createSlice({
@@ -80,8 +75,18 @@ const surahSlice = createSlice({
     setMostPlayed(state, action) {
       state.mostPlayed = action.payload
     },
-    setDownloadProgress(state, action) {
-      state.downloadProgress = action.payload
+    addNewDownloadProgress(state, action) {
+      const index = state.downloadProgress
+        .findIndex((downloadProg) => downloadProg.surahId === action.payload.surahId)
+      if (index > -1) {
+        state.downloadProgress[index].step = action.payload.step
+      } else {
+        state.downloadProgress.push(action.payload)
+      }
+    },
+    removeDownloadProgress(state, action) {
+      state.downloadProgress = state.downloadProgress
+        .filter((e) => e.surahId !== action.payload)
     }
   },
 });

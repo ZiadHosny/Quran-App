@@ -55,7 +55,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req, res, next) => 
     });
     sendResponse({
         res,
-        message: 'add Surah To User Playlist Successfully',
+        message: 'تم اضافة السورة في قائمة التشغيل',
         status: 200,
     });
 });
@@ -72,7 +72,7 @@ export const removeSurahToUserPlaylist = catchAsyncError(async (req, res, next) 
     });
     sendResponse({
         res,
-        message: 'remove Surah From User Playlist Successfully',
+        message: 'تم مسح السورة بنجاح',
         status: 200,
     });
 });
