@@ -36,4 +36,12 @@ const SurahPlayedSchema = new Schema<SurahPlayed>({
     }
 })
 
+SurahPlayedSchema.set('toJSON', {
+    transform: function (_, ret) {
+        ret.createdAt = ret.createdAt.toLocaleString();
+        ret.updatedAt = ret.updatedAt.toLocaleString();
+        return ret;
+    }
+});
+
 export const SurahPlayedModel = model('SurahPlayed', SurahPlayedSchema)

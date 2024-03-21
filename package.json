@@ -1,6 +1,6 @@
 {
   "name": "quran",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "",
   "main": "backend/index.ts",
   "type": "module",
@@ -30,6 +30,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^8.2.0",
     "morgan": "^1.10.0",
+    "redis": "^4.6.13",
     "web-push": "^3.6.4",
     "websocket": "^1.0.34"
   },

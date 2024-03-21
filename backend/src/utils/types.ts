@@ -38,6 +38,8 @@ export type View = {
     userId?: string
     name?: string,
     email?: string
+    deviceType?: string,
+    browserName?: string,
 }
 
 // QuranReciter

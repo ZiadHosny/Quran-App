@@ -1,4 +1,5 @@
 import express from 'express';
+import { createClient } from 'redis';
 import cors from 'cors';
 import { connectToMongoDb } from './database/connectToMongo.js';
 import { quranRouter } from './modules/quran/quran.router.js';
@@ -12,6 +13,13 @@ import { notificationRouter } from './modules/notification/notification.router.j
 const { port } = getFromEnv();
 connectToMongoDb();
 const app = express();
+const client = createClient({
+    password: 'l9YJAs87kuowVHs8NepxUsbO8Whe8Hv0',
+    socket: {
+        host: 'redis-11524.c14.us-east-1-2.ec2.cloud.redislabs.com',
+        port: 11524
+    }
+});
 app.use(cors());
 app.use(express.json());
 app.use(morganMiddleware);

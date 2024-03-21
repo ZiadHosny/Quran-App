@@ -71,5 +71,12 @@ const UserSchema = new Schema<User>({
     timestamps: true
 })
 
+UserSchema.set('toJSON', {
+    transform: function (_, ret) {
+        ret.createdAt = ret.createdAt.toLocaleString();
+        ret.updatedAt = ret.updatedAt.toLocaleString();
+        return ret;
+    }
+});
 
 export const UserModel = model('User', UserSchema)

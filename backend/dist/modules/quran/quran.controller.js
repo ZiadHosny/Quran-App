@@ -19,19 +19,42 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
     });
 });
 export const getQuranReciters = catchAsyncError(async (req, res) => {
-    const userAgent = req.headers["user-agent"];
+    const userAgent = req.headers["user-agent"] ?? '';
+    const browser = userAgent.match(/(Chrome)\/([\d.]+)/) || userAgent.match(/(Firefox)\/([\d.]+)/);
+    const browserName = browser ? browser[1] : 'Unknown';
+    let deviceType = 'Unknown';
+    if (userAgent.includes('Mobile')) {
+        deviceType = 'Mobile';
+    }
+    else if (userAgent.includes('Tablet')) {
+        deviceType = 'Tablet';
+    }
+    else if (userAgent.includes('Windows')) {
+        deviceType = 'Windows PC';
+    }
+    else if (userAgent.includes('Macintosh')) {
+        deviceType = 'Macintosh';
+    }
+    else if (userAgent.includes('Linux')) {
+        deviceType = 'Linux PC';
+    }
+    const userAgentData = {
+        userAgent,
+        deviceType,
+        browserName,
+    };
     if (req.hostname !== 'localhost') {
         if (req.user) {
             await ViewModel.create({
                 userId: req.user.userId,
                 name: req.user.name,
                 email: req.user.email,
-                userAgent
+                ...userAgentData
             });
         }
         else {
             await ViewModel.create({
-                userAgent
+                ...userAgentData
             });
         }
     }
@@ -43,7 +66,7 @@ export const getQuranReciters = catchAsyncError(async (req, res) => {
     });
 });
 export const getViews = catchAsyncError(async (_, res) => {
-    const views = await ViewModel.find();
+    const views = await ViewModel.find({}).select('-userAgent -__v');
     return sendResponse({
         res,
         message: 'get Views successfully',
