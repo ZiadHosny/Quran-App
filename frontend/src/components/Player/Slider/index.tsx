@@ -72,7 +72,6 @@ export const Slider = ({ percentage = 0, onChange, volume = false, startSection 
                 :
                 <></>
             }
-
             <input
                 aria-label='progress-bar'
                 type='range'

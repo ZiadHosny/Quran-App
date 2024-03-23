@@ -33,6 +33,7 @@ export const useDownload = () => {
 
             const contentLength = res.headers.get('Content-Length')
             const totalLength = parseInt(contentLength ?? '0')
+            const contentLengthInMega = (parseInt(contentLength ?? '0') / (1000 * 1000)).toFixed(2)
 
             if (!res.body) return;
 
@@ -54,7 +55,7 @@ export const useDownload = () => {
                 receivedLength += value.length
 
                 const step = receivedLength / totalLength * 100
-                addNewDownload({ step, surahId: surah.id })
+                addNewDownload({ step, surahId: surah.id, totalMb: contentLengthInMega })
                 chunks.push(value)
             }
 

@@ -74,14 +74,17 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                     <></>
                 }
                 {downloadProgress ?
-                    <h3 className='downloadProgress'>
-                        %{
-                            addZeros({
-                                number: Math.trunc(downloadProgress.step),
-                                numOfZeros: 2
-                            })
-                        }
-                    </h3>
+                    <div className='downloadProgress'>
+                        <h3 className='step'>
+                            %{
+                                addZeros({
+                                    number: Math.trunc(downloadProgress.step),
+                                    numOfZeros: 2
+                                })
+                            }
+                        </h3>
+                        <div className='mb'>{downloadProgress.totalMb}MB</div>
+                    </div>
                     :
                     <FaDownload
                         className='download'

@@ -13,9 +13,9 @@
         cursor: pointer;
     }
 
-    :active {
-        opacity: 0.8;
-    }
+    // :active {
+    //     opacity: 0.8;
+    // }
 
     .authorImage {
         width: 44px;
@@ -46,12 +46,22 @@
         align-items: center;
         justify-content: center;
 
-        .download {
-            color: var(--green-color);
+        .downloadProgress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             margin-left: 10px;
+            font-weight: bold;
+            font-size: 12px;
+
+            .mb {
+                font-size: 11px;
+            }
         }
 
-        .downloadProgress {
+        .download {
+            color: var(--green-color);
             margin-left: 10px;
         }
     }

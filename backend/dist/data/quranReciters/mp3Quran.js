@@ -200,6 +200,22 @@ const mp3QuranReciter = [
         photo: 'https://i.pinimg.com/564x/08/50/f8/0850f8eacb630d7d007a1d6e4beb7c53.jpg',
         server: 14,
     }, {
+        id: 'abdallaKamel',
+        quranReciter: 'عبدالله كامل',
+        photo: 'https://i.pinimg.com/564x/8e/eb/24/8eeb24ed6ede99d47ee05361317d8205.jpg',
+        server: 16,
+        quranReciterInWebsite: 'kamel/Rewayat-Hafs-A-n-Assem'
+    }, {
+        id: 'aloosi',
+        quranReciter: 'عبد الرحمن العوسي',
+        photo: 'https://i.pinimg.com/564x/8a/ac/fe/8aacfeabda91034f9c45ee5bdf69251f.jpg',
+        server: 6,
+    }, {
+        id: 'lhdan',
+        quranReciter: 'محمد اللحيدان',
+        photo: 'https://i.pinimg.com/564x/a4/cd/74/a4cd749ed1726e63e8a62e279e5ea564.jpg',
+        server: 8,
+    }, {
         id: 'akdr',
         quranReciter: 'ابراهيم الأخضر',
         photo: 'https://i.pinimg.com/564x/06/a3/9f/06a39fbfe9c6944f1e3e4467b8f9426a.jpg',

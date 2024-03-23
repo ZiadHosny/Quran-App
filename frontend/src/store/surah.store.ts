@@ -20,7 +20,8 @@ export type DownloadProgress = {
   step: number,
   surahId?: string | undefined,
   reciterId?: string | undefined,
-  surahNumber?: number
+  surahNumber?: number,
+  totalMb: string,
 }
 
 const initialState: surahType = {
@@ -35,7 +36,7 @@ const initialState: surahType = {
   searchedSuwar: [],
   searchedQuranReciters: [],
   searchTerm: '',
-  downloadProgress: []
+  downloadProgress: [{ step: 34, totalMb: 'xx', surahNumber: 3, reciterId: 'alafasy' , surahId:'alafasy-1'}],
 };
 
 const surahSlice = createSlice({
