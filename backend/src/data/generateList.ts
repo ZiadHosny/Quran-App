@@ -1,5 +1,5 @@
 import { addZeros } from '../utils/addZeros.js';
-import { QURAN_SUWAR } from '../utils/constants/suwar.js';
+import { QURAN_SUWAR } from './suwar.js';
 import { QuranReciterInWebsite, QuranRecitersWithWebsite, Surah, SuwarMap, Website } from '../utils/types.js'
 
 interface GenerateUrlProps {
@@ -65,4 +65,30 @@ export const generateSuwarForReciter = (
     })
 
     return quran
+}
+
+type GenerateSingleReciterProps = {
+    arrOfSuwar: number[],
+    reciter: QuranReciterInWebsite,
+    url: string,
+}
+
+export const generateSingleReciter = ({ arrOfSuwar, reciter, url }: GenerateSingleReciterProps) => {
+    const reciterSuwar: Surah[] = []
+    const { photo, quranReciter, id: reciterId } = reciter
+    arrOfSuwar.forEach((surahNumber) => {
+        const surahIdWithZero = addZeros({ number: surahNumber, numOfZeros: 3 });
+        reciterSuwar.push({
+            id: `${reciterId}-${surahNumber}`,
+            title: QURAN_SUWAR[surahNumber - 1],
+            photo,
+            quranReciter,
+            surahNumber,
+            url: `${url}/${surahIdWithZero}.mp3`
+        })
+    })
+
+    return {
+        [reciterId]: reciterSuwar
+    }
 }

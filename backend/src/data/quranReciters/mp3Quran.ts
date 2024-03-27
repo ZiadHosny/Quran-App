@@ -144,7 +144,12 @@ const mp3QuranReciter: Mp3Quran[] = [
         photo: 'https://i.pinimg.com/originals/d4/3a/fe/d43afef3ae04b26f2deea396aa22a982.jpg',
         quranReciterInWebsite: 'hthfi',
         server: 9,
-
+    }, {
+        id: 'hassanSaleh',
+        quranReciter: 'حسن صالح',
+        photo: 'https://i.pinimg.com/564x/de/01/63/de016366fb22e40d2db58a122305c05e.jpg',
+        quranReciterInWebsite: 'h_saleh/Rewayat-Hafs-A-n-Assem',
+        server: 16,
     }, {
         id: 'ahmad_hozefy',
         quranReciter: 'أحمد الحذيفي',

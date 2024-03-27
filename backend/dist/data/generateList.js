@@ -1,5 +1,5 @@
 import { addZeros } from '../utils/addZeros.js';
-import { QURAN_SUWAR } from '../utils/constants/suwar.js';
+import { QURAN_SUWAR } from './suwar.js';
 const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl }) => {
     const id = addZeros({ number: index, numOfZeros: 3 });
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
@@ -48,4 +48,22 @@ export const generateSuwarForReciter = ({ quranReciters, website }) => {
         });
     });
     return quran;
+};
+export const generateSingleReciter = ({ arrOfSuwar, reciter, url }) => {
+    const reciterSuwar = [];
+    const { photo, quranReciter, id: reciterId } = reciter;
+    arrOfSuwar.forEach((surahNumber) => {
+        const surahIdWithZero = addZeros({ number: surahNumber, numOfZeros: 3 });
+        reciterSuwar.push({
+            id: `${reciterId}-${surahNumber}`,
+            title: QURAN_SUWAR[surahNumber - 1],
+            photo,
+            quranReciter,
+            surahNumber,
+            url: `${url}/${surahIdWithZero}.mp3`
+        });
+    });
+    return {
+        [reciterId]: reciterSuwar
+    };
 };

@@ -1,7 +1,6 @@
-import { addZeros } from "../../../utils/addZeros.js";
-import { QURAN_SUWAR } from "../../../utils/constants/suwar.js";
-export const AHMED_KHADR = 'https://ia801504.us.archive.org/11/items/012_20221105_202211';
-const ahmedKhadrNumbers = [
+import { generateSingleReciter } from "../../generateList.js";
+const url = 'https://ia801504.us.archive.org/11/items/012_20221105_202211';
+const arrOfSuwar = [
     12,
     15,
     18,
@@ -45,21 +44,8 @@ export const reciterAhmedKhadr = {
     quranReciter: 'أحمد خضر',
     photo: 'https://i.pinimg.com/564x/74/9c/dd/749cdd141bfa7444e7d6c5644ce3c62c.jpg',
 };
-export const getAhmedKhadr = () => {
-    const ahmedKhadr = [];
-    const { id: quranReciterId, photo, quranReciter } = reciterAhmedKhadr;
-    ahmedKhadrNumbers.forEach((surahNumber) => {
-        const surahIdWithZero = addZeros({ number: surahNumber, numOfZeros: 3 });
-        ahmedKhadr.push({
-            id: `${quranReciterId}-${surahNumber}`,
-            surahNumber: surahNumber,
-            photo,
-            quranReciter,
-            title: QURAN_SUWAR[surahNumber - 1],
-            url: `${AHMED_KHADR}/${surahIdWithZero}.mp3`
-        });
-    });
-    return {
-        ahmedKhadr
-    };
-};
+export const getAhmedKhadr = () => (generateSingleReciter({
+    arrOfSuwar,
+    reciter: reciterAhmedKhadr,
+    url
+}));
