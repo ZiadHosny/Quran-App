@@ -22,7 +22,7 @@ app.use(morganMiddleware)
 
 app.use('/quran', quranRouter)
 app.use('/user', userRouter)
-app.use('/notification', notificationRouter )
+app.use('/notification', notificationRouter)
 app.use('/', baseRouter)
 app.use(invalidRouter)
 app.use(globalErrorMiddleware)

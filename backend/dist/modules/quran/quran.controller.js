@@ -6,10 +6,6 @@ import { SurahPlayedModel } from "../../models/surah.model.js";
 export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
     const paramId = req.params.id;
     let suwar = [];
-    // if (paramId === 'abdurahmanmesaad') {
-    //     suwar = getAbdurahmanmesaad()
-    // } else {
-    // }
     suwar = getAllQuran()[paramId];
     return sendResponse({
         res,

@@ -11,11 +11,6 @@ export const getAllSuwarQuranReciter = catchAsyncError(async (req: Request, res:
 
     let suwar: Surah[] = []
 
-    // if (paramId === 'abdurahmanmesaad') {
-    //     suwar = getAbdurahmanmesaad()
-    // } else {
-    // }
-
     suwar = getAllQuran()[paramId]
 
     return sendResponse({
