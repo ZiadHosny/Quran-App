@@ -72,7 +72,7 @@ export const removeSurahToUserPlaylist = catchAsyncError(async (req, res, next) 
     });
     sendResponse({
         res,
-        message: 'تم مسح السورة بنجاح',
+        message: 'تم مسح السورة من قائمة التشغيل',
         status: 200,
     });
 });

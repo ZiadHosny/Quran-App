@@ -123,7 +123,7 @@ export const playSurah = catchAsyncError(async (req: AuthRequest, res: Response)
 export const mostPlayed = catchAsyncError(async (_: AuthRequest, res: Response) => {
 
     const suwarPlayed = await SurahPlayedModel.find({})
-        .sort('-surahPlayedCount');
+        .sort('-surahPlayedCount').limit(30);
 
     return sendResponse({
         res,

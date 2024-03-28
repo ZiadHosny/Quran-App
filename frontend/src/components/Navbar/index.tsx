@@ -33,7 +33,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className='flex-center-sb'>
+        <nav className='flex-center-sb' style={{ zIndex: 3 }}>
             <img
                 className='logo'
                 src={'/images/quran64.png'}

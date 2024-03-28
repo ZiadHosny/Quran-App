@@ -36,7 +36,7 @@ const initialState: surahType = {
   searchedSuwar: [],
   searchedQuranReciters: [],
   searchTerm: '',
-  downloadProgress: [{ step: 34, totalMb: 'xx', surahNumber: 3, reciterId: 'alafasy' , surahId:'alafasy-1'}],
+  downloadProgress: [],
 };
 
 const surahSlice = createSlice({
