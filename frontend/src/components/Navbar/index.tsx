@@ -36,7 +36,7 @@ export const Navbar = () => {
         <nav className='flex-center-sb' style={{ zIndex: 3 }}>
             <img
                 className='logo'
-                src={'/images/quran64.png'}
+                src={'/images/quran512.png'}
                 alt='quranImg'
                 onClick={clickHomeIcon} />
             <div className="search-container">
