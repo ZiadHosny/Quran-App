@@ -9,13 +9,13 @@ const mp3QuranReciter = [
     }, {
         id: 'mahmoudkalilAlHussarymurattal',
         quranReciter: '(مرتل) محمود خليل الحصري',
-        photo: 'https://thenationpress.net/imgs/2020/08/1598579203blobid0.jpg',
+        photo: 'https://i.pinimg.com/564x/ed/51/28/ed51283cc159958f430a484d87606738.jpg',
         quranReciterInWebsite: 'husr',
         server: 13,
     }, {
         id: 'mahmoudkalilAlHussarymujawwad',
         quranReciter: '(مجود) محمود خليل الحصري',
-        photo: 'https://thenationpress.net/imgs/2020/08/1598579203blobid0.jpg',
+        photo: 'https://i.pinimg.com/564x/ed/51/28/ed51283cc159958f430a484d87606738.jpg',
         quranReciterInWebsite: 'husr/Almusshaf-Al-Mojawwad',
         server: 13,
     }, {
