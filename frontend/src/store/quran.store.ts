@@ -14,7 +14,7 @@ export type getAllSuwarByQuranReciterProps = {
     quranReciter: string
 }
 
-const taskApiSlice = apiSlice.injectEndpoints({
+const quranApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllQuranReciters: builder.mutation<QuranReciterType[], { token: string }>({
             query: ({ token }) => {
@@ -128,4 +128,4 @@ export const {
     useSendNotificationMutation,
     useGetMostPlayedMutation,
     useAddSurahMostPlayedMutation,
-} = taskApiSlice
+} = quranApiSlice
