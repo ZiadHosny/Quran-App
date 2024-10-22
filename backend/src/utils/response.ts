@@ -1,16 +1,22 @@
-import { Response } from "express"
+import { Response } from "express";
 
 type SendResponseType = {
-    res: Response,
-    status: number,
-    message: string,
-    page?: number,
-    data?: any
-}
+  res: Response;
+  status: number;
+  message: string;
+  page?: number;
+  data?: any;
+};
 
-export const sendResponse = ({ res, status, message, page, data }: SendResponseType) => {
-    const response = { message, status, data }
+export const sendResponse = ({
+  res,
+  status,
+  message,
+  page,
+  data,
+}: SendResponseType) => {
+  const response = { message, data };
 
-    const sendedData = page ? { ...response, page } : response
-    return res.status(status).send(sendedData)
-}
+  const sendedData = page ? { ...response, page } : response;
+  return res.status(status).send(sendedData);
+};
