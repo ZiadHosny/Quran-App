@@ -184,6 +184,12 @@ const mp3QuranReciter = [
         server: 8,
     },
     {
+        id: "Aamer",
+        quranReciter: "أحمد عامر",
+        photo: "https://i.pinimg.com/564x/3d/27/03/3d2703b8d70e4fe746c4c6d3a6e65f3d.jpg",
+        server: 10,
+    },
+    {
         id: "aliHthfi",
         quranReciter: "علي الحذيفي",
         photo: "https://i.pinimg.com/originals/d4/3a/fe/d43afef3ae04b26f2deea396aa22a982.jpg",

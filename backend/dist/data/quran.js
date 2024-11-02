@@ -4,6 +4,7 @@ import { getAhmedKhadr, reciterAhmedKhadr, } from "./quranReciters/singles/ahmed
 import { getMp3Quran, mp3Quran } from "./quranReciters/mp3Quran.js";
 import { getIslamSobhy, reciterIslamSobhy, } from "./quranReciters/singles/islamSobhy.js";
 import { getIslamway, islamway } from "./quranReciters/islamway.js";
+import { getSouilass, reciterSouilass, } from "./quranReciters/singles/souilass.js";
 export const getAllQuran = () => {
     return {
         ...getIslamic(),
@@ -12,6 +13,7 @@ export const getAllQuran = () => {
         ...getAbdelrahmanMosad(),
         ...getAhmedKhadr(),
         ...getIslamSobhy(),
+        ...getSouilass(),
     };
 };
 export const allQuranReciters = () => {
@@ -22,6 +24,7 @@ export const allQuranReciters = () => {
         reciterAbdelrahmanMosad,
         reciterAhmedKhadr,
         reciterIslamSobhy,
+        reciterSouilass,
     ];
     return allReciters.map(({ id, photo, quranReciter }) => ({
         id,

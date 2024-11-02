@@ -14,6 +14,10 @@ import {
   reciterIslamSobhy,
 } from "./quranReciters/singles/islamSobhy.js";
 import { getIslamway, islamway } from "./quranReciters/islamway.js";
+import {
+  getSouilass,
+  reciterSouilass,
+} from "./quranReciters/singles/souilass.js";
 
 export const getAllQuran = (): SuwarMap => {
   return {
@@ -23,6 +27,7 @@ export const getAllQuran = (): SuwarMap => {
     ...getAbdelrahmanMosad(),
     ...getAhmedKhadr(),
     ...getIslamSobhy(),
+    ...getSouilass(),
   };
 };
 
@@ -34,6 +39,7 @@ export const allQuranReciters = () => {
     reciterAbdelrahmanMosad,
     reciterAhmedKhadr,
     reciterIslamSobhy,
+    reciterSouilass,
   ];
 
   return allReciters.map(({ id, photo, quranReciter }) => ({
