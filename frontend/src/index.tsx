@@ -1,18 +1,18 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import { App } from './App';
-import { Provider } from 'react-redux';
-import { store } from './store';
-import { BrowserRouter } from 'react-router-dom';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-  })
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js");
+  });
 }
 
 root.render(
