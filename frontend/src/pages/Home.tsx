@@ -8,10 +8,17 @@ export const Home = () => {
   const { quranRecitersFilter } = useSurah();
 
   useEffect(() => {
-    if (Notification && Notification.permission !== "granted") {
-      Notification.requestPermission().then(function (permission) {
-        console.log("permission : ", permission);
-      });
+    if (
+      typeof Notification !== "undefined" &&
+      Notification.permission !== "granted"
+    ) {
+      Notification.requestPermission()
+        .then(function (permission) {
+          console.log("permission : ", permission);
+        })
+        .catch((error) => {
+          console.error("Permission request failed: ", error);
+        });
     }
     const fn = async () => {
       await getAllQuranReciters();
