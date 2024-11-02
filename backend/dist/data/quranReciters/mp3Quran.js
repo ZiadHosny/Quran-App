@@ -111,6 +111,13 @@ const mp3QuranReciter = [
         server: 11,
     },
     {
+        id: "nufais",
+        quranReciterInWebsite: "nufais/Rewayat-Hafs-A-n-Assem",
+        quranReciter: "أحمد النفيس",
+        photo: "https://i.pinimg.com/564x/9d/9c/c8/9d9cc8b26a887c131b67b39942cad927.jpg",
+        server: 16,
+    },
+    {
         id: "IdrisAbkar",
         quranReciter: "إدريس أبكر",
         photo: "https://i.pinimg.com/564x/42/28/3e/42283eed3aa7b9639cf28caf8c1365d6.jpg",
