@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { catchAsyncError } from "../../utils/catchAsyncError.js";
-import { allQuranReciters, getAllQuran } from "../../data/quran.js";
-import { sendResponse } from "../../utils/response.js";
-import { AuthRequest, Surah } from "../../utils/types.js";
-import { ViewModel } from "../../models/view.model.js";
-import { SurahPlayedModel } from "../../models/surah.model.js";
+import { Request, Response } from 'express';
+import { catchAsyncError } from '../../utils/catchAsyncError.js';
+import { allQuranReciters, getAllQuran } from '../../data/quran.js';
+import { sendResponse } from '../../utils/response.js';
+import { AuthRequest, Surah } from '../../utils/types.js';
+import { ViewModel } from '../../models/view.model.js';
+import { SurahPlayedModel } from '../../models/surah.model.js';
 
 export const getAllSuwarQuranReciter = catchAsyncError(
   async (req: Request, res: Response) => {
@@ -16,33 +16,33 @@ export const getAllSuwarQuranReciter = catchAsyncError(
 
     return sendResponse({
       res,
-      message: "get ALl Suwar successfully",
+      message: 'get ALl Suwar successfully',
       status: 200,
       data: suwar,
     });
-  }
+  },
 );
 
 export const getQuranReciters = catchAsyncError(
   async (req: AuthRequest, res: Response) => {
-    const userAgent = req.headers["user-agent"] ?? "";
+    const userAgent = req.headers['user-agent'] ?? '';
     const browser =
       userAgent.match(/(Chrome)\/([\d.]+)/) ||
       userAgent.match(/(Firefox)\/([\d.]+)/);
-    const browserName = browser ? browser[1] : "Unknown";
+    const browserName = browser ? browser[1] : 'Unknown';
 
-    let deviceType = "Unknown";
+    let deviceType = 'Unknown';
 
-    if (userAgent.includes("Mobile")) {
-      deviceType = "Mobile";
-    } else if (userAgent.includes("Tablet")) {
-      deviceType = "Tablet";
-    } else if (userAgent.includes("Windows")) {
-      deviceType = "Windows PC";
-    } else if (userAgent.includes("Macintosh")) {
-      deviceType = "Macintosh";
-    } else if (userAgent.includes("Linux")) {
-      deviceType = "Linux PC";
+    if (userAgent.includes('Mobile')) {
+      deviceType = 'Mobile';
+    } else if (userAgent.includes('Tablet')) {
+      deviceType = 'Tablet';
+    } else if (userAgent.includes('Windows')) {
+      deviceType = 'Windows PC';
+    } else if (userAgent.includes('Macintosh')) {
+      deviceType = 'Macintosh';
+    } else if (userAgent.includes('Linux')) {
+      deviceType = 'Linux PC';
     }
 
     const userAgentData = {
@@ -51,7 +51,7 @@ export const getQuranReciters = catchAsyncError(
       browserName,
     };
 
-    if (req.hostname !== "localhost") {
+    if (req.hostname !== 'localhost') {
       if (req.user) {
         await ViewModel.create({
           userId: req.user.userId,
@@ -67,24 +67,24 @@ export const getQuranReciters = catchAsyncError(
     }
     return sendResponse({
       res,
-      message: "get Quran Reciters successfully",
+      message: 'get Quran Reciters successfully',
       status: 200,
       data: allQuranReciters(),
     });
-  }
+  },
 );
 
 export const getViews = catchAsyncError(
   async (_: AuthRequest, res: Response) => {
-    const views = await ViewModel.find({}).select("-userAgent -__v");
+    const views = await ViewModel.find({}).select('-userAgent -__v');
 
     return sendResponse({
       res,
-      message: "get Views successfully",
+      message: 'get Views successfully',
       status: 200,
       data: { views },
     });
-  }
+  },
 );
 
 export const getCountViews = catchAsyncError(
@@ -93,11 +93,11 @@ export const getCountViews = catchAsyncError(
 
     return sendResponse({
       res,
-      message: "get Count Views successfully",
+      message: 'get Count Views successfully',
       status: 200,
       data: { countViews },
     });
-  }
+  },
 );
 
 export const playSurah = catchAsyncError(
@@ -107,7 +107,7 @@ export const playSurah = catchAsyncError(
 
     const surahPlayed = await SurahPlayedModel.findOneAndUpdate(
       { id },
-      { $inc: { surahPlayedCount: 1 } }
+      { $inc: { surahPlayedCount: 1 } },
     );
 
     if (!surahPlayed) {
@@ -124,23 +124,23 @@ export const playSurah = catchAsyncError(
 
     return sendResponse({
       res,
-      message: "Surah added To DB successfully",
+      message: 'Surah added To DB successfully',
       status: 200,
     });
-  }
+  },
 );
 
 export const mostPlayed = catchAsyncError(
   async (_: AuthRequest, res: Response) => {
     const suwarPlayed = await SurahPlayedModel.find({})
-      .sort("-surahPlayedCount")
+      .sort('-surahPlayedCount')
       .limit(30);
 
     return sendResponse({
       res,
-      message: "get Suwar Played DB successfully",
+      message: 'get Suwar Played DB successfully',
       status: 200,
       data: suwarPlayed,
     });
-  }
+  },
 );

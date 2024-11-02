@@ -1,28 +1,28 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 const StringRequiredType = {
     type: String,
     required: true,
 };
 const SurahSchema = new Schema({
     id: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     title: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     url: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     quranReciter: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     photo: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     surahNumber: {
         type: Number,
         required: true,
-    }
+    },
 });
 const UserProgressSchema = new Schema({
     currentSurah: SurahSchema,
@@ -46,7 +46,7 @@ const UserProgressSchema = new Schema({
 });
 const UserSchema = new Schema({
     userId: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     name: {
         type: String,
@@ -61,15 +61,15 @@ const UserSchema = new Schema({
         type: String,
     },
     playlist: [SurahSchema],
-    userProgress: UserProgressSchema
+    userProgress: UserProgressSchema,
 }, {
-    timestamps: true
+    timestamps: true,
 });
 UserSchema.set('toJSON', {
     transform: function (_, ret) {
         ret.createdAt = ret.createdAt.toLocaleString();
         ret.updatedAt = ret.updatedAt.toLocaleString();
         return ret;
-    }
+    },
 });
 export const UserModel = model('User', UserSchema);

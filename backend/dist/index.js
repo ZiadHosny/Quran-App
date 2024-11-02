@@ -23,5 +23,5 @@ app.use(invalidRouter);
 app.use(globalErrorMiddleware);
 app.listen(port, () => console.log(`Quran Player app listening on port ${port}!`));
 process.on('unhandledRejection', (err) => {
-    console.log("unhandledRejection" + err);
+    console.log('unhandledRejection' + err);
 });

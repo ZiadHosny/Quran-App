@@ -1,4 +1,4 @@
-import { getFromEnv } from "../utils/getFromEnv.js";
+import { getFromEnv } from '../utils/getFromEnv.js';
 export const globalErrorMiddleware = (err, _, res, __) => {
     const { mode } = getFromEnv();
     if (mode == 'dev') {

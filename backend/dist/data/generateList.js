@@ -1,16 +1,16 @@
-import { addZeros } from "../utils/addZeros.js";
-import { QURAN_SUWAR } from "./suwar.js";
-import { ISLAMWAY } from "./quranReciters/islamway.js";
+import { addZeros } from '../utils/addZeros.js';
+import { QURAN_SUWAR } from './suwar.js';
+import { ISLAMWAY } from './quranReciters/islamway.js';
 const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl, }) => {
     const id = addZeros({ number: index, numOfZeros: 3 });
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
-    if (website === "mp3quran" && websiteUrl) {
+    if (website === 'mp3quran' && websiteUrl) {
         return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
     }
-    else if (website === "islamway")
+    else if (website === 'islamway')
         return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
     else
-        return "WebsiteNotFound";
+        return 'WebsiteNotFound';
     // if (website === 'islamic')
     //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
     // else if (website === 'islamway')

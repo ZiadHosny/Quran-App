@@ -1,8 +1,8 @@
-import express from "express";
-import { sendNotification } from "./notification.controller.js";
+import express from 'express';
+import { sendNotification } from './notification.controller.js';
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/subscribe', sendNotification)
+router.post('/subscribe', sendNotification);
 
-export const notificationRouter = router
+export const notificationRouter = router;

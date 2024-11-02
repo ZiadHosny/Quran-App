@@ -1,35 +1,38 @@
-import { Schema, model } from "mongoose";
-import { View } from "../utils/types.js";
+import { Schema, model } from 'mongoose';
+import { View } from '../utils/types.js';
 
-const ViewSchema = new Schema<View>({
+const ViewSchema = new Schema<View>(
+  {
     userId: {
-        type: String,
+      type: String,
     },
     name: {
-        type: String,
+      type: String,
     },
     email: {
-        type: String,
+      type: String,
     },
     deviceType: {
-        type: String,
+      type: String,
     },
     browserName: {
-        type: String,
+      type: String,
     },
     userAgent: {
-        type: String,
+      type: String,
     },
-}, {
-    timestamps: true
-})
+  },
+  {
+    timestamps: true,
+  },
+);
 
 ViewSchema.set('toJSON', {
-    transform: function (_, ret) {
-        ret.createdAt = ret.createdAt.toLocaleString();
-        ret.updatedAt = ret.updatedAt.toLocaleString();
-        return ret;
-    }
+  transform: function (_, ret) {
+    ret.createdAt = ret.createdAt.toLocaleString();
+    ret.updatedAt = ret.updatedAt.toLocaleString();
+    return ret;
+  },
 });
 
-export const ViewModel = model('View', ViewSchema)
+export const ViewModel = model('View', ViewSchema);

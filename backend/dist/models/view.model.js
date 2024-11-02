@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 const ViewSchema = new Schema({
     userId: {
         type: String,
@@ -19,13 +19,13 @@ const ViewSchema = new Schema({
         type: String,
     },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 ViewSchema.set('toJSON', {
     transform: function (_, ret) {
         ret.createdAt = ret.createdAt.toLocaleString();
         ret.updatedAt = ret.updatedAt.toLocaleString();
         return ret;
-    }
+    },
 });
 export const ViewModel = model('View', ViewSchema);

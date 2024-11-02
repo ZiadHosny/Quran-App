@@ -1,8 +1,8 @@
 import { UserModel } from '../../models/user.model.js';
-import { catchAsyncError } from "../../utils/catchAsyncError.js";
-import { sendResponse } from "../../utils/response.js";
-import { AppError } from "../../utils/AppError.js";
-// PUT User Progress 
+import { catchAsyncError } from '../../utils/catchAsyncError.js';
+import { sendResponse } from '../../utils/response.js';
+import { AppError } from '../../utils/AppError.js';
+// PUT User Progress
 export const saveUserProgress = catchAsyncError(async (req, res) => {
     const { body, user } = req;
     const { currentSurah, currentMin, random, repeat, volume, quranReciterId } = body;
@@ -14,12 +14,12 @@ export const saveUserProgress = catchAsyncError(async (req, res) => {
             random,
             repeat,
             volume,
-        }
+        },
     });
     sendResponse({
         res,
         message: 'Save User Progress Successfully',
-        status: 200
+        status: 200,
     });
 });
 // GET User Progress
@@ -31,7 +31,7 @@ export const getUserProgress = catchAsyncError(async (req, res, next) => {
             res,
             message: 'Get User Progress Successfully',
             status: 200,
-            data: userProgress
+            data: userProgress,
         });
     }
     else {
@@ -48,10 +48,7 @@ export const addSurahToUserPlaylist = catchAsyncError(async (req, res, next) => 
         return next(new AppError('Surah Is Already Exist In Playlist', 400));
     }
     await UserModel.findByIdAndUpdate(user._id, {
-        playlist: [
-            currentSurah,
-            ...playlist
-        ]
+        playlist: [currentSurah, ...playlist],
     });
     sendResponse({
         res,
@@ -66,9 +63,7 @@ export const removeSurahToUserPlaylist = catchAsyncError(async (req, res, next) 
     const playlist = user.playlist;
     const newList = playlist.filter((surah) => surah.id !== surahId);
     await UserModel.findByIdAndUpdate(user._id, {
-        playlist: [
-            ...newList
-        ]
+        playlist: [...newList],
     });
     sendResponse({
         res,
@@ -85,7 +80,7 @@ export const getUserPlaylist = catchAsyncError(async (req, res, next) => {
             res,
             message: 'Get User Playlist Successfully',
             status: 200,
-            data: playlist
+            data: playlist,
         });
     }
     else {

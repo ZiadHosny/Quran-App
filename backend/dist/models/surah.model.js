@@ -1,23 +1,23 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 const StringRequiredType = {
     type: String,
     required: true,
 };
 const SurahPlayedSchema = new Schema({
     id: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     title: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     url: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     quranReciter: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     photo: {
-        ...StringRequiredType
+        ...StringRequiredType,
     },
     surahNumber: {
         type: Number,
@@ -26,6 +26,6 @@ const SurahPlayedSchema = new Schema({
     surahPlayedCount: {
         type: Number,
         required: true,
-    }
+    },
 });
 export const SurahPlayedModel = model('SurahPlayed', SurahPlayedSchema);

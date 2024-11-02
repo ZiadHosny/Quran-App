@@ -1,9 +1,9 @@
-import * as express from "express";
-import { getFromEnv } from "../utils/getFromEnv.js";
-import path from 'path'
+import * as express from 'express';
+import { getFromEnv } from '../utils/getFromEnv.js';
+import path from 'path';
 
-const { mode } = getFromEnv()
-const router = express.Router()
+const { mode } = getFromEnv();
+const router = express.Router();
 
 // if (mode === 'prod') {
 //     const __dirname = path.resolve();
@@ -15,7 +15,7 @@ const router = express.Router()
 //     );
 // } else {
 router.get('/', (_: express.Request, res: express.Response) => {
-    res.send('Hello From Quran Api!')
+  res.send('Hello From Quran Api!');
 });
 
-export const baseRouter = router
+export const baseRouter = router;

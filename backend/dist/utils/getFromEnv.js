@@ -11,6 +11,6 @@ export const getFromEnv = () => {
         mode,
         databaseURL,
         publicKey,
-        privateKey
+        privateKey,
     };
 };

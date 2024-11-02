@@ -1,21 +1,26 @@
-import { NextFunction, Request, Response } from "express"
-import { getFromEnv } from "../utils/getFromEnv.js"
+import { NextFunction, Request, Response } from 'express';
+import { getFromEnv } from '../utils/getFromEnv.js';
 
-export const globalErrorMiddleware = (err: any, _: Request, res: Response, __: NextFunction) => {
-    const { mode } = getFromEnv()
-    if (mode == 'dev') {
-        devMode(err, res)
-    } else {
-        prodMode(err, res)
-    }
-}
+export const globalErrorMiddleware = (
+  err: any,
+  _: Request,
+  res: Response,
+  __: NextFunction,
+) => {
+  const { mode } = getFromEnv();
+  if (mode == 'dev') {
+    devMode(err, res);
+  } else {
+    prodMode(err, res);
+  }
+};
 
 const prodMode = (err: any, res: Response) => {
-    const statusCode = err.statusCode || 500
-    return res.status(statusCode).json({ err: err.message })
-}
+  const statusCode = err.statusCode || 500;
+  return res.status(statusCode).json({ err: err.message });
+};
 
 const devMode = (err: any, res: Response) => {
-    const statusCode = err.statusCode || 500
-    return res.status(statusCode).json({ err: err.message, stack: err.stack })
-}
+  const statusCode = err.statusCode || 500;
+  return res.status(statusCode).json({ err: err.message, stack: err.stack });
+};

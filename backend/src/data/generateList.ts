@@ -1,13 +1,13 @@
-import { addZeros } from "../utils/addZeros.js";
-import { QURAN_SUWAR } from "./suwar.js";
+import { addZeros } from '../utils/addZeros.js';
+import { QURAN_SUWAR } from './suwar.js';
 import {
   QuranReciterInWebsite,
   QuranRecitersWithWebsite,
   Surah,
   SuwarMap,
   Website,
-} from "../utils/types.js";
-import { ISLAMWAY } from "./quranReciters/islamway.js";
+} from '../utils/types.js';
+import { ISLAMWAY } from './quranReciters/islamway.js';
 
 interface GenerateUrlProps {
   index: number;
@@ -24,11 +24,11 @@ const generateUrl = ({
   const id = addZeros({ number: index, numOfZeros: 3 });
 
   const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
-  if (website === "mp3quran" && websiteUrl) {
+  if (website === 'mp3quran' && websiteUrl) {
     return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
-  } else if (website === "islamway")
+  } else if (website === 'islamway')
     return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
-  else return "WebsiteNotFound";
+  else return 'WebsiteNotFound';
   // if (website === 'islamic')
   //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
   // else if (website === 'islamway')
@@ -83,7 +83,7 @@ export const generateSuwarForReciter = ({
         website,
         websiteUrl,
       });
-    }
+    },
   );
 
   return quran;

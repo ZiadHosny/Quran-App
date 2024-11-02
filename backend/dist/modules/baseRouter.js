@@ -1,5 +1,5 @@
-import * as express from "express";
-import { getFromEnv } from "../utils/getFromEnv.js";
+import * as express from 'express';
+import { getFromEnv } from '../utils/getFromEnv.js';
 const { mode } = getFromEnv();
 const router = express.Router();
 // if (mode === 'prod') {

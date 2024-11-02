@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 export const progressSchema = Joi.object({
     quranReciterId: Joi.string().required(),
     currentMin: Joi.string().required(),
@@ -12,7 +12,7 @@ export const progressSchema = Joi.object({
         url: Joi.string().required(),
         quranReciter: Joi.string().required(),
         photo: Joi.string().required(),
-    })
+    }),
 });
 export const SurahSchema = Joi.object({
     id: Joi.string().required(),
