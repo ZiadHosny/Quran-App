@@ -138,6 +138,33 @@ const mp3QuranReciter: Mp3Quran[] = [
       "https://i.pinimg.com/564x/9d/9c/c8/9d9cc8b26a887c131b67b39942cad927.jpg",
     server: 16,
   },
+
+  {
+    id: "soufi",
+    quranReciterInWebsite: "soufi/Rewayat-Khalaf-A-n-Hamzah",
+    quranReciter: "عبدالرشيد صوفي",
+    photo:
+      "https://i.pinimg.com/564x/cc/6e/e7/cc6ee7c4ab5333bbb50512c20c1b11d4.jpg",
+    server: 16,
+  },
+
+  {
+    id: "wdee3",
+    quranReciter: "وديع اليمني",
+    photo:
+      "https://i.pinimg.com/564x/01/5d/f6/015df643ce7ea23193ef69dc5c1a5a0e.jpg",
+    server: 6,
+  },
+
+  {
+    id: "h_dukhain",
+    quranReciterInWebsite: "h_dukhain/Rewayat-Hafs-A-n-Assem",
+    quranReciter: "هيثم الدخين",
+    photo:
+      "https://i.pinimg.com/564x/ac/47/fd/ac47fdbbcd32ed0177b87974db094d83.jpg",
+    server: 16,
+  },
+
   {
     id: "IdrisAbkar",
     quranReciter: "إدريس أبكر",
