@@ -3,25 +3,19 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import { IoSettingsOutline } from 'react-icons/io5';
 import './navbar.scss';
-import { AccountMenu } from './AccountMenu';
 import { Search } from './Search';
-// import { useProgress } from '../../hooks/useProgress';
-// import { UseNotification } from '../../hooks/UseNotification';
 import { Settings } from '../Settings';
 
 export const Navbar = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const navigate = useNavigate();
-  // const { sendNotification } = UseNotification()
   const { loginWithRedirect, isAuthenticated } = useAuth0();
-  // const { getProgress } = useProgress()
-  // const { getIdTokenClaims } = useAuth0()
 
   const onClickLogin = async () => {
     await loginWithRedirect();
   };
 
-  const clickHomeIcon = async () => {
+  const clickHomeIcon = () => {
     navigate('/');
   };
 
@@ -45,9 +39,7 @@ export const Navbar = () => {
           >
             <IoSettingsOutline size={22} color="white" />
           </button>
-          {isAuthenticated ? (
-            <AccountMenu />
-          ) : (
+          {!isAuthenticated && (
             <button onClick={onClickLogin} className="login">
               Login
             </button>

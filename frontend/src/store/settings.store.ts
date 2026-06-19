@@ -7,9 +7,10 @@ type SettingsType = {
 };
 
 const savedTheme = localStorage.getItem('theme') as Theme | null;
+const systemTheme: Theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 const initialState: SettingsType = {
-  theme: savedTheme ?? 'light',
+  theme: savedTheme ?? systemTheme,
 };
 
 const settingsSlice = createSlice({
