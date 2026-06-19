@@ -19,6 +19,9 @@
     "build-backend",
     "add-dist"
   ],
+  "engines": {
+    "node": "22.x"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
