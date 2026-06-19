@@ -32,7 +32,7 @@ export const Slider = ({ percentage = 0, onChange, volume = false, startSection 
 
     return (
         <div className={`slider-container-main ${volume ? 'volume-container' : 'slider-container'}`}>
-            {volume ? percentage != 0 ?
+            {volume ? percentage !== 0 ?
                 <VscUnmute color='black' size={17} style={{ position: 'absolute', left: '-20px' }} /> :
                 <VscMute color='black' size={17} style={{ position: 'absolute', left: '-20px' }} /> : <></>}
 

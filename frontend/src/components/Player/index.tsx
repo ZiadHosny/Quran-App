@@ -9,15 +9,11 @@ import { useSurahSlider } from '../../hooks/useSurahSlider';
 import { Controllers } from './Controllers';
 import { useSurah } from '../../hooks/useSurah';
 import { RepeatSection } from './RepeatSection';
-import { useParams } from 'react-router-dom';
-import { useProgress } from '../../hooks/useProgress';
 import { toast } from 'react-toastify';
 import { cantPlaySurahRightNow } from '../../utils/strings';
 import { useMostPlayed } from '../../hooks/useMostPlayed';
 
 export const Player = () => {
-    const params = useParams()
-    const { saveProgress } = useProgress()
     const { addSurahToMostPlayed } = useMostPlayed()
     // useControllers
     const {
@@ -178,28 +174,3 @@ export const Player = () => {
         </div >
     )
 }
-
-
-{/* Start: <input
-                            style={{ borderRadius: 5, textAlign: 'center', fontSize: 15, width: 70, marginRight: 3 }}
-                            type="number"
-                            min={0} max={endSection}
-                            value={startSection}++
-                            onChange={(e) => { setStartSection(Number(e.target.value)) }} />
-                        End: <input
-                            style={{ borderRadius: 5, textAlign: 'center', fontSize: 15, width: 70, marginRight: 3 }}
-                            type="number"
-                            min={0}
-                            value={endSection}
-                            onChange={(e) => { setEndSection(Number(e.target.value)) }} />
-                        Times : <input
-                            style={{ borderRadius: 5, textAlign: 'center', fontSize: 15, width: 70 }}
-                            type="number" min={0}
-                            value={repeatTimes}
-                            onChange={(e) => { setRepeatTimes(Number(e.target.value)) }} />
-                        <button onClick={() => {
-                            if (audioElem.current) {
-                                audioElem.current.currentTime = startSection
-                                UpdateSongSlider(startSection, audioElem.current.duration ?? 0)
-                            }
-                        }}>Ok</button> */}

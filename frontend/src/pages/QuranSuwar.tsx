@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetAllSuwarByQuranReciterQuery } from '../store/quran.store';
 import { Player } from '../components/Player';
@@ -7,15 +7,11 @@ import { objIsEmpty } from '../utils/obj';
 import { SurahType } from '../utils/types';
 import { useControllers } from '../hooks/useControllers';
 import { Surah } from '../components/Surah';
-import { useLoading } from '../hooks/useLoading';
 import { usePlaylist } from '../hooks/usePlaylist';
-import { Id } from 'react-toastify';
 
 export const QuranSuwar = () => {
   const params = useParams();
   const { setIsPlaying, setRepeatSection } = useControllers();
-  const [id, setId] = useState<Id>()
-  const { setLoading } = useLoading()
   const {
     setCurrentSurah,
     setSuwar,
@@ -24,7 +20,7 @@ export const QuranSuwar = () => {
     setSurahProgress,
     quranSuwarFilter
   } = useSurah()
-  const { isLoading, data: suwar } = useGetAllSuwarByQuranReciterQuery({ quranReciter: params.quranReciter! })
+  const { data: suwar } = useGetAllSuwarByQuranReciterQuery({ quranReciter: params.quranReciter! })
   const { getPlaylist } = usePlaylist()
   useEffect(() => {
     if (suwar) {
