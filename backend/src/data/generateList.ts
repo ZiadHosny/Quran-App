@@ -1,13 +1,13 @@
-import { addZeros } from '../utils/addZeros.js';
-import { QURAN_SUWAR } from './suwar.js';
-import {
+import { addZeros } from '../utils/addZeros';
+import { QURAN_SUWAR } from './suwar';
+import type {
   QuranReciterInWebsite,
   QuranRecitersWithWebsite,
   Surah,
   SuwarMap,
   Website,
-} from '../utils/types.js';
-import { ISLAMWAY } from './quranReciters/islamway.js';
+} from '../utils/types';
+import { ISLAMWAY } from './quranReciters/islamway';
 
 interface GenerateUrlProps {
   index: number;

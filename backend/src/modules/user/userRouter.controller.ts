@@ -1,10 +1,10 @@
-import { NextFunction, Response } from 'express';
+import type { NextFunction, Response } from 'express';
 
-import { UserModel } from '../../models/user.model.js';
-import { AuthRequest, Surah, UserProgress } from '../../utils/types.js';
-import { catchAsyncError } from '../../utils/catchAsyncError.js';
-import { sendResponse } from '../../utils/response.js';
-import { AppError } from '../../utils/AppError.js';
+import { UserModel } from '../../models/user.model';
+import type { AuthRequest, Surah, UserProgress } from '../../utils/types';
+import { catchAsyncError } from '../../utils/catchAsyncError';
+import { sendResponse } from '../../utils/response';
+import { AppError } from '../../utils/AppError';
 
 // PUT User Progress
 export const saveUserProgress = catchAsyncError(

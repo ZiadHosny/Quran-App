@@ -1,14 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import { connectToMongoDb } from './database/connectToMongo.js';
-import { quranRouter } from './modules/quran/quran.router.js';
-import { getFromEnv } from './utils/getFromEnv.js';
-import { invalidRouter } from './modules/invalidRouter.js';
-import { baseRouter } from './modules/baseRouter.js';
-import { globalErrorMiddleware } from './middlewares/error.js';
-import { userRouter } from './modules/user/userRouter.router.js';
-import { morganMiddleware } from './middlewares/morgan.js';
-import { notificationRouter } from './modules/notification/notification.router.js';
+import { connectToMongoDb } from './database/connectToMongo';
+import { quranRouter } from './modules/quran/quran.router';
+import { getFromEnv } from './utils/getFromEnv';
+import { invalidRouter } from './modules/invalidRouter';
+import { baseRouter } from './modules/baseRouter';
+import { globalErrorMiddleware } from './middlewares/error';
+import { userRouter } from './modules/user/userRouter.router';
+import { morganMiddleware } from './middlewares/morgan';
+import { notificationRouter } from './modules/notification/notification.router';
 
 const { port } = getFromEnv();
 

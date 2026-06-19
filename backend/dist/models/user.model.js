@@ -1,9 +1,12 @@
-import { Schema, model } from 'mongoose';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserModel = void 0;
+const mongoose_1 = require("mongoose");
 const StringRequiredType = {
     type: String,
     required: true,
 };
-const SurahSchema = new Schema({
+const SurahSchema = new mongoose_1.Schema({
     id: {
         ...StringRequiredType,
     },
@@ -24,7 +27,7 @@ const SurahSchema = new Schema({
         required: true,
     },
 });
-const UserProgressSchema = new Schema({
+const UserProgressSchema = new mongoose_1.Schema({
     currentSurah: SurahSchema,
     currentMin: {
         type: String,
@@ -44,7 +47,7 @@ const UserProgressSchema = new Schema({
         default: false,
     },
 });
-const UserSchema = new Schema({
+const UserSchema = new mongoose_1.Schema({
     userId: {
         ...StringRequiredType,
     },
@@ -72,4 +75,4 @@ UserSchema.set('toJSON', {
         return ret;
     },
 });
-export const UserModel = model('User', UserSchema);
+exports.UserModel = (0, mongoose_1.model)('User', UserSchema);

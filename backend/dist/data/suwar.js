@@ -1,4 +1,7 @@
-export const QURAN_SUWAR = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.QURAN_SUWAR = void 0;
+exports.QURAN_SUWAR = [
     'سورة الفاتحة',
     'سورة البقرة',
     'سورة آل عمران',

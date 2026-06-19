@@ -1,10 +1,10 @@
-import { Request, Response } from 'express';
-import { catchAsyncError } from '../../utils/catchAsyncError.js';
-import { allQuranReciters, getAllQuran } from '../../data/quran.js';
-import { sendResponse } from '../../utils/response.js';
-import { AuthRequest, Surah } from '../../utils/types.js';
-import { ViewModel } from '../../models/view.model.js';
-import { SurahPlayedModel } from '../../models/surah.model.js';
+import type { Request, Response } from 'express';
+import { catchAsyncError } from '../../utils/catchAsyncError';
+import { allQuranReciters, getAllQuran } from '../../data/quran';
+import { sendResponse } from '../../utils/response';
+import type { AuthRequest, Surah } from '../../utils/types';
+import { ViewModel } from '../../models/view.model';
+import { SurahPlayedModel } from '../../models/surah.model';
 
 export const getAllSuwarQuranReciter = catchAsyncError(
   async (req: Request, res: Response) => {

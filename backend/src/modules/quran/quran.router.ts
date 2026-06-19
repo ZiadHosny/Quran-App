@@ -1,6 +1,6 @@
 import express from 'express';
-import * as quran from './quran.controller.js';
-import { userReq } from '../../middlewares/userReq.js';
+import * as quran from './quran.controller';
+import { userReq } from '../../middlewares/userReq';
 
 const router = express.Router();
 

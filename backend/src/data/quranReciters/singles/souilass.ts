@@ -1,5 +1,5 @@
-import { SuwarMap } from '../../../utils/types.js';
-import { generateSingleReciter } from '../../generateList.js';
+import type { SuwarMap } from '../../../utils/types';
+import { generateSingleReciter } from '../../generateList';
 
 const url = `https://server16.mp3quran.net/souilass/Rewayat-Warsh-A-n-Nafi`;
 

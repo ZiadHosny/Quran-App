@@ -3,16 +3,15 @@
   "version": "4.0.0",
   "description": "",
   "main": "backend/index.ts",
-  "type": "module",
   "scripts": {
-    "start": "ts-node --esm backend/dist/index.js",
-    "server": "nodemon --esm backend/src/index.ts",
+    "start": "ts-node backend/dist/index.js",
+    "server": "nodemon --watch backend/src --exec \"npx ts-node\" backend/src/index.ts",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "ts.check": "tsc --project tsconfig.json",
+    "ts.check": "tsc --project tsconfig.json --noEmit",
     "add-dist": "cd backend && git add dist",
     "add-build": "cd frontend && git add build",
-    "build-backend": "cd backend && rimraf dist && tsc",
+    "build-backend": "rimraf backend/dist && tsc --project tsconfig.json",
     "build-frontend": "cd frontend && npm run build"
   },
   "pre-commit": [
@@ -35,7 +34,6 @@
     "websocket": "^1.0.34"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/joi": "^17.2.3",
@@ -44,10 +42,11 @@
     "@types/node": "^20.3.1",
     "@types/web-push": "^3.3.2",
     "@types/websocket": "^1.0.10",
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
     "concurrently": "^8.2.2",
     "nodemon": "^2.0.22",
     "pre-commit": "^1.2.2",
+    "prettier": "^3.3.3",
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"

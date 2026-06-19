@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import webpush from 'web-push';
-import { getFromEnv } from '../../utils/getFromEnv.js';
+import { getFromEnv } from '../../utils/getFromEnv';
 
 export const sendNotification = (req: Request, res: Response) => {
   console.log('email, publicKey, privateKey');

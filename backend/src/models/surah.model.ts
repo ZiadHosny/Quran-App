@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Surah } from '../utils/types.js';
+import type { Surah } from '../utils/types';
 
 const StringRequiredType = {
   type: String,

@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import { AuthRequest } from './types.js';
+import type { NextFunction, Request, Response } from 'express';
+import type { AuthRequest } from './types';
 
 export const catchAsyncError = (fn: Function) => {
   return (req: Request | AuthRequest, res: Response, next: NextFunction) => {

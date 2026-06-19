@@ -1,14 +1,20 @@
-import jwt from 'jsonwebtoken';
-import { catchAsyncError } from '../utils/catchAsyncError.js';
-import { UserModel } from '../models/user.model.js';
-export const userReq = catchAsyncError(async (req, _, next) => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userReq = void 0;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const catchAsyncError_1 = require("../utils/catchAsyncError");
+const user_model_1 = require("../models/user.model");
+exports.userReq = (0, catchAsyncError_1.catchAsyncError)(async (req, _, next) => {
     const authorization = req.header('authorization')?.split('Bearer ')[1];
     if (authorization) {
         try {
-            const userAuth = jwt.decode(authorization);
+            const userAuth = jsonwebtoken_1.default.decode(authorization);
             const id = userAuth?.sub;
             if (id) {
-                let user = await UserModel.findOne({ userId: id });
+                let user = await user_model_1.UserModel.findOne({ userId: id });
                 if (user) {
                     req.user = user;
                 }

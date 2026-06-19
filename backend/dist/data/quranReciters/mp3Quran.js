@@ -1,4 +1,7 @@
-import { generateSuwarForReciter } from '../generateList.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getMp3Quran = exports.mp3Quran = void 0;
+const generateList_1 = require("../generateList");
 const mp3QuranReciter = [
     {
         id: 'alafasy',
@@ -315,7 +318,7 @@ const mp3QuranReciter = [
         server: 12,
     },
 ];
-export const mp3Quran = mp3QuranReciter.map(({ id, photo, quranReciter, server, quranReciterInWebsite }) => {
+exports.mp3Quran = mp3QuranReciter.map(({ id, photo, quranReciter, server, quranReciterInWebsite }) => {
     return {
         id,
         quranReciter,
@@ -324,7 +327,8 @@ export const mp3Quran = mp3QuranReciter.map(({ id, photo, quranReciter, server, 
         quranReciterInWebsite,
     };
 });
-export const getMp3Quran = () => generateSuwarForReciter({
-    quranReciters: mp3Quran,
+const getMp3Quran = () => (0, generateList_1.generateSuwarForReciter)({
+    quranReciters: exports.mp3Quran,
     website: 'mp3quran',
 });
+exports.getMp3Quran = getMp3Quran;

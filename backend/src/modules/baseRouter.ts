@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { getFromEnv } from '../utils/getFromEnv.js';
+import { getFromEnv } from '../utils/getFromEnv';
 import path from 'path';
 
 const { mode } = getFromEnv();

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Surah, User, UserProgress } from '../utils/types.js';
+import type { Surah, User, UserProgress } from '../utils/types';
 
 const StringRequiredType = {
   type: String,

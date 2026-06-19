@@ -2,7 +2,7 @@ import { Audio } from "react-loader-spinner";
 import { useAppSelector } from "../../store/hooks";
 
 export const LoadingIndicator = () => {
-  const isLoading = useAppSelector((state) => state.loading.isLoading);
+  const isLoading = useAppSelector((state) => state.loading.loading.length > 0);
 
   return isLoading ? (
     <div

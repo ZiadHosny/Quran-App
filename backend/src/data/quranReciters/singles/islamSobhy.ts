@@ -1,5 +1,5 @@
-import { SuwarMap } from '../../../utils/types.js';
-import { generateSingleReciter } from '../../generateList.js';
+import type { SuwarMap } from '../../../utils/types';
+import { generateSingleReciter } from '../../generateList';
 
 const url = `https://server14.mp3quran.net/islam/Rewayat-Hafs-A-n-Assem`;
 

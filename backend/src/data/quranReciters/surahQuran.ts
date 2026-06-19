@@ -1,4 +1,4 @@
-import { generateSuwarForReciter } from '../generateList.js';
+import { generateSuwarForReciter } from '../generateList';
 
 export const SURAH_QURAN =
   'https://ia800207.us.archive.org/18/items/TvQuran.com';

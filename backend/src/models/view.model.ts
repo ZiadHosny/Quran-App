@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { View } from '../utils/types.js';
+import type { View } from '../utils/types';
 
 const ViewSchema = new Schema<View>(
   {

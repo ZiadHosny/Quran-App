@@ -1,30 +1,34 @@
-import { getIslamic, islamic } from './quranReciters/islamic.js';
-import { reciterAbdelrahmanMosad, getAbdelrahmanMosad, } from './quranReciters/singles/abdelrahmanMosad.js';
-import { getAhmedKhadr, reciterAhmedKhadr, } from './quranReciters/singles/ahmedKhadr.js';
-import { getMp3Quran, mp3Quran } from './quranReciters/mp3Quran.js';
-import { getIslamSobhy, reciterIslamSobhy, } from './quranReciters/singles/islamSobhy.js';
-import { getIslamway, islamway } from './quranReciters/islamway.js';
-import { getSouilass, reciterSouilass, } from './quranReciters/singles/souilass.js';
-export const getAllQuran = () => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.allQuranReciters = exports.getAllQuran = void 0;
+const islamic_1 = require("./quranReciters/islamic");
+const abdelrahmanMosad_1 = require("./quranReciters/singles/abdelrahmanMosad");
+const ahmedKhadr_1 = require("./quranReciters/singles/ahmedKhadr");
+const mp3Quran_1 = require("./quranReciters/mp3Quran");
+const islamSobhy_1 = require("./quranReciters/singles/islamSobhy");
+const islamway_1 = require("./quranReciters/islamway");
+const souilass_1 = require("./quranReciters/singles/souilass");
+const getAllQuran = () => {
     return {
-        ...getIslamic(),
-        ...getIslamway(),
-        ...getMp3Quran(),
-        ...getAbdelrahmanMosad(),
-        ...getAhmedKhadr(),
-        ...getIslamSobhy(),
-        ...getSouilass(),
+        ...(0, islamic_1.getIslamic)(),
+        ...(0, islamway_1.getIslamway)(),
+        ...(0, mp3Quran_1.getMp3Quran)(),
+        ...(0, abdelrahmanMosad_1.getAbdelrahmanMosad)(),
+        ...(0, ahmedKhadr_1.getAhmedKhadr)(),
+        ...(0, islamSobhy_1.getIslamSobhy)(),
+        ...(0, souilass_1.getSouilass)(),
     };
 };
-export const allQuranReciters = () => {
+exports.getAllQuran = getAllQuran;
+const allQuranReciters = () => {
     const allReciters = [
-        ...islamway,
-        ...islamic,
-        ...mp3Quran,
-        reciterAbdelrahmanMosad,
-        reciterAhmedKhadr,
-        reciterIslamSobhy,
-        reciterSouilass,
+        ...islamway_1.islamway,
+        ...islamic_1.islamic,
+        ...mp3Quran_1.mp3Quran,
+        abdelrahmanMosad_1.reciterAbdelrahmanMosad,
+        ahmedKhadr_1.reciterAhmedKhadr,
+        islamSobhy_1.reciterIslamSobhy,
+        souilass_1.reciterSouilass,
     ];
     return allReciters.map(({ id, photo, quranReciter }) => ({
         id,
@@ -32,3 +36,4 @@ export const allQuranReciters = () => {
         photo,
     }));
 };
+exports.allQuranReciters = allQuranReciters;

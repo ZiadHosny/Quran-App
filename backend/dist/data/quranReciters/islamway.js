@@ -1,6 +1,9 @@
-import { generateSuwarForReciter } from '../generateList.js';
-export const ISLAMWAY = 'https://download.quran.islamway.net/quran3';
-export const islamway = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getIslamway = exports.islamway = exports.ISLAMWAY = void 0;
+const generateList_1 = require("../generateList");
+exports.ISLAMWAY = 'https://download.quran.islamway.net/quran3';
+exports.islamway = [
     {
         id: 'ahmad_nu_mujawwad',
         quranReciter: '(مجود) أحمد نعينع',
@@ -8,7 +11,8 @@ export const islamway = [
         quranReciterInWebsite: '2331/10935/48',
     },
 ];
-export const getIslamway = () => generateSuwarForReciter({
-    quranReciters: islamway,
+const getIslamway = () => (0, generateList_1.generateSuwarForReciter)({
+    quranReciters: exports.islamway,
     website: 'islamway',
 });
+exports.getIslamway = getIslamway;

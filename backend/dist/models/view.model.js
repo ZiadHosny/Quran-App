@@ -1,5 +1,8 @@
-import { Schema, model } from 'mongoose';
-const ViewSchema = new Schema({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ViewModel = void 0;
+const mongoose_1 = require("mongoose");
+const ViewSchema = new mongoose_1.Schema({
     userId: {
         type: String,
     },
@@ -28,4 +31,4 @@ ViewSchema.set('toJSON', {
         return ret;
     },
 });
-export const ViewModel = model('View', ViewSchema);
+exports.ViewModel = (0, mongoose_1.model)('View', ViewSchema);

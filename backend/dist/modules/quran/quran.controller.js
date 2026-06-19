@@ -1,20 +1,23 @@
-import { catchAsyncError } from '../../utils/catchAsyncError.js';
-import { allQuranReciters, getAllQuran } from '../../data/quran.js';
-import { sendResponse } from '../../utils/response.js';
-import { ViewModel } from '../../models/view.model.js';
-import { SurahPlayedModel } from '../../models/surah.model.js';
-export const getAllSuwarQuranReciter = catchAsyncError(async (req, res) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mostPlayed = exports.playSurah = exports.getCountViews = exports.getViews = exports.getQuranReciters = exports.getAllSuwarQuranReciter = void 0;
+const catchAsyncError_1 = require("../../utils/catchAsyncError");
+const quran_1 = require("../../data/quran");
+const response_1 = require("../../utils/response");
+const view_model_1 = require("../../models/view.model");
+const surah_model_1 = require("../../models/surah.model");
+exports.getAllSuwarQuranReciter = (0, catchAsyncError_1.catchAsyncError)(async (req, res) => {
     const paramId = req.params.id;
     let suwar = [];
-    suwar = getAllQuran()[paramId];
-    return sendResponse({
+    suwar = (0, quran_1.getAllQuran)()[paramId];
+    return (0, response_1.sendResponse)({
         res,
         message: 'get ALl Suwar successfully',
         status: 200,
         data: suwar,
     });
 });
-export const getQuranReciters = catchAsyncError(async (req, res) => {
+exports.getQuranReciters = (0, catchAsyncError_1.catchAsyncError)(async (req, res) => {
     const userAgent = req.headers['user-agent'] ?? '';
     const browser = userAgent.match(/(Chrome)\/([\d.]+)/) ||
         userAgent.match(/(Firefox)\/([\d.]+)/);
@@ -42,7 +45,7 @@ export const getQuranReciters = catchAsyncError(async (req, res) => {
     };
     if (req.hostname !== 'localhost') {
         if (req.user) {
-            await ViewModel.create({
+            await view_model_1.ViewModel.create({
                 userId: req.user.userId,
                 name: req.user.name,
                 email: req.user.email,
@@ -50,42 +53,42 @@ export const getQuranReciters = catchAsyncError(async (req, res) => {
             });
         }
         else {
-            await ViewModel.create({
+            await view_model_1.ViewModel.create({
                 ...userAgentData,
             });
         }
     }
-    return sendResponse({
+    return (0, response_1.sendResponse)({
         res,
         message: 'get Quran Reciters successfully',
         status: 200,
-        data: allQuranReciters(),
+        data: (0, quran_1.allQuranReciters)(),
     });
 });
-export const getViews = catchAsyncError(async (_, res) => {
-    const views = await ViewModel.find({}).select('-userAgent -__v');
-    return sendResponse({
+exports.getViews = (0, catchAsyncError_1.catchAsyncError)(async (_, res) => {
+    const views = await view_model_1.ViewModel.find({}).select('-userAgent -__v');
+    return (0, response_1.sendResponse)({
         res,
         message: 'get Views successfully',
         status: 200,
         data: { views },
     });
 });
-export const getCountViews = catchAsyncError(async (_, res) => {
-    const countViews = await ViewModel.countDocuments();
-    return sendResponse({
+exports.getCountViews = (0, catchAsyncError_1.catchAsyncError)(async (_, res) => {
+    const countViews = await view_model_1.ViewModel.countDocuments();
+    return (0, response_1.sendResponse)({
         res,
         message: 'get Count Views successfully',
         status: 200,
         data: { countViews },
     });
 });
-export const playSurah = catchAsyncError(async (req, res) => {
+exports.playSurah = (0, catchAsyncError_1.catchAsyncError)(async (req, res) => {
     const surah = req.body;
     const { id, photo, quranReciter, surahNumber, title, url } = surah;
-    const surahPlayed = await SurahPlayedModel.findOneAndUpdate({ id }, { $inc: { surahPlayedCount: 1 } });
+    const surahPlayed = await surah_model_1.SurahPlayedModel.findOneAndUpdate({ id }, { $inc: { surahPlayedCount: 1 } });
     if (!surahPlayed) {
-        await SurahPlayedModel.create({
+        await surah_model_1.SurahPlayedModel.create({
             id,
             photo,
             quranReciter,
@@ -95,17 +98,17 @@ export const playSurah = catchAsyncError(async (req, res) => {
             surahPlayedCount: 1,
         });
     }
-    return sendResponse({
+    return (0, response_1.sendResponse)({
         res,
         message: 'Surah added To DB successfully',
         status: 200,
     });
 });
-export const mostPlayed = catchAsyncError(async (_, res) => {
-    const suwarPlayed = await SurahPlayedModel.find({})
+exports.mostPlayed = (0, catchAsyncError_1.catchAsyncError)(async (_, res) => {
+    const suwarPlayed = await surah_model_1.SurahPlayedModel.find({})
         .sort('-surahPlayedCount')
         .limit(30);
-    return sendResponse({
+    return (0, response_1.sendResponse)({
         res,
         message: 'get Suwar Played DB successfully',
         status: 200,

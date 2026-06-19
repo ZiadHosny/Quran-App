@@ -1,5 +1,5 @@
-import { Request } from 'express';
-import { Types } from 'mongoose';
+import type { Request } from 'express';
+import type { Types } from 'mongoose';
 
 export interface AuthRequest extends Request {
   user: User & { _id: Types.ObjectId };

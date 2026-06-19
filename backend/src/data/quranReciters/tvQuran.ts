@@ -1,4 +1,4 @@
-import { generateSuwarForReciter } from '../generateList.js';
+import { generateSuwarForReciter } from '../generateList';
 
 export const TV_QURAN = 'https://download.tvquran.com/download/recitations';
 

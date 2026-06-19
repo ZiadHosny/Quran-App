@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import { getFromEnv } from '../utils/getFromEnv.js';
+import type { NextFunction, Request, Response } from 'express';
+import { getFromEnv } from '../utils/getFromEnv';
 
 export const globalErrorMiddleware = (
   err: any,

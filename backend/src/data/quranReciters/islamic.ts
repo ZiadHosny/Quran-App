@@ -1,5 +1,5 @@
-import { QuranReciterInWebsite } from '../../utils/types.js';
-import { generateSuwarForReciter } from '../generateList.js';
+import type { QuranReciterInWebsite } from '../../utils/types';
+import { generateSuwarForReciter } from '../generateList';
 
 export const ISLAMIC = 'https://cdn.islamic.network/quran/audio-surah/128/ar';
 

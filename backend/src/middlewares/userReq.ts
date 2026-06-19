@@ -1,8 +1,9 @@
-import { NextFunction, Response } from 'express';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { catchAsyncError } from '../utils/catchAsyncError.js';
-import { AuthRequest } from '../utils/types.js';
-import { UserModel } from '../models/user.model.js';
+import type { NextFunction, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import type { JwtPayload } from 'jsonwebtoken';
+import { catchAsyncError } from '../utils/catchAsyncError';
+import type { AuthRequest } from '../utils/types';
+import { UserModel } from '../models/user.model';
 
 interface JwtUser extends JwtPayload {
   name?: string;

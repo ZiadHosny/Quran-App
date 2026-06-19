@@ -1,5 +1,5 @@
-import { SuwarMap } from '../../../utils/types.js';
-import { generateSingleReciter } from '../../generateList.js';
+import type { SuwarMap } from '../../../utils/types';
+import { generateSingleReciter } from '../../generateList';
 
 const url = 'https://ia801504.us.archive.org/11/items/012_20221105_202211';
 

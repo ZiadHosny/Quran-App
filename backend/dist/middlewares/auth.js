@@ -1,17 +1,23 @@
-import jwt from 'jsonwebtoken';
-import { catchAsyncError } from '../utils/catchAsyncError.js';
-import { AppError } from '../utils/AppError.js';
-import { UserModel } from '../models/user.model.js';
-export const auth = catchAsyncError(async (req, _, next) => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.auth = void 0;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const catchAsyncError_1 = require("../utils/catchAsyncError");
+const AppError_1 = require("../utils/AppError");
+const user_model_1 = require("../models/user.model");
+exports.auth = (0, catchAsyncError_1.catchAsyncError)(async (req, _, next) => {
     const authorization = req.header('authorization')?.split('Bearer ')[1];
     if (authorization) {
         try {
-            const userAuth = jwt.decode(authorization);
+            const userAuth = jsonwebtoken_1.default.decode(authorization);
             const id = userAuth?.sub;
             if (id) {
-                let user = await UserModel.findOne({ userId: id });
+                let user = await user_model_1.UserModel.findOne({ userId: id });
                 if (!user) {
-                    user = await UserModel.create({
+                    user = await user_model_1.UserModel.create({
                         userId: id,
                         name: userAuth?.name,
                         email: userAuth?.email,
@@ -19,7 +25,7 @@ export const auth = catchAsyncError(async (req, _, next) => {
                         locale: userAuth?.locale,
                     });
                 }
-                await UserModel.updateOne({ userId: id }, {
+                await user_model_1.UserModel.updateOne({ userId: id }, {
                     name: userAuth.name,
                     email: userAuth.email,
                     picture: userAuth.picture,
@@ -28,16 +34,16 @@ export const auth = catchAsyncError(async (req, _, next) => {
                 req.user = user;
             }
             else {
-                return next(new AppError('Not authorized', 404));
+                return next(new AppError_1.AppError('Not authorized', 404));
             }
             next();
         }
         catch (err) {
             console.error(err);
-            return next(new AppError('Not authorized, token failed', 401));
+            return next(new AppError_1.AppError('Not authorized, token failed', 401));
         }
     }
     else {
-        return next(new AppError('Not authorized, no token', 401));
+        return next(new AppError_1.AppError('Not authorized, no token', 401));
     }
 });

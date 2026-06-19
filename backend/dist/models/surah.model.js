@@ -1,9 +1,12 @@
-import { Schema, model } from 'mongoose';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SurahPlayedModel = void 0;
+const mongoose_1 = require("mongoose");
 const StringRequiredType = {
     type: String,
     required: true,
 };
-const SurahPlayedSchema = new Schema({
+const SurahPlayedSchema = new mongoose_1.Schema({
     id: {
         ...StringRequiredType,
     },
@@ -28,4 +31,4 @@ const SurahPlayedSchema = new Schema({
         required: true,
     },
 });
-export const SurahPlayedModel = model('SurahPlayed', SurahPlayedSchema);
+exports.SurahPlayedModel = (0, mongoose_1.model)('SurahPlayed', SurahPlayedSchema);

@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
-import { getFromEnv } from '../utils/getFromEnv.js';
+import { getFromEnv } from '../utils/getFromEnv';
 import {
   logErrMsg,
   logErrInfoMsg,
   logSuccessMsg,
-} from '../utils/console/log.js';
+} from '../utils/console/log';
 
 export const connectToMongoDb = async () => {
   const { databaseURL } = getFromEnv();

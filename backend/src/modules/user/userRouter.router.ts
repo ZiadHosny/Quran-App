@@ -6,14 +6,14 @@ import {
   getUserProgress,
   removeSurahToUserPlaylist,
   saveUserProgress,
-} from './userRouter.controller.js';
-import { auth } from '../../middlewares/auth.js';
-import { validation } from '../../middlewares/validation.js';
+} from './userRouter.controller';
+import { auth } from '../../middlewares/auth';
+import { validation } from '../../middlewares/validation';
 import {
   RemoveSurahSchema,
   SurahSchema,
   progressSchema,
-} from './userRouter.schema.js';
+} from './userRouter.schema';
 
 const router = express.Router();
 

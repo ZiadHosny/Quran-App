@@ -1,14 +1,17 @@
-import { addZeros } from '../utils/addZeros.js';
-import { QURAN_SUWAR } from './suwar.js';
-import { ISLAMWAY } from './quranReciters/islamway.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateSingleReciter = exports.generateSuwarForReciter = exports.generateList = void 0;
+const addZeros_1 = require("../utils/addZeros");
+const suwar_1 = require("./suwar");
+const islamway_1 = require("./quranReciters/islamway");
 const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl, }) => {
-    const id = addZeros({ number: index, numOfZeros: 3 });
+    const id = (0, addZeros_1.addZeros)({ number: index, numOfZeros: 3 });
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
     if (website === 'mp3quran' && websiteUrl) {
         return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
     }
     else if (website === 'islamway')
-        return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
+        return `${islamway_1.ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
     else
         return 'WebsiteNotFound';
     // if (website === 'islamic')
@@ -18,7 +21,7 @@ const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl, }) => 
     // else if (website === 'surahQuran')
     //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };
-export const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite, websiteUrl, }) => {
+const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite, websiteUrl, }) => {
     const list = [];
     for (let i = 1; i <= 114; i++) {
         const url = generateUrl({
@@ -30,7 +33,7 @@ export const generateList = ({ id, quranReciter, photo, website, quranReciterInW
         list.push({
             id: `${id}-${i.toString()}`,
             surahNumber: i,
-            title: QURAN_SUWAR[i - 1],
+            title: suwar_1.QURAN_SUWAR[i - 1],
             quranReciter,
             photo,
             url,
@@ -38,10 +41,11 @@ export const generateList = ({ id, quranReciter, photo, website, quranReciterInW
     }
     return list;
 };
-export const generateSuwarForReciter = ({ quranReciters, website, }) => {
+exports.generateList = generateList;
+const generateSuwarForReciter = ({ quranReciters, website, }) => {
     let quran = {};
     quranReciters.forEach(({ id, photo, quranReciter, quranReciterInWebsite, websiteUrl }) => {
-        quran[id] = generateList({
+        quran[id] = (0, exports.generateList)({
             id,
             quranReciter,
             photo,
@@ -52,14 +56,15 @@ export const generateSuwarForReciter = ({ quranReciters, website, }) => {
     });
     return quran;
 };
-export const generateSingleReciter = ({ arrOfSuwar, reciter, url, }) => {
+exports.generateSuwarForReciter = generateSuwarForReciter;
+const generateSingleReciter = ({ arrOfSuwar, reciter, url, }) => {
     const reciterSuwar = [];
     const { photo, quranReciter, id: reciterId } = reciter;
     arrOfSuwar.forEach((surahNumber) => {
-        const surahIdWithZero = addZeros({ number: surahNumber, numOfZeros: 3 });
+        const surahIdWithZero = (0, addZeros_1.addZeros)({ number: surahNumber, numOfZeros: 3 });
         reciterSuwar.push({
             id: `${reciterId}-${surahNumber}`,
-            title: QURAN_SUWAR[surahNumber - 1],
+            title: suwar_1.QURAN_SUWAR[surahNumber - 1],
             photo,
             quranReciter,
             surahNumber,
@@ -70,3 +75,4 @@ export const generateSingleReciter = ({ arrOfSuwar, reciter, url, }) => {
         [reciterId]: reciterSuwar,
     };
 };
+exports.generateSingleReciter = generateSingleReciter;

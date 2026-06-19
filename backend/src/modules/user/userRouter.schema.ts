@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { Surah, UserProgress } from '../../utils/types.js';
+import type { Surah, UserProgress } from '../../utils/types';
 
 export const progressSchema = Joi.object<UserProgress>({
   quranReciterId: Joi.string().required(),
