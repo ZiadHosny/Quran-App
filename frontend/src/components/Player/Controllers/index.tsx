@@ -18,47 +18,46 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
     } = useControllers()
     const { handleNextSurah, prevSurah } = useSurah()
 
-    // Handle Prev And Next
-    const handlePrevSurahBtn = () => {
-        prevSurah()
-    }
-
-    const handleNextSurahBtn = () => {
-        handleNextSurah(surahElem.current)
-    }
-
-    const handleIsRepeatSection = () => {
-        setRepeatSection({ isRepeat: !repeatSection.isRepeat })
-    }
+    const handlePrevSurahBtn = () => prevSurah()
+    const handleNextSurahBtn = () => handleNextSurah(surahElem.current)
+    const handleIsRepeatSection = () => setRepeatSection({ isRepeat: !repeatSection.isRepeat })
 
     return (
         <div className="control">
-            <div className="btn" style={{ position: 'relative', color: repeatSection.isRepeat ? 'black' : 'grey' }}
-                onClick={handleIsRepeatSection}>
-                <div style={{ position: 'absolute', top: 0, left: 8 }}>{repeatSection.times}</div>
+            <div
+                className={`btn ${repeatSection.isRepeat ? 'active' : ''}`}
+                style={{ position: 'relative' }}
+                onClick={handleIsRepeatSection}
+            >
+                {repeatSection.times > 0 && (
+                    <div style={{ position: 'absolute', top: 0, left: 8, fontSize: 10 }}>
+                        {repeatSection.times}
+                    </div>
+                )}
                 <MdRepeatOn />
             </div>
-            <div className="btn" onClick={handleIsRepeat}>
-                {isRepeat ? <TbRepeatOnce color='black' /> : <TbRepeatOnce />}
+
+            <div className={`btn ${isRepeat ? 'active' : ''}`} onClick={handleIsRepeat}>
+                <TbRepeatOnce />
             </div>
+
             <div className="btn" onClick={handlePrevSurahBtn}>
-                <FaBackward color='black' />
+                <FaBackward />
             </div>
+
             <div className="btn btn-toggle-play" onClick={handleIsPlaying}>
-                {
-                    isPlaying ?
-                        <FaPause color='white' />
-                        :
-                        <FaPlay color='white' />
-                }
+                {isPlaying ? <FaPause /> : <FaPlay />}
             </div>
-            <div className="btn btn-next" onClick={handleNextSurahBtn}>
-                <FaForward color='black' />
+
+            <div className="btn" onClick={handleNextSurahBtn}>
+                <FaForward />
             </div>
-            <div className="btn btn-random" onClick={handleIsRandom}>
-                {isRandom ? <FaRandom color='black' /> : <FaRandom />}
+
+            <div className={`btn ${isRandom ? 'active' : ''}`} onClick={handleIsRandom}>
+                <FaRandom />
             </div>
-            <div className="btn"></div>
+
+            <div className="btn" />
         </div>
     )
 }

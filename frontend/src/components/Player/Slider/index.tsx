@@ -51,15 +51,13 @@ export const Slider = ({
       {volume ? (
         percentage !== 0 ? (
           <VscUnmute
-            color="black"
             size={17}
-            style={{ position: 'absolute', left: '-20px' }}
+            style={{ position: 'absolute', left: '-20px', color: 'var(--text-secondary)' }}
           />
         ) : (
           <VscMute
-            color="black"
             size={17}
-            style={{ position: 'absolute', left: '-20px' }}
+            style={{ position: 'absolute', left: '-20px', color: 'var(--text-secondary)' }}
           />
         )
       ) : (

@@ -1,45 +1,69 @@
-import MultiRangeSlider from "multi-range-slider-react";
-import { useControllers } from "../../../hooks/useControllers";
-import { SurahElemInput } from "../../../utils/types";
-import { useSurahSlider } from "../../../hooks/useSurahSlider";
+import { useControllers } from '../../../hooks/useControllers';
+import { SurahElemInput } from '../../../utils/types';
+import { useSurahSlider } from '../../../hooks/useSurahSlider';
+import './repeatSection.scss';
 
 export const RepeatSection = ({ surahElem }: SurahElemInput) => {
-    const {
-        repeatSection,
-        setRepeatSection,
-    } = useControllers()
+    const { repeatSection, setRepeatSection } = useControllers();
+    const { setSurahSlider } = useSurahSlider();
 
-    const {
-        setSurahSlider,
-    } = useSurahSlider()
+    if (!repeatSection.isRepeat) return null;
 
+    const handleStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = Number(e.target.value);
+        if (val >= repeatSection.end) return;
+        setRepeatSection({ start: val });
+        if (surahElem.current?.duration) {
+            surahElem.current.currentTime = val * surahElem.current.duration / 100;
+            setSurahSlider(val);
+        }
+    };
+
+    const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = Number(e.target.value);
+        if (val <= repeatSection.start) return;
+        setRepeatSection({ end: val });
+    };
+
+    const decrement = () => setRepeatSection({ times: Math.max(1, repeatSection.times - 1) });
+    const increment = () => setRepeatSection({ times: repeatSection.times + 1 });
+
+    const fillLeft = `${repeatSection.start}%`;
+    const fillWidth = `${repeatSection.end - repeatSection.start}%`;
 
     return (
-        <div style={{ display: `${repeatSection.isRepeat ? 'flex' : 'none'}`, alignItems: 'center' }}>
-            <MultiRangeSlider
-                style={{ width: '100%', marginRight: 10 }}
-                minValue={repeatSection.start}
-                maxValue={repeatSection.end}
-                onChange={(e) => {
-                    if (surahElem.current && surahElem.current.duration && e.minValue !== repeatSection.start) {
-                        setRepeatSection({ start: e.minValue })
-                        setSurahSlider(e.minValue);
-                        surahElem.current.currentTime = e.minValue * surahElem.current.duration / 100
-                    }
-                    setRepeatSection({ end: e.maxValue })
-                }}
-            />
-            <div>
-                <div style={{ textAlign: 'center' }}>Times :
-                    <input
-                        style={{ borderRadius: 5, textAlign: 'center', fontSize: 17, width: 70 }}
-                        type="number" min={0}
-                        value={Number(repeatSection.times).toString()}
-                        onChange={(e) => {
-                            setRepeatSection({ times: Number(e.target.value) })
-                        }} />
+        <div className="repeat-section">
+            <div className="repeat-range-wrap">
+                <div className="repeat-track">
+                    <div className="repeat-fill" style={{ left: fillLeft, width: fillWidth }} />
                 </div>
+                <input
+                    type="range" min={0} max={100} step={1}
+                    value={repeatSection.start}
+                    className="repeat-input"
+                    onChange={handleStartChange}
+                />
+                <input
+                    type="range" min={0} max={100} step={1}
+                    value={repeatSection.end}
+                    className="repeat-input"
+                    onChange={handleEndChange}
+                />
+            </div>
+
+            <div className="repeat-labels">
+                <span>{repeatSection.start}%</span>
+                <span>{repeatSection.end}%</span>
+            </div>
+
+            <div className="repeat-times-row">
+                <button className="times-btn" onClick={decrement} disabled={repeatSection.times <= 1}>−</button>
+                <div className="times-value">
+                    <strong>{repeatSection.times}</strong>
+                    <small>مرة</small>
+                </div>
+                <button className="times-btn" onClick={increment}>+</button>
             </div>
         </div>
-    )
-}
+    );
+};
