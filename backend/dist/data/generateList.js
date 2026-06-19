@@ -3,21 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateSingleReciter = exports.generateSuwarForReciter = exports.generateList = void 0;
 const addZeros_1 = require("../utils/addZeros");
 const suwar_1 = require("./suwar");
-const islamway_1 = require("./quranReciters/islamway");
 const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl, }) => {
     const id = (0, addZeros_1.addZeros)({ number: index, numOfZeros: 3 });
     const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
     if (website === 'mp3quran' && websiteUrl) {
         return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
     }
-    else if (website === 'islamway')
-        return `${islamway_1.ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
     else
         return 'WebsiteNotFound';
     // if (website === 'islamic')
     //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
-    // else if (website === 'islamway')
-    //     return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`
     // else if (website === 'surahQuran')
     //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };

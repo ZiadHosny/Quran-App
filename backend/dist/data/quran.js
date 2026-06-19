@@ -6,12 +6,10 @@ const abdelrahmanMosad_1 = require("./quranReciters/singles/abdelrahmanMosad");
 const ahmedKhadr_1 = require("./quranReciters/singles/ahmedKhadr");
 const mp3Quran_1 = require("./quranReciters/mp3Quran");
 const islamSobhy_1 = require("./quranReciters/singles/islamSobhy");
-const islamway_1 = require("./quranReciters/islamway");
 const souilass_1 = require("./quranReciters/singles/souilass");
 const getAllQuran = () => {
     return {
         ...(0, islamic_1.getIslamic)(),
-        ...(0, islamway_1.getIslamway)(),
         ...(0, mp3Quran_1.getMp3Quran)(),
         ...(0, abdelrahmanMosad_1.getAbdelrahmanMosad)(),
         ...(0, ahmedKhadr_1.getAhmedKhadr)(),
@@ -22,7 +20,6 @@ const getAllQuran = () => {
 exports.getAllQuran = getAllQuran;
 const allQuranReciters = () => {
     const allReciters = [
-        ...islamway_1.islamway,
         ...islamic_1.islamic,
         ...mp3Quran_1.mp3Quran,
         abdelrahmanMosad_1.reciterAbdelrahmanMosad,

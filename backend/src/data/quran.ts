@@ -13,7 +13,6 @@ import {
   getIslamSobhy,
   reciterIslamSobhy,
 } from './quranReciters/singles/islamSobhy';
-import { getIslamway, islamway } from './quranReciters/islamway';
 import {
   getSouilass,
   reciterSouilass,
@@ -22,7 +21,6 @@ import {
 export const getAllQuran = (): SuwarMap => {
   return {
     ...getIslamic(),
-    ...getIslamway(),
     ...getMp3Quran(),
     ...getAbdelrahmanMosad(),
     ...getAhmedKhadr(),
@@ -33,7 +31,6 @@ export const getAllQuran = (): SuwarMap => {
 
 export const allQuranReciters = () => {
   const allReciters = [
-    ...islamway,
     ...islamic,
     ...mp3Quran,
     reciterAbdelrahmanMosad,

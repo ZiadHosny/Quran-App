@@ -60,7 +60,6 @@ export interface QuranRecitersWithWebsite {
 }
 
 export type Website =
-  | 'islamway'
   | 'islamic'
   | 'mp3quran'
   | 'surahQuran'

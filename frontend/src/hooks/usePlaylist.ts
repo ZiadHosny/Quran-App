@@ -60,9 +60,7 @@ export const usePlaylist = () => {
         if (token) {
             // const id = loadingToast()
             const res = await getPlaylistFn({ token }) as Result
-            // if (res.error) {
-            //     return updateToastError({ id, render: res.error.data.err })
-            // }
+            if (res.error || !res.data) return
             const { data, message } = res.data
             const playlist = data as SurahType[]
             if (playlist) {

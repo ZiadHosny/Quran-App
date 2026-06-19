@@ -7,7 +7,6 @@ import type {
   SuwarMap,
   Website,
 } from '../utils/types';
-import { ISLAMWAY } from './quranReciters/islamway';
 
 interface GenerateUrlProps {
   index: number;
@@ -26,13 +25,10 @@ const generateUrl = ({
   const quranReciterInWebsiteWithSurahId = `${quranReciterInWebsite}/${id}.mp3`;
   if (website === 'mp3quran' && websiteUrl) {
     return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
-  } else if (website === 'islamway')
-    return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`;
+  }
   else return 'WebsiteNotFound';
   // if (website === 'islamic')
   //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
-  // else if (website === 'islamway')
-  //     return `${ISLAMWAY}/${quranReciterInWebsiteWithSurahId}`
   // else if (website === 'surahQuran')
   //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };

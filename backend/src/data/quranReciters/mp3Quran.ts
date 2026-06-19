@@ -78,6 +78,13 @@ const mp3QuranReciter: Mp3Quran[] = [
     server: 8,
   },
   {
+    id: 'ahmad_nu',
+    quranReciter: '(مرتل) أحمد نعينع',
+    photo:
+      'https://i.pinimg.com/564x/e7/5f/e1/e75fe1583ffecf9e2a78d0593f66cac4.jpg',
+    server: 11,
+  },
+  {
     id: 'maherAlMuaiqelymurattal',
     quranReciter: '(مرتل) ماهر المعيقلي',
     photo:
