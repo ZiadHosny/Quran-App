@@ -26,6 +26,23 @@ header {
     transition: background-color 0.3s;
 }
 
+@media (min-width: 900px) {
+    .dashboard {
+        width: 380px;
+        max-width: 380px;
+        height: calc(100vh - 60px);
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 28px 24px;
+        box-sizing: border-box;
+    }
+}
+
 .cd {
     display: flex;
     margin: auto;
@@ -52,6 +69,12 @@ header {
     color: var(--text-secondary);
     padding: 18px;
     font-size: 18px;
+}
+
+@media (min-width: 900px) {
+    .control .btn {
+        padding: 10px;
+    }
 }
 
 .btn.active {

@@ -2,6 +2,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.15s;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
     background-color: var(--card-color);
     padding: 8px 16px;
     border-radius: 5px;
@@ -9,10 +15,6 @@
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     position: relative;
-
-    :hover {
-        cursor: pointer;
-    }
 
     // :active {
     //     opacity: 0.8;

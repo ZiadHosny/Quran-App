@@ -94,12 +94,50 @@ html {
     max-width: 480px;
     margin: 0 auto;
     margin-top: 60px;
-    min-height: 100vh
+    min-height: 100vh;
 }
 
 .playlist {
     margin-top: 500px;
     padding: 12px;
+}
+
+/* ── Desktop layout ─────────────────────────────── */
+@media (min-width: 900px) {
+    .container {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    .playlist {
+        margin-top: 0;
+        margin-left: 400px;
+        padding: 24px 32px;
+        min-height: calc(100vh - 60px);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 10px;
+        align-content: start;
+    }
+}
+
+/* Home page reciter grid */
+.home-grid {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 900px) {
+    .home-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+        padding: 24px 32px;
+    }
 }
 
 .noSurah {

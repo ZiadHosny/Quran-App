@@ -60,12 +60,16 @@ export const useSurah = () => {
     }
     // resizeSingerImage
     const resizeSingerImage = (imgRef: HTMLInputElement | null) => {
+        if (!imgRef) return;
+        if (window.innerWidth >= 900) {
+            imgRef.style.width = '200px';
+            imgRef.style.opacity = '1';
+            return;
+        }
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const newCdWidth = 200 - scrollTop;
-        if (imgRef) {
-            imgRef.style.width = newCdWidth > 0 ? newCdWidth + 'px' : '0'
-            imgRef.style.opacity = (newCdWidth / 200).toString()
-        }
+        imgRef.style.width = newCdWidth > 0 ? newCdWidth + 'px' : '0';
+        imgRef.style.opacity = (newCdWidth / 200).toString();
     };
     // nextSurah
     const nextSurah = () => {
