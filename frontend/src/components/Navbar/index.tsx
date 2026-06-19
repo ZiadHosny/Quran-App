@@ -46,7 +46,7 @@ export const Navbar = () => {
             <IoSettingsOutline size={22} color="white" />
           </button>
           {isAuthenticated ? (
-            <AccountMenu />
+            <AccountMenu onOpenSettings={() => setSettingsOpen(true)} />
           ) : (
             <button onClick={onClickLogin} className="login">
               Login

@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiLogOut } from 'react-icons/fi'
 import { BiSolidPlaylist } from 'react-icons/bi'
+import { IoSettingsOutline } from 'react-icons/io5'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from 'react-router-dom';
 
-export const AccountMenu = () => {
+type Props = {
+    onOpenSettings: () => void;
+};
+
+export const AccountMenu = ({ onOpenSettings }: Props) => {
     const menuRef = useRef<HTMLInputElement>(null);
     const [isOpen, setIsOpen] = useState(false);
     const { user, logout } = useAuth0();
@@ -51,6 +56,10 @@ export const AccountMenu = () => {
                         <BiSolidPlaylist style={{ marginRight: 10 }} />
                         My Playlist
                     </Link>
+                </li>
+                <li className='link' onClick={() => { setIsOpen(false); onOpenSettings(); }}>
+                    <IoSettingsOutline style={{ marginRight: 10 }} />
+                    <div>Settings</div>
                 </li>
                 <li className='link logout' onClick={onclickLogout} >
                     <FiLogOut style={{ marginRight: 10 }} />
