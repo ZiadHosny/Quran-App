@@ -23,8 +23,8 @@
     .range::-webkit-slider-thumb {
         width: var(--thumb-width);
         height: var(--thumb-height);
-        background: #350f2d;
-        border: 1px solid #000000;
+        background: var(--primary-color);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
         cursor: pointer;
         -webkit-appearance: none;
@@ -33,24 +33,22 @@
     .thumb {
         width: var(--thumb-width);
         height: var(--thumb-height);
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.753);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         z-index: 2;
-        background: rgb(255, 255, 255);
+        background: #ffffff;
         position: absolute;
         border-radius: 50%;
         top: 50%;
         transform: translate(0%, -50%);
         pointer-events: none;
-        /* Remove pointer events on thumb so user can click on the actual thumb beaneath it!  */
         user-select: none;
-        /*  Prevent Accidentally highlighting the number while sliding the cursor  */
     }
 }
 
-/* Background */
+/* Background track */
 .slider-container-main::before {
     content: '';
-    background-color: rgb(164, 150, 150);
+    background-color: var(--progress-track);
     width: 99%;
     height: calc(var(--progress-bar-height) - 1px);
     display: block;
@@ -62,9 +60,9 @@
     pointer-events: none;
 }
 
-/* Custom Progress Bar */
+/* Filled progress */
 .progress-bar-cover {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--primary-color);
     width: 0%;
     height: var(--progress-bar-height);
     display: block;
@@ -77,10 +75,10 @@
     pointer-events: none;
 }
 
-/*  Hide Original */
+/* Hide original range input */
 .range {
     -webkit-appearance: none;
-    background-color: rgba(240, 9, 9, 0.397);
+    background-color: transparent;
     height: 10px;
     width: 100%;
     cursor: pointer;

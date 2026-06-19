@@ -3,36 +3,42 @@
 
 
 :root {
-    --primary-color: #130808;
+    /* Fixed brand colors — never change between themes */
+    --navbar-bg: #130808;
     --yellow-color: #ffd52d;
-    --green-color: green;
-    --black-color: #000;
-    --white-color: #fff;
+    --green-color: #2e7d32;
+    --white-color: #ffffff;
+    --black-color: #000000;
 
-    /* Semantic tokens — light mode */
-    --bg-color: #f5f5f5;
+    /* Light mode */
+    --primary-color: #130808;   /* accent on cards: play btn, slider, active states */
+    --on-primary: #ffffff;      /* text/icon ON a primary-colored surface */
+    --bg-color: #f2f2f2;
     --card-color: #ffffff;
     --player-bg: #ffffff;
-    --border-color: #ebebeb;
-    --text-color: #333333;
-    --text-secondary: #888888;
-    --grey-color: #838383;
-    --grey-light-color: #949494;
-    --progress-track: #d3d3d3;
-    --toggle-bg: #cccccc;
+    --border-color: #e4e4e4;
+    --text-color: #1c1c1c;
+    --text-secondary: #6a6a6a;
+    --grey-color: #777777;
+    --grey-light-color: #999999;
+    --progress-track: #d4d4d4;
+    --toggle-bg: #c0c0c0;
 }
 
 [data-theme="dark"] {
-    --bg-color: #121212;
-    --card-color: #1e1e1e;
-    --player-bg: #1e1e1e;
-    --border-color: #2d2d2d;
-    --text-color: #e0e0e0;
-    --text-secondary: #aaaaaa;
-    --grey-color: #9e9e9e;
+    /* Dark mode — accent becomes yellow for visibility on dark surfaces */
+    --primary-color: #ffd52d;
+    --on-primary: #111111;
+    --bg-color: #0f0f0f;
+    --card-color: #1a1a1a;
+    --player-bg: #202020;
+    --border-color: #2a2a2a;
+    --text-color: #eeeeee;
+    --text-secondary: #999999;
+    --grey-color: #888888;
     --grey-light-color: #bbbbbb;
-    --progress-track: #3a3a3a;
-    --toggle-bg: #444444;
+    --progress-track: #363636;
+    --toggle-bg: #505050;
 }
 
 * {
