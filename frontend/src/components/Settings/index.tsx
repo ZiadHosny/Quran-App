@@ -1,5 +1,9 @@
 import { BsSun, BsMoon } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
+import { FiLogOut } from 'react-icons/fi';
+import { BiSolidPlaylist } from 'react-icons/bi';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 import { useSettings } from '../../hooks/useSettings';
 import './settings.scss';
 
@@ -10,7 +14,13 @@ type Props = {
 
 export const Settings = ({ isOpen, onClose }: Props) => {
     const { theme, toggleTheme } = useSettings();
+    const { isAuthenticated, user, logout } = useAuth0();
     const isDark = theme === 'dark';
+
+    const onLogout = () => {
+        onClose();
+        logout({ logoutParams: { returnTo: window.location.origin } });
+    };
 
     return (
         <>
@@ -24,6 +34,34 @@ export const Settings = ({ isOpen, onClose }: Props) => {
                 </div>
 
                 <div className="settings-body">
+                    {isAuthenticated && user && (
+                        <>
+                            <div className="settings-account">
+                                <img src={user.picture} alt="profile" className="settings-avatar" />
+                                <div>
+                                    <p className="settings-name">{user.name}</p>
+                                    <p className="settings-email">{user.email}</p>
+                                </div>
+                            </div>
+
+                            <p className="settings-section-label">Account</p>
+                            <Link to="/myPlaylist" className="settings-row settings-link" onClick={onClose}>
+                                <div className="settings-label">
+                                    <BiSolidPlaylist size={18} />
+                                    <span>My Playlist</span>
+                                </div>
+                            </Link>
+                            <div className="settings-row settings-logout" onClick={onLogout}>
+                                <div className="settings-label">
+                                    <FiLogOut size={18} />
+                                    <span>Log out</span>
+                                </div>
+                            </div>
+
+                            <div className="settings-divider" />
+                        </>
+                    )}
+
                     <p className="settings-section-label">Appearance</p>
                     <div className="settings-row">
                         <div className="settings-label">

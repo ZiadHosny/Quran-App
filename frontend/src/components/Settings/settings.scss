@@ -54,6 +54,61 @@
         padding: 20px 16px;
     }
 
+    .settings-account {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 0 20px;
+
+        .settings-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .settings-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .settings-email {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+    }
+
+    .settings-link {
+        text-decoration: none;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &:hover .settings-label {
+            color: var(--yellow-color);
+        }
+    }
+
+    .settings-logout {
+        cursor: pointer;
+        color: #e53935;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .settings-divider {
+        height: 1px;
+        background: var(--border-color);
+        margin: 16px 0;
+    }
+
     .settings-section-label {
         font-size: 11px;
         font-weight: 600;
