@@ -2,11 +2,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 12px;
-    background-color: var(--white-color);
+    background-color: var(--card-color);
     padding: 8px 16px;
     border-radius: 5px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
     position: relative;
 
     :hover {
@@ -21,7 +22,7 @@
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background-color: var(--white-color);
+        background-color: var(--card-color);
         background-size: cover;
         margin: 0 8px;
     }

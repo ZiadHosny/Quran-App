@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "app.vercel.quran_app_z",
+            "sha256_cert_fingerprints": [
+                "54:5D:C1:F3:FF:AA:E1:64:91:CD:7D:A3:D3:9B:AF:F0:8A:8E:54:4A:CA:34:79:F9:D7:7A:18:23:6E:08:6E:FB"
+            ]
+        }
+    }
+]

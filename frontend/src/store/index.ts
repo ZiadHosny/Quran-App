@@ -3,6 +3,7 @@ import { apiSlice } from "./api.store";
 import { loadingReducer } from "./loading.store";
 import { controllersReducer } from "./controllers.store";
 import { surahReducer } from "./surah.store";
+import { settingsReducer } from "./settings.store";
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         loading: loadingReducer,
         controllers: controllersReducer,
         surah: surahReducer,
+        settings: settingsReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(apiSlice.middleware),

@@ -16,6 +16,29 @@ nav {
         margin-right: 2.5em;
     }
 
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .settings-btn {
+        background: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        border-radius: 8px;
+        opacity: 0.85;
+        transition: opacity 0.2s, background 0.2s;
+
+        &:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+
     .login {
         background-color: var(--white-color);
         width: 100px;

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { Bounce, ToastContainer } from 'react-toastify';
 
@@ -7,9 +8,15 @@ import { clientId, domain } from "./utils/envs"
 import { Router } from './Router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { useAppSelector } from './store/hooks';
 
 export const App = () => {
   const isBrowser = typeof window !== "undefined"
+  const theme = useAppSelector(state => state.settings.theme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <Auth0Provider
@@ -27,7 +34,7 @@ export const App = () => {
       </main>
       <Footer />
       <ToastContainer
-        theme={'light'}
+        theme={theme === 'dark' ? 'dark' : 'light'}
         autoClose={1000}
         transition={Bounce}
       />
