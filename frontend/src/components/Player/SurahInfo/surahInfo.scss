@@ -1,0 +1,61 @@
+.surah-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-family: 'Amiri', serif;
+        letter-spacing: 0.3px;
+        border: 1.5px solid transparent;
+        transition: opacity 0.2s;
+
+        &--num {
+            background: transparent;
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+            font-family: monospace;
+            font-size: 0.72rem;
+        }
+
+        &--type {
+            &.makki {
+                background: rgba(255, 152, 0, 0.12);
+                border-color: rgba(255, 152, 0, 0.4);
+                color: #e65100;
+
+                [data-theme='dark'] & {
+                    background: rgba(255, 152, 0, 0.18);
+                    border-color: rgba(255, 152, 0, 0.5);
+                    color: #ffb74d;
+                }
+            }
+
+            &.madani {
+                background: rgba(76, 175, 80, 0.12);
+                border-color: rgba(76, 175, 80, 0.4);
+                color: #2e7d32;
+
+                [data-theme='dark'] & {
+                    background: rgba(76, 175, 80, 0.18);
+                    border-color: rgba(76, 175, 80, 0.5);
+                    color: #81c784;
+                }
+            }
+        }
+
+        &--ayahs {
+            background: transparent;
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+        }
+    }
+}

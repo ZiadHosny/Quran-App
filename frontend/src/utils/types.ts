@@ -33,3 +33,8 @@ export type Result = {
     error: { data: { err: string } },
     data: { data: any, message: string }
 }
+
+export type SurahInfoType = {
+    ayahs: number;
+    type: 'مكية' | 'مدنية';
+}

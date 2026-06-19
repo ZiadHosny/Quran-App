@@ -1,4 +1,5 @@
 import { SurahType } from '../../utils/types'
+import { SurahInfo } from './SurahInfo'
 
 type Props = {
     imgRef: React.RefObject<HTMLInputElement>
@@ -16,6 +17,7 @@ export const CurrentSurah = ({ imgRef, surah }: Props) => {
                 </div>
             </div>
             <h3 className='arabic-font' style={{ textAlign: 'center', fontWeight: 600 }}>{surah.quranReciter}</h3>
+            <SurahInfo surah={surah} />
         </>
     )
 }

@@ -5,6 +5,7 @@ import { userReq } from '../../middlewares/userReq';
 const router = express.Router();
 
 router.get('/quranReciters', userReq, quran.getQuranReciters);
+router.get('/surahsInfo', quran.getSurahsInfo);
 router.get('/:id/Suwar', quran.getAllSuwarQuranReciter);
 router.get('/views', quran.getViews);
 router.get('/countViews', quran.getCountViews);

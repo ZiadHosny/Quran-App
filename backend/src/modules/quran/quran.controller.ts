@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express';
 import { catchAsyncError } from '../../utils/catchAsyncError';
 import { allQuranReciters, getAllQuran } from '../../data/quran';
+import { surahsInfo } from '../../data/surahsInfo';
 import { sendResponse } from '../../utils/response';
 import type { AuthRequest, Surah } from '../../utils/types';
 import { ViewModel } from '../../models/view.model';
@@ -126,6 +127,17 @@ export const playSurah = catchAsyncError(
       res,
       message: 'Surah added To DB successfully',
       status: 200,
+    });
+  },
+);
+
+export const getSurahsInfo = catchAsyncError(
+  async (_: Request, res: Response) => {
+    return sendResponse({
+      res,
+      message: 'get Surahs Info successfully',
+      status: 200,
+      data: surahsInfo.slice(1),
     });
   },
 );
