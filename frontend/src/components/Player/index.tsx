@@ -174,7 +174,7 @@ export const Player = () => {
                 startSection={repeatSection.start}
                 endSection={repeatSection.end}
                 repeatTimes={repeatSection.times} />
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, fontWeight: 'bold' }}>
+            <div dir="ltr" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10, fontWeight: 'bold' }}>
                 <div>{currentTime}</div>
                 <div>{surahDuration}</div>
             </div>
