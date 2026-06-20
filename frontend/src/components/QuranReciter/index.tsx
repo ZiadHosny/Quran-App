@@ -3,8 +3,8 @@ import { QuranReciterType } from "../../utils/types"
 import { useTranslation } from "../../hooks/useTranslation"
 import './quranReciter.scss'
 
-export const QuranReciter = ({ quranReciter, bgColor, imgSize = 200 }:
-    { quranReciter: QuranReciterType, bgColor?: string, imgSize?: number }) => {
+export const QuranReciter = ({ quranReciter, bgColor, imgSize = 200, featured = false }:
+    { quranReciter: QuranReciterType, bgColor?: string, imgSize?: number, featured?: boolean }) => {
     const { lang } = useTranslation();
 
     const name = lang === 'en' && quranReciter.quranReciterEn
@@ -12,7 +12,7 @@ export const QuranReciter = ({ quranReciter, bgColor, imgSize = 200 }:
         : quranReciter.quranReciter;
 
     return (
-        <NavLink style={{ backgroundColor: bgColor }} to={quranReciter.id} className={`quranReciter`}>
+        <NavLink style={{ backgroundColor: bgColor }} to={quranReciter.id} className={`quranReciter${featured ? ' featured' : ''}`}>
             <div className="authorImage" style={{
                 backgroundImage: `url(${quranReciter.photo})`,
                 width: imgSize,

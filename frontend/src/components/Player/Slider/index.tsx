@@ -52,12 +52,12 @@ export const Slider = ({
         percentage !== 0 ? (
           <VscUnmute
             size={17}
-            style={{ position: 'absolute', left: '-20px', color: 'var(--text-secondary)' }}
+            style={{ position: 'absolute', insetInlineStart: '-22px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }}
           />
         ) : (
           <VscMute
             size={17}
-            style={{ position: 'absolute', left: '-20px', color: 'var(--text-secondary)' }}
+            style={{ position: 'absolute', insetInlineStart: '-22px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }}
           />
         )
       ) : (

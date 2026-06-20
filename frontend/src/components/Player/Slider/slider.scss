@@ -7,13 +7,22 @@
 }
 
 .volume-container {
-    --progress-bar-height: 4px;
-    --thumb-width: 10px;
-    --thumb-height: 10px;
+    --progress-bar-height: 3px;
+    --thumb-width: 12px;
+    --thumb-height: 12px;
 
-    width: 50%;
-    margin: auto;
-    margin-bottom: 10px;
+    width: 60%;
+    margin: 4px auto 14px;
+
+    .thumb {
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 0 0 2px var(--primary-color);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    &:hover .thumb {
+        transform: translate(0%, -50%) scale(1.25);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 2.5px var(--primary-color);
+    }
 }
 
 

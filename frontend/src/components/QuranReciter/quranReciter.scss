@@ -57,3 +57,48 @@
         }
     }
 }
+
+/* Featured card (Most Played) */
+.quranReciter.featured {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 28px 20px;
+    min-height: 190px;
+
+    .authorImage {
+        margin: 0;
+        border: 3px solid rgba(255, 255, 255, 0.45);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    .body {
+        width: 100%;
+
+        .author {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.72);
+            letter-spacing: 0.3px;
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .quranReciter.featured {
+        min-height: 220px;
+        padding: 32px 24px;
+        gap: 16px;
+
+        .authorImage {
+            width: 120px !important;
+            height: 120px !important;
+        }
+
+        .body .author {
+            font-size: 22px;
+        }
+    }
+}

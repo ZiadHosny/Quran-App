@@ -34,7 +34,8 @@ export const Home = () => {
       <QuranReciter
         key={"mostPlayed"}
         bgColor={"#ffd52d"}
-        imgSize={100}
+        imgSize={110}
+        featured
         quranReciter={{
           id: "mostPlayed",
           quranReciter: t('mostPlayed'),
