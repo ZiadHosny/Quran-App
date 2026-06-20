@@ -42,7 +42,7 @@ export const CurrentSurah = ({ imgRef, surah }: Props) => {
                 <div className="cd-thumb" style={{ backgroundImage: `url(${surah.photo})` }}>
                 </div>
             </div>
-            <h3 className='arabic-font' style={{ textAlign: 'center', fontWeight: 600 }}>{reciterName}</h3>
+            <h3 className={lang === 'en' && surah.quranReciterEn ? '' : 'arabic-font'} style={{ textAlign: 'center', fontWeight: 600 }}>{reciterName}</h3>
             <SurahInfo surah={surah} />
             <button className="share-btn" onClick={handleShare} title={t('share')}>
                 <IoShareSocialOutline />

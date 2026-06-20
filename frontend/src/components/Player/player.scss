@@ -142,7 +142,7 @@ html[lang="ar"] {
     background: transparent;
     color: var(--text-secondary);
     font-size: 0.8rem;
-    font-family: 'Amiri', serif;
+    font-family: inherit;
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s;
 

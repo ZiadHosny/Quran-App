@@ -62,7 +62,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                 <h3 className={lang === 'en' ? 'title' : 'arabic-font title'}>
                     {lang === 'en' && surah.titleEn ? surah.titleEn : surah.title}
                 </h3>
-                <p className="arabic-font author">
+                <p className={lang === 'en' && surah.quranReciterEn ? 'author' : 'arabic-font author'}>
                     {lang === 'en' && surah.quranReciterEn ? surah.quranReciterEn : surah.quranReciter}
                 </p>
             </div>

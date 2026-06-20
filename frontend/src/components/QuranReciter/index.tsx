@@ -19,7 +19,7 @@ export const QuranReciter = ({ quranReciter, bgColor, imgSize = 200 }:
                 height: imgSize
             }}></div>
             <div className="body">
-                <p className="arabic-font author">{name}</p>
+                <p className={lang === 'en' && quranReciter.quranReciterEn ? 'author' : 'arabic-font author'}>{name}</p>
             </div>
         </NavLink>
     )
