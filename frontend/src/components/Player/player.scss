@@ -15,7 +15,6 @@ header {
 }
 
 .dashboard {
-    padding: 16px 16px 14px;
     background-color: var(--player-bg);
     position: fixed;
     top: 60px;
@@ -23,18 +22,39 @@ header {
     max-width: 480px;
     border-bottom: 1px solid var(--border-color);
     z-index: 2;
-    transition: background-color 0.3s, height 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
+    transition: background-color 0.3s;
     box-sizing: border-box;
+
+    /* blurred album art background */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: var(--player-thumb);
+        background-size: cover;
+        background-position: center;
+        filter: blur(55px);
+        transform: scale(1.4);
+        opacity: 0.22;
+        z-index: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+    }
 
     &--minimized {
         @media (max-width: 899px) {
             height: 0 !important;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
             overflow: hidden;
             border-bottom: none;
         }
     }
+}
+
+.player-content {
+    position: relative;
+    z-index: 1;
+    padding: 16px 16px 14px;
 }
 
 .player-handle {
@@ -70,8 +90,14 @@ header {
         border-bottom: none;
         border-right: 1px solid var(--border-color);
         border-left: none;
-        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .player-content {
+        flex: 1;
         overflow-y: auto;
+        overflow-x: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -90,6 +116,8 @@ html[lang="ar"] {
         }
     }
 }
+
+/* RTL fixes stay on dashboard, not player-content */
 
 .dashboard[dir="rtl"] .slider-container {
     transform: scaleX(-1);

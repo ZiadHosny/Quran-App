@@ -177,42 +177,45 @@ export const Player = () => {
       className={`dashboard${isMinimized ? ' dashboard--minimized' : ''}`}
       ref={dashboardRef}
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
+      style={{ '--player-thumb': `url(${currentSurah.photo})` } as React.CSSProperties}
     >
-      <div className="player-handle" onClick={() => setIsMinimized(true)}>
-        <MdKeyboardArrowDown size={22} className="player-handle-icon" />
-      </div>
-      <CurrentSurah imgRef={imgRef} surah={currentSurah} />
-      <div className="controls-row">
-        <Controllers surahElem={audioElem} />
-        <div className="volume-vertical-wrap">
-          <div className="vol-slider-area">
-            <Slider onChange={handleOnchangeVolume} percentage={volume} volume showIcon={false} />
-          </div>
-          <div className="vol-icon">
-            {volume > 0 ? <VscUnmute /> : <VscMute />}
+      <div className="player-content">
+        <div className="player-handle" onClick={() => setIsMinimized(true)}>
+          <MdKeyboardArrowDown size={22} className="player-handle-icon" />
+        </div>
+        <CurrentSurah imgRef={imgRef} surah={currentSurah} />
+        <div className="controls-row">
+          <Controllers surahElem={audioElem} />
+          <div className="volume-vertical-wrap">
+            <div className="vol-slider-area">
+              <Slider onChange={handleOnchangeVolume} percentage={volume} volume showIcon={false} />
+            </div>
+            <div className="vol-icon">
+              {volume > 0 ? <VscUnmute /> : <VscMute />}
+            </div>
           </div>
         </div>
+        <Slider
+          onChange={handleOnChangeSurahSlider}
+          percentage={surahSlider}
+          startSection={repeatSection.start}
+          endSection={repeatSection.end}
+          repeatTimes={repeatSection.times}
+        />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginTop: 10,
+            fontWeight: 'bold',
+          }}
+        >
+          <div>{currentTime}</div>
+          <div>{surahDuration}</div>
+        </div>
+        <RepeatSection surahElem={audioElem} />
       </div>
-      <Slider
-        onChange={handleOnChangeSurahSlider}
-        percentage={surahSlider}
-        startSection={repeatSection.start}
-        endSection={repeatSection.end}
-        repeatTimes={repeatSection.times}
-      />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginTop: 10,
-          fontWeight: 'bold',
-        }}
-      >
-        <div>{currentTime}</div>
-        <div>{surahDuration}</div>
-      </div>
-      <RepeatSection surahElem={audioElem} />
       <audio
         style={{ display: 'none' }}
         src={currentSurah.url}
