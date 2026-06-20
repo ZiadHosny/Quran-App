@@ -137,10 +137,6 @@ html[lang="ar"] {
     display: flex;
     align-items: center;
 
-    @media (max-width: 899px) {
-        display: none;
-    }
-
     .vol-icon {
         color: var(--text-secondary);
         cursor: pointer;
@@ -152,6 +148,7 @@ html[lang="ar"] {
         color: var(--primary-color);
     }
 
+    /* ── Desktop: hover popup ── */
     .vol-slider-area {
         position: absolute;
         bottom: calc(100% + 6px);
@@ -166,10 +163,8 @@ html[lang="ar"] {
         border-radius: 14px;
         box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.22);
         z-index: 10;
-        /* delay when hiding — gives time to move mouse to the card */
         transition: opacity 0.2s ease 0.15s, transform 0.2s ease 0.15s;
 
-        /* invisible bridge that fills the gap between card and icon */
         &::after {
             content: '';
             position: absolute;
@@ -193,27 +188,44 @@ html[lang="ar"] {
         opacity: 1;
         pointer-events: auto;
         transform: translateX(-50%) translateY(0);
-        /* no delay when showing */
         transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    }
+
+    /* ── Mobile: always visible, same icon position as buttons ── */
+    @media (max-width: 899px) {
+        .vol-slider-area {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+            transition: none;
+        }
+
+        &:hover .vol-slider-area {
+            transition: none;
+        }
     }
 }
 
 .control {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 18px 0 8px 0;
+    justify-content: space-evenly;
+    padding: 8px 0 4px;
 }
 
 .control .btn {
     color: var(--text-secondary);
-    padding: 18px;
-    font-size: 18px;
-}
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
 
-@media (min-width: 900px) {
-    .control .btn {
-        padding: 10px;
+    &:active {
+        background: rgba(128, 128, 128, 0.15);
     }
 }
 
@@ -221,21 +233,26 @@ html[lang="ar"] {
     color: var(--primary-color);
 }
 
-.control .btn:hover {
-    cursor: pointer;
-}
-
 .control .btn-toggle-play {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 22px;
+    padding: 0;
     color: var(--on-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+    transition: transform 0.12s, box-shadow 0.12s;
+
+    &:active {
+        transform: scale(0.93);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
 }
+
 
 .progress {
     width: 100%;
