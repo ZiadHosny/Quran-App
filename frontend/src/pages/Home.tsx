@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { QuranReciter } from "../components/QuranReciter";
 import { useProgress } from "../hooks/useProgress";
 import { useSurah } from "../hooks/useSurah";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const Home = () => {
   const { getAllQuranReciters } = useProgress();
   const { quranRecitersFilter } = useSurah();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (
@@ -35,7 +37,7 @@ export const Home = () => {
         imgSize={100}
         quranReciter={{
           id: "mostPlayed",
-          quranReciter: "الأكثر تشغيلا",
+          quranReciter: t('mostPlayed'),
           photo:
             "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         }}

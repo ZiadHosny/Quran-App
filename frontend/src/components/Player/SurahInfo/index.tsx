@@ -9,7 +9,7 @@ type Props = {
 
 export const SurahInfo = ({ surah }: Props) => {
     const { data: surahsInfo } = useGetSurahsInfoQuery();
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
 
     if (!surahsInfo || !surah.surahNumber) return null;
 
@@ -19,7 +19,7 @@ export const SurahInfo = ({ surah }: Props) => {
     const typeLabel = info.type === 'مكية' ? t('makki') : t('madani');
 
     return (
-        <div className="surah-info" dir="rtl">
+        <div className="surah-info" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
             <span className="surah-info__badge surah-info__badge--num">
                 {surah.surahNumber} / 114
             </span>

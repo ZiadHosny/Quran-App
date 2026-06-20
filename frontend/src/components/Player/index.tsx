@@ -10,11 +10,12 @@ import { Controllers } from './Controllers';
 import { useSurah } from '../../hooks/useSurah';
 import { RepeatSection } from './RepeatSection';
 import { toast } from 'react-toastify';
-import { cantPlaySurahRightNow } from '../../utils/strings';
 import { useMostPlayed } from '../../hooks/useMostPlayed';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export const Player = () => {
     const { addSurahToMostPlayed } = useMostPlayed()
+    const { t } = useTranslation();
     // useControllers
     const {
         isPlaying,
@@ -127,7 +128,7 @@ export const Player = () => {
 
     // on Surah Error
     const onError = () => {
-        toast.error(cantPlaySurahRightNow)
+        toast.error(t('cantPlay'))
     }
     // onLoad Start
     const onLoadStart = () => {

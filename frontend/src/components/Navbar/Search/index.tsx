@@ -4,11 +4,13 @@ import { useLocation } from 'react-router-dom'
 import './search.scss'
 import { useSearch } from '../../../hooks/useSearch'
 import { useSurah } from '../../../hooks/useSurah'
+import { useTranslation } from '../../../hooks/useTranslation'
 
 export const Search = () => {
     const { pathname } = useLocation()
     const { setSearchTerm, searchTerm } = useSurah()
     const { search } = useSearch();
+    const { t } = useTranslation();
 
     const onSearch = (e: FormEvent<HTMLInputElement>) => {
         const searchTerm = e.currentTarget.value
@@ -33,6 +35,7 @@ export const Search = () => {
                     className="input"
                     name="txt"
                     value={searchTerm}
+                    placeholder={t('search')}
                     onChange={onSearch}
                     onMouseOut={onMouseOut}
                 />

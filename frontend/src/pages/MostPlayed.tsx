@@ -4,7 +4,7 @@ import { useControllers } from '../hooks/useControllers';
 import { useMostPlayed } from '../hooks/useMostPlayed';
 import { Player } from '../components/Player';
 import { Surah } from '../components/Surah';
-import { thereIsNoSurah } from '../utils/strings';
+import { useTranslation } from '../hooks/useTranslation';
 
 export const MostPlayed = () => {
     const { setIsPlaying, setRepeatSection } = useControllers();
@@ -13,6 +13,7 @@ export const MostPlayed = () => {
         setSurahProgress,
     } = useSurah()
     const { getMostPlayed, mostPlayed } = useMostPlayed()
+    const { t } = useTranslation();
 
     useEffect(() => {
         setIsPlaying(false)
@@ -38,7 +39,7 @@ export const MostPlayed = () => {
             </>
             :
             <div className='noSurah'>
-                {thereIsNoSurah}
+                {t('noSurah')}
             </div>
     )
 }

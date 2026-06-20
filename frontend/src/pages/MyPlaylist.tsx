@@ -5,7 +5,7 @@ import { useSurah } from '../hooks/useSurah';
 import { useControllers } from '../hooks/useControllers';
 import { Surah } from '../components/Surah';
 import { usePlaylist } from '../hooks/usePlaylist';
-import { thereIsNoSurah } from '../utils/strings';
+import { useTranslation } from '../hooks/useTranslation';
 
 export const MyPlaylist = () => {
   const { setIsPlaying, setRepeatSection } = useControllers();
@@ -14,6 +14,7 @@ export const MyPlaylist = () => {
     setSurahProgress,
   } = useSurah()
   const { getPlaylist, playlist } = usePlaylist()
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsPlaying(false)
@@ -39,7 +40,7 @@ export const MyPlaylist = () => {
       </>
       :
       <div className='noSurah'>
-        {thereIsNoSurah}
+        {t('noSurah')}
       </div>
   )
 }

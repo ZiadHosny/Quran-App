@@ -1,11 +1,13 @@
 import { useControllers } from '../../../hooks/useControllers';
 import { SurahElemInput } from '../../../utils/types';
 import { useSurahSlider } from '../../../hooks/useSurahSlider';
+import { useTranslation } from '../../../hooks/useTranslation';
 import './repeatSection.scss';
 
 export const RepeatSection = ({ surahElem }: SurahElemInput) => {
     const { repeatSection, setRepeatSection } = useControllers();
     const { setSurahSlider } = useSurahSlider();
+    const { t } = useTranslation();
 
     if (!repeatSection.isRepeat) return null;
 
@@ -60,7 +62,7 @@ export const RepeatSection = ({ surahElem }: SurahElemInput) => {
                 <button className="times-btn" onClick={decrement} disabled={repeatSection.times <= 1}>−</button>
                 <div className="times-value">
                     <strong>{repeatSection.times}</strong>
-                    <small>مرة</small>
+                    <small>{t('times')}</small>
                 </div>
                 <button className="times-btn" onClick={increment}>+</button>
             </div>

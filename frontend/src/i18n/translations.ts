@@ -13,13 +13,20 @@ const translations = {
         language:     'اللغة',
         // Navbar
         login:        'دخول',
+        search:       'ابحث...',
         // Player
         share:        'مشاركة',
         linkCopied:   'تم نسخ الرابط ✓',
+        cantPlay:     'لا يمكن تشغيل السورة في الوقت الحالي',
         // Surah info
         makki:        'مكية',
         madani:       'مدنية',
         verses:       'آية',
+        // Repeat section
+        times:        'مرة',
+        // Pages
+        mostPlayed:   'الأكثر تشغيلاً',
+        noSurah:      'لا يوجد اي سورة',
     },
     en: {
         // Settings panel
@@ -33,13 +40,20 @@ const translations = {
         language:     'Language',
         // Navbar
         login:        'Login',
+        search:       'Search...',
         // Player
         share:        'Share',
         linkCopied:   'Link copied ✓',
+        cantPlay:     'Cannot play this surah right now',
         // Surah info
         makki:        'Meccan',
         madani:       'Medinan',
         verses:       'verses',
+        // Repeat section
+        times:        'times',
+        // Pages
+        mostPlayed:   'Most Played',
+        noSurah:      'No surah found',
     },
 } as const;
 
