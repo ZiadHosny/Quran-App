@@ -14,6 +14,8 @@ export interface Surah {
   quranReciter: string;
   quranReciterEn?: string;
   photo: string;
+  ayahs?: number;
+  type?: 'Meccan' | 'Medinan';
 }
 
 export type User = {

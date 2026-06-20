@@ -16,7 +16,9 @@ export interface SurahType {
     quranReciter: string,
     quranReciterEn?: string,
     photo: string,
-    surahPlayedCount?: number
+    surahPlayedCount?: number,
+    ayahs?: number,
+    type?: 'Meccan' | 'Medinan',
 }
 
 export type UserProgress = {
@@ -37,8 +39,3 @@ export type Result = {
     data: { data: any, message: string }
 }
 
-export type SurahInfoType = {
-    ayahs: number;
-    type: 'مكية' | 'مدنية';
-    typeEn: 'Meccan' | 'Medinan';
-}

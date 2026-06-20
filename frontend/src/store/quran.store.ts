@@ -1,5 +1,5 @@
 import { apiSlice } from "./api.store";
-import { QuranReciterType, SurahInfoType, SurahType, UserProgress } from "../utils/types";
+import { QuranReciterType, SurahType, UserProgress } from "../utils/types";
 
 export type GetAllTasksProps = {
     dir?: string,
@@ -114,10 +114,6 @@ const quranApiSlice = apiSlice.injectEndpoints({
                 }
             }
         }),
-        getSurahsInfo: builder.query<SurahInfoType[], void>({
-            query: () => ({ url: `/quran/surahsInfo`, method: 'GET' }),
-            transformResponse: (res: any) => res.data,
-        }),
     })
 })
 
@@ -132,5 +128,4 @@ export const {
     useSendNotificationMutation,
     useGetMostPlayedMutation,
     useAddSurahMostPlayedMutation,
-    useGetSurahsInfoQuery,
 } = quranApiSlice

@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mostPlayed = exports.getSurahsInfo = exports.playSurah = exports.getCountViews = exports.getViews = exports.getQuranReciters = exports.getAllSuwarQuranReciter = void 0;
+exports.mostPlayed = exports.playSurah = exports.getCountViews = exports.getViews = exports.getQuranReciters = exports.getAllSuwarQuranReciter = void 0;
 const catchAsyncError_1 = require("../../utils/catchAsyncError");
 const quran_1 = require("../../data/quran");
-const surahsInfo_1 = require("../../data/surahsInfo");
 const response_1 = require("../../utils/response");
 const view_model_1 = require("../../models/view.model");
 const surah_model_1 = require("../../models/surah.model");
@@ -103,14 +102,6 @@ exports.playSurah = (0, catchAsyncError_1.catchAsyncError)(async (req, res) => {
         res,
         message: 'Surah added To DB successfully',
         status: 200,
-    });
-});
-exports.getSurahsInfo = (0, catchAsyncError_1.catchAsyncError)(async (_, res) => {
-    return (0, response_1.sendResponse)({
-        res,
-        message: 'get Surahs Info successfully',
-        status: 200,
-        data: surahsInfo_1.surahsInfo.slice(1),
     });
 });
 exports.mostPlayed = (0, catchAsyncError_1.catchAsyncError)(async (_, res) => {

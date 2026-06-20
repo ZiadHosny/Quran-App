@@ -32,7 +32,6 @@ const quran = __importStar(require("./quran.controller"));
 const userReq_1 = require("../../middlewares/userReq");
 const router = express_1.default.Router();
 router.get('/quranReciters', userReq_1.userReq, quran.getQuranReciters);
-router.get('/surahsInfo', quran.getSurahsInfo);
 router.get('/:id/Suwar', quran.getAllSuwarQuranReciter);
 router.get('/views', quran.getViews);
 router.get('/countViews', quran.getCountViews);

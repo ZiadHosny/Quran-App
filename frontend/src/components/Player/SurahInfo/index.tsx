@@ -1,4 +1,3 @@
-import { useGetSurahsInfoQuery } from '../../../store/quran.store';
 import { SurahType } from '../../../utils/types';
 import { useTranslation } from '../../../hooks/useTranslation';
 import './surahInfo.scss';
@@ -8,26 +7,22 @@ type Props = {
 };
 
 export const SurahInfo = ({ surah }: Props) => {
-    const { data: surahsInfo } = useGetSurahsInfoQuery();
     const { t, lang } = useTranslation();
 
-    if (!surahsInfo || !surah.surahNumber) return null;
+    if (!surah.surahNumber || !surah.ayahs || !surah.type) return null;
 
-    const info = surahsInfo[surah.surahNumber - 1];
-    if (!info) return null;
-
-    const typeLabel = lang === 'en' ? info.typeEn : info.type;
+    const typeLabel = lang === 'en' ? surah.type : (surah.type === 'Meccan' ? 'مكية' : 'مدنية');
 
     return (
         <div className="surah-info" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
             <span className="surah-info__badge surah-info__badge--num">
                 {surah.surahNumber} / 114
             </span>
-            <span className={`surah-info__badge surah-info__badge--type ${info.type === 'مكية' ? 'makki' : 'madani'}`}>
+            <span className={`surah-info__badge surah-info__badge--type ${surah.type === 'Meccan' ? 'makki' : 'madani'}`}>
                 {typeLabel}
             </span>
             <span className="surah-info__badge surah-info__badge--ayahs">
-                {info.ayahs} {t('verses')}
+                {surah.ayahs} {t('verses')}
             </span>
         </div>
     );
