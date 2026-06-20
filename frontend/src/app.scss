@@ -114,12 +114,22 @@ html {
     .playlist {
         margin-top: 0;
         margin-left: 400px;
+        margin-right: 0;
         padding: 24px 32px;
         min-height: calc(100vh - 60px);
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         gap: 10px;
         align-content: start;
+    }
+}
+
+html[lang="ar"] {
+    @media (min-width: 900px) {
+        .playlist {
+            margin-left: 0;
+            margin-right: 400px;
+        }
     }
 }
 

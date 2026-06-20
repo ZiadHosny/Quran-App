@@ -28,11 +28,14 @@ header {
 
 @media (min-width: 900px) {
     .dashboard {
+        left: 0;
+        right: auto;
         width: 380px;
         max-width: 380px;
         height: calc(100vh - 60px);
         border-bottom: none;
         border-right: 1px solid var(--border-color);
+        border-left: none;
         overflow-x: hidden;
         overflow-y: auto;
         display: flex;
@@ -40,6 +43,17 @@ header {
         justify-content: center;
         padding: 28px 24px;
         box-sizing: border-box;
+    }
+}
+
+html[lang="ar"] {
+    @media (min-width: 900px) {
+        .dashboard {
+            left: auto;
+            right: 0;
+            border-right: none;
+            border-left: 1px solid var(--border-color);
+        }
     }
 }
 
