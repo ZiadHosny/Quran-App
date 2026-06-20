@@ -4,6 +4,7 @@ import { FaBackward, FaForward, FaRandom, FaPlay, FaPause } from 'react-icons/fa
 import { useControllers } from '../../../hooks/useControllers';
 import { SurahElemInput } from '../../../utils/types';
 import { useSurah } from '../../../hooks/useSurah';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 export const Controllers = ({ surahElem }: SurahElemInput) => {
     const {
@@ -17,10 +18,15 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
         setRepeatSection,
     } = useControllers()
     const { handleNextSurah, prevSurah } = useSurah()
+    const { lang } = useTranslation();
 
     const handlePrevSurahBtn = () => prevSurah()
     const handleNextSurahBtn = () => handleNextSurah(surahElem.current)
     const handleIsRepeatSection = () => setRepeatSection({ isRepeat: !repeatSection.isRepeat })
+
+    const arrowStyle = lang === 'ar' ? { transform: 'scaleX(-1)' } : {};
+    const badgePos = lang === 'ar' ? { position: 'absolute' as const, top: 0, right: 8, fontSize: 10 }
+                                   : { position: 'absolute' as const, top: 0, left: 8, fontSize: 10 };
 
     return (
         <div className="control">
@@ -30,7 +36,7 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
                 onClick={handleIsRepeatSection}
             >
                 {repeatSection.times > 0 && (
-                    <div style={{ position: 'absolute', top: 0, left: 8, fontSize: 10 }}>
+                    <div style={badgePos}>
                         {repeatSection.times}
                     </div>
                 )}
@@ -42,7 +48,7 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
             </div>
 
             <div className="btn" onClick={handlePrevSurahBtn}>
-                <FaBackward />
+                <FaBackward style={arrowStyle} />
             </div>
 
             <div className="btn btn-toggle-play" onClick={handleIsPlaying}>
@@ -50,7 +56,7 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
             </div>
 
             <div className="btn" onClick={handleNextSurahBtn}>
-                <FaForward />
+                <FaForward style={arrowStyle} />
             </div>
 
             <div className={`btn ${isRandom ? 'active' : ''}`} onClick={handleIsRandom}>

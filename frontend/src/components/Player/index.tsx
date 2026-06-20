@@ -15,7 +15,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 
 export const Player = () => {
     const { addSurahToMostPlayed } = useMostPlayed()
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
     // useControllers
     const {
         isPlaying,
@@ -165,7 +165,7 @@ export const Player = () => {
     }, []);
 
     return (
-        <div className='dashboard' ref={dashboardRef}>
+        <div className='dashboard' ref={dashboardRef} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
             <CurrentSurah imgRef={imgRef} surah={currentSurah} />
             <Controllers surahElem={audioElem} />
             <Slider onChange={handleOnchangeVolume} percentage={volume} volume />

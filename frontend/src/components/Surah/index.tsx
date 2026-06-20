@@ -55,6 +55,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
     return (
         <div ref={card}
             className={`surah ${isCurrentSurah ? 'activeSurah' : ''}`}
+            dir={lang === 'ar' ? 'rtl' : 'ltr'}
             onClick={handleChangeSurah} >
             <h3>{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>

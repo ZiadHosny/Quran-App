@@ -7,7 +7,7 @@ import { useTranslation } from "../hooks/useTranslation";
 export const Home = () => {
   const { getAllQuranReciters } = useProgress();
   const { quranRecitersFilter } = useSurah();
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   useEffect(() => {
     if (
@@ -30,7 +30,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="home-grid">
+    <div className="home-grid" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <QuranReciter
         key={"mostPlayed"}
         bgColor={"#ffd52d"}

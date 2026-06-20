@@ -16,7 +16,7 @@ export const SurahInfo = ({ surah }: Props) => {
     const info = surahsInfo[surah.surahNumber - 1];
     if (!info) return null;
 
-    const typeLabel = info.type === 'مكية' ? t('makki') : t('madani');
+    const typeLabel = lang === 'en' ? info.typeEn : info.type;
 
     return (
         <div className="surah-info" dir={lang === 'ar' ? 'rtl' : 'ltr'}>

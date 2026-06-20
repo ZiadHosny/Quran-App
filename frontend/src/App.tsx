@@ -40,6 +40,7 @@ export const App = () => {
       <Footer />
       <ToastContainer
         theme={theme === 'dark' ? 'dark' : 'light'}
+        position={lang === 'ar' ? 'top-left' : 'top-right'}
         autoClose={1000}
         transition={Bounce}
       />

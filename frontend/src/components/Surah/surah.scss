@@ -54,7 +54,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-left: 10px;
+            margin-inline-start: 10px;
             font-weight: bold;
             font-size: 12px;
 
@@ -65,7 +65,7 @@
 
         .download {
             color: var(--green-color);
-            margin-left: 10px;
+            margin-inline-start: 10px;
         }
     }
 
@@ -74,7 +74,7 @@
         color: var(--grey-color);
         font-size: 14px;
         bottom: 2px;
-        right: 5px;
+        inset-inline-end: 5px;
     }
 }
 

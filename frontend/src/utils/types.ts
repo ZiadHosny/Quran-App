@@ -40,4 +40,5 @@ export type Result = {
 export type SurahInfoType = {
     ayahs: number;
     type: 'مكية' | 'مدنية';
+    typeEn: 'Meccan' | 'Medinan';
 }

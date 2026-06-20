@@ -13,7 +13,7 @@ export const MostPlayed = () => {
         setSurahProgress,
     } = useSurah()
     const { getMostPlayed, mostPlayed } = useMostPlayed()
-    const { t } = useTranslation();
+    const { t, lang } = useTranslation();
 
     useEffect(() => {
         setIsPlaying(false)
@@ -31,7 +31,7 @@ export const MostPlayed = () => {
         mostPlayed && mostPlayed.length > 0 ?
             <>
                 <Player />
-                <div className='playlist'>
+                <div className='playlist' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
                     {mostPlayed.map((surah) => (
                         <Surah key={surah.id} surah={surah} />
                     ))}

@@ -1,122 +1,123 @@
 export type SurahInfoData = {
     ayahs: number;
     type: 'مكية' | 'مدنية';
+    typeEn: 'Meccan' | 'Medinan';
 };
 
 export const surahsInfo: SurahInfoData[] = [
-    { ayahs: 0,   type: 'مكية'  }, // placeholder — index 0 unused
-    { ayahs: 7,   type: 'مكية'  }, // 1   - الفاتحة
-    { ayahs: 286, type: 'مدنية' }, // 2   - البقرة
-    { ayahs: 200, type: 'مدنية' }, // 3   - آل عمران
-    { ayahs: 176, type: 'مدنية' }, // 4   - النساء
-    { ayahs: 120, type: 'مدنية' }, // 5   - المائدة
-    { ayahs: 165, type: 'مكية'  }, // 6   - الأنعام
-    { ayahs: 206, type: 'مكية'  }, // 7   - الأعراف
-    { ayahs: 75,  type: 'مدنية' }, // 8   - الأنفال
-    { ayahs: 129, type: 'مدنية' }, // 9   - التوبة
-    { ayahs: 109, type: 'مكية'  }, // 10  - يونس
-    { ayahs: 123, type: 'مكية'  }, // 11  - هود
-    { ayahs: 111, type: 'مكية'  }, // 12  - يوسف
-    { ayahs: 43,  type: 'مدنية' }, // 13  - الرعد
-    { ayahs: 52,  type: 'مكية'  }, // 14  - إبراهيم
-    { ayahs: 99,  type: 'مكية'  }, // 15  - الحجر
-    { ayahs: 128, type: 'مكية'  }, // 16  - النحل
-    { ayahs: 111, type: 'مكية'  }, // 17  - الإسراء
-    { ayahs: 110, type: 'مكية'  }, // 18  - الكهف
-    { ayahs: 98,  type: 'مكية'  }, // 19  - مريم
-    { ayahs: 135, type: 'مكية'  }, // 20  - طه
-    { ayahs: 112, type: 'مكية'  }, // 21  - الأنبياء
-    { ayahs: 78,  type: 'مدنية' }, // 22  - الحج
-    { ayahs: 118, type: 'مكية'  }, // 23  - المؤمنون
-    { ayahs: 64,  type: 'مدنية' }, // 24  - النور
-    { ayahs: 77,  type: 'مكية'  }, // 25  - الفرقان
-    { ayahs: 227, type: 'مكية'  }, // 26  - الشعراء
-    { ayahs: 93,  type: 'مكية'  }, // 27  - النمل
-    { ayahs: 88,  type: 'مكية'  }, // 28  - القصص
-    { ayahs: 69,  type: 'مكية'  }, // 29  - العنكبوت
-    { ayahs: 60,  type: 'مكية'  }, // 30  - الروم
-    { ayahs: 34,  type: 'مكية'  }, // 31  - لقمان
-    { ayahs: 30,  type: 'مكية'  }, // 32  - السجدة
-    { ayahs: 73,  type: 'مدنية' }, // 33  - الأحزاب
-    { ayahs: 54,  type: 'مكية'  }, // 34  - سبأ
-    { ayahs: 45,  type: 'مكية'  }, // 35  - فاطر
-    { ayahs: 83,  type: 'مكية'  }, // 36  - يس
-    { ayahs: 182, type: 'مكية'  }, // 37  - الصافات
-    { ayahs: 88,  type: 'مكية'  }, // 38  - ص
-    { ayahs: 75,  type: 'مكية'  }, // 39  - الزمر
-    { ayahs: 85,  type: 'مكية'  }, // 40  - غافر
-    { ayahs: 54,  type: 'مكية'  }, // 41  - فصلت
-    { ayahs: 53,  type: 'مكية'  }, // 42  - الشورى
-    { ayahs: 89,  type: 'مكية'  }, // 43  - الزخرف
-    { ayahs: 59,  type: 'مكية'  }, // 44  - الدخان
-    { ayahs: 37,  type: 'مكية'  }, // 45  - الجاثية
-    { ayahs: 35,  type: 'مكية'  }, // 46  - الأحقاف
-    { ayahs: 38,  type: 'مدنية' }, // 47  - محمد
-    { ayahs: 29,  type: 'مدنية' }, // 48  - الفتح
-    { ayahs: 18,  type: 'مدنية' }, // 49  - الحجرات
-    { ayahs: 45,  type: 'مكية'  }, // 50  - ق
-    { ayahs: 60,  type: 'مكية'  }, // 51  - الذاريات
-    { ayahs: 49,  type: 'مكية'  }, // 52  - الطور
-    { ayahs: 62,  type: 'مكية'  }, // 53  - النجم
-    { ayahs: 55,  type: 'مكية'  }, // 54  - القمر
-    { ayahs: 78,  type: 'مدنية' }, // 55  - الرحمن
-    { ayahs: 96,  type: 'مكية'  }, // 56  - الواقعة
-    { ayahs: 29,  type: 'مدنية' }, // 57  - الحديد
-    { ayahs: 22,  type: 'مدنية' }, // 58  - المجادلة
-    { ayahs: 24,  type: 'مدنية' }, // 59  - الحشر
-    { ayahs: 13,  type: 'مدنية' }, // 60  - الممتحنة
-    { ayahs: 14,  type: 'مدنية' }, // 61  - الصف
-    { ayahs: 11,  type: 'مدنية' }, // 62  - الجمعة
-    { ayahs: 11,  type: 'مدنية' }, // 63  - المنافقون
-    { ayahs: 18,  type: 'مدنية' }, // 64  - التغابن
-    { ayahs: 12,  type: 'مدنية' }, // 65  - الطلاق
-    { ayahs: 12,  type: 'مدنية' }, // 66  - التحريم
-    { ayahs: 30,  type: 'مكية'  }, // 67  - الملك
-    { ayahs: 52,  type: 'مكية'  }, // 68  - القلم
-    { ayahs: 52,  type: 'مكية'  }, // 69  - الحاقة
-    { ayahs: 44,  type: 'مكية'  }, // 70  - المعارج
-    { ayahs: 28,  type: 'مكية'  }, // 71  - نوح
-    { ayahs: 28,  type: 'مكية'  }, // 72  - الجن
-    { ayahs: 20,  type: 'مكية'  }, // 73  - المزمل
-    { ayahs: 56,  type: 'مكية'  }, // 74  - المدثر
-    { ayahs: 40,  type: 'مكية'  }, // 75  - القيامة
-    { ayahs: 31,  type: 'مدنية' }, // 76  - الإنسان
-    { ayahs: 50,  type: 'مكية'  }, // 77  - المرسلات
-    { ayahs: 40,  type: 'مكية'  }, // 78  - النبأ
-    { ayahs: 46,  type: 'مكية'  }, // 79  - النازعات
-    { ayahs: 42,  type: 'مكية'  }, // 80  - عبس
-    { ayahs: 29,  type: 'مكية'  }, // 81  - التكوير
-    { ayahs: 19,  type: 'مكية'  }, // 82  - الانفطار
-    { ayahs: 36,  type: 'مكية'  }, // 83  - المطففين
-    { ayahs: 25,  type: 'مكية'  }, // 84  - الانشقاق
-    { ayahs: 22,  type: 'مكية'  }, // 85  - البروج
-    { ayahs: 17,  type: 'مكية'  }, // 86  - الطارق
-    { ayahs: 19,  type: 'مكية'  }, // 87  - الأعلى
-    { ayahs: 26,  type: 'مكية'  }, // 88  - الغاشية
-    { ayahs: 30,  type: 'مكية'  }, // 89  - الفجر
-    { ayahs: 20,  type: 'مكية'  }, // 90  - البلد
-    { ayahs: 15,  type: 'مكية'  }, // 91  - الشمس
-    { ayahs: 21,  type: 'مكية'  }, // 92  - الليل
-    { ayahs: 11,  type: 'مكية'  }, // 93  - الضحى
-    { ayahs: 8,   type: 'مكية'  }, // 94  - الشرح
-    { ayahs: 8,   type: 'مكية'  }, // 95  - التين
-    { ayahs: 19,  type: 'مكية'  }, // 96  - العلق
-    { ayahs: 5,   type: 'مكية'  }, // 97  - القدر
-    { ayahs: 8,   type: 'مدنية' }, // 98  - البينة
-    { ayahs: 8,   type: 'مدنية' }, // 99  - الزلزلة
-    { ayahs: 11,  type: 'مكية'  }, // 100 - العاديات
-    { ayahs: 11,  type: 'مكية'  }, // 101 - القارعة
-    { ayahs: 8,   type: 'مكية'  }, // 102 - التكاثر
-    { ayahs: 3,   type: 'مكية'  }, // 103 - العصر
-    { ayahs: 9,   type: 'مكية'  }, // 104 - الهمزة
-    { ayahs: 5,   type: 'مكية'  }, // 105 - الفيل
-    { ayahs: 4,   type: 'مكية'  }, // 106 - قريش
-    { ayahs: 7,   type: 'مكية'  }, // 107 - الماعون
-    { ayahs: 3,   type: 'مكية'  }, // 108 - الكوثر
-    { ayahs: 6,   type: 'مكية'  }, // 109 - الكافرون
-    { ayahs: 3,   type: 'مدنية' }, // 110 - النصر
-    { ayahs: 5,   type: 'مكية'  }, // 111 - المسد
-    { ayahs: 4,   type: 'مكية'  }, // 112 - الإخلاص
-    { ayahs: 5,   type: 'مكية'  }, // 113 - الفلق
-    { ayahs: 6,   type: 'مكية'  }, // 114 - الناس
+    { ayahs: 0,   type: 'مكية',  typeEn: 'Meccan'  }, // placeholder — index 0 unused
+    { ayahs: 7,   type: 'مكية',  typeEn: 'Meccan'  }, // 1   - الفاتحة
+    { ayahs: 286, type: 'مدنية', typeEn: 'Medinan' }, // 2   - البقرة
+    { ayahs: 200, type: 'مدنية', typeEn: 'Medinan' }, // 3   - آل عمران
+    { ayahs: 176, type: 'مدنية', typeEn: 'Medinan' }, // 4   - النساء
+    { ayahs: 120, type: 'مدنية', typeEn: 'Medinan' }, // 5   - المائدة
+    { ayahs: 165, type: 'مكية',  typeEn: 'Meccan'  }, // 6   - الأنعام
+    { ayahs: 206, type: 'مكية',  typeEn: 'Meccan'  }, // 7   - الأعراف
+    { ayahs: 75,  type: 'مدنية', typeEn: 'Medinan' }, // 8   - الأنفال
+    { ayahs: 129, type: 'مدنية', typeEn: 'Medinan' }, // 9   - التوبة
+    { ayahs: 109, type: 'مكية',  typeEn: 'Meccan'  }, // 10  - يونس
+    { ayahs: 123, type: 'مكية',  typeEn: 'Meccan'  }, // 11  - هود
+    { ayahs: 111, type: 'مكية',  typeEn: 'Meccan'  }, // 12  - يوسف
+    { ayahs: 43,  type: 'مدنية', typeEn: 'Medinan' }, // 13  - الرعد
+    { ayahs: 52,  type: 'مكية',  typeEn: 'Meccan'  }, // 14  - إبراهيم
+    { ayahs: 99,  type: 'مكية',  typeEn: 'Meccan'  }, // 15  - الحجر
+    { ayahs: 128, type: 'مكية',  typeEn: 'Meccan'  }, // 16  - النحل
+    { ayahs: 111, type: 'مكية',  typeEn: 'Meccan'  }, // 17  - الإسراء
+    { ayahs: 110, type: 'مكية',  typeEn: 'Meccan'  }, // 18  - الكهف
+    { ayahs: 98,  type: 'مكية',  typeEn: 'Meccan'  }, // 19  - مريم
+    { ayahs: 135, type: 'مكية',  typeEn: 'Meccan'  }, // 20  - طه
+    { ayahs: 112, type: 'مكية',  typeEn: 'Meccan'  }, // 21  - الأنبياء
+    { ayahs: 78,  type: 'مدنية', typeEn: 'Medinan' }, // 22  - الحج
+    { ayahs: 118, type: 'مكية',  typeEn: 'Meccan'  }, // 23  - المؤمنون
+    { ayahs: 64,  type: 'مدنية', typeEn: 'Medinan' }, // 24  - النور
+    { ayahs: 77,  type: 'مكية',  typeEn: 'Meccan'  }, // 25  - الفرقان
+    { ayahs: 227, type: 'مكية',  typeEn: 'Meccan'  }, // 26  - الشعراء
+    { ayahs: 93,  type: 'مكية',  typeEn: 'Meccan'  }, // 27  - النمل
+    { ayahs: 88,  type: 'مكية',  typeEn: 'Meccan'  }, // 28  - القصص
+    { ayahs: 69,  type: 'مكية',  typeEn: 'Meccan'  }, // 29  - العنكبوت
+    { ayahs: 60,  type: 'مكية',  typeEn: 'Meccan'  }, // 30  - الروم
+    { ayahs: 34,  type: 'مكية',  typeEn: 'Meccan'  }, // 31  - لقمان
+    { ayahs: 30,  type: 'مكية',  typeEn: 'Meccan'  }, // 32  - السجدة
+    { ayahs: 73,  type: 'مدنية', typeEn: 'Medinan' }, // 33  - الأحزاب
+    { ayahs: 54,  type: 'مكية',  typeEn: 'Meccan'  }, // 34  - سبأ
+    { ayahs: 45,  type: 'مكية',  typeEn: 'Meccan'  }, // 35  - فاطر
+    { ayahs: 83,  type: 'مكية',  typeEn: 'Meccan'  }, // 36  - يس
+    { ayahs: 182, type: 'مكية',  typeEn: 'Meccan'  }, // 37  - الصافات
+    { ayahs: 88,  type: 'مكية',  typeEn: 'Meccan'  }, // 38  - ص
+    { ayahs: 75,  type: 'مكية',  typeEn: 'Meccan'  }, // 39  - الزمر
+    { ayahs: 85,  type: 'مكية',  typeEn: 'Meccan'  }, // 40  - غافر
+    { ayahs: 54,  type: 'مكية',  typeEn: 'Meccan'  }, // 41  - فصلت
+    { ayahs: 53,  type: 'مكية',  typeEn: 'Meccan'  }, // 42  - الشورى
+    { ayahs: 89,  type: 'مكية',  typeEn: 'Meccan'  }, // 43  - الزخرف
+    { ayahs: 59,  type: 'مكية',  typeEn: 'Meccan'  }, // 44  - الدخان
+    { ayahs: 37,  type: 'مكية',  typeEn: 'Meccan'  }, // 45  - الجاثية
+    { ayahs: 35,  type: 'مكية',  typeEn: 'Meccan'  }, // 46  - الأحقاف
+    { ayahs: 38,  type: 'مدنية', typeEn: 'Medinan' }, // 47  - محمد
+    { ayahs: 29,  type: 'مدنية', typeEn: 'Medinan' }, // 48  - الفتح
+    { ayahs: 18,  type: 'مدنية', typeEn: 'Medinan' }, // 49  - الحجرات
+    { ayahs: 45,  type: 'مكية',  typeEn: 'Meccan'  }, // 50  - ق
+    { ayahs: 60,  type: 'مكية',  typeEn: 'Meccan'  }, // 51  - الذاريات
+    { ayahs: 49,  type: 'مكية',  typeEn: 'Meccan'  }, // 52  - الطور
+    { ayahs: 62,  type: 'مكية',  typeEn: 'Meccan'  }, // 53  - النجم
+    { ayahs: 55,  type: 'مكية',  typeEn: 'Meccan'  }, // 54  - القمر
+    { ayahs: 78,  type: 'مدنية', typeEn: 'Medinan' }, // 55  - الرحمن
+    { ayahs: 96,  type: 'مكية',  typeEn: 'Meccan'  }, // 56  - الواقعة
+    { ayahs: 29,  type: 'مدنية', typeEn: 'Medinan' }, // 57  - الحديد
+    { ayahs: 22,  type: 'مدنية', typeEn: 'Medinan' }, // 58  - المجادلة
+    { ayahs: 24,  type: 'مدنية', typeEn: 'Medinan' }, // 59  - الحشر
+    { ayahs: 13,  type: 'مدنية', typeEn: 'Medinan' }, // 60  - الممتحنة
+    { ayahs: 14,  type: 'مدنية', typeEn: 'Medinan' }, // 61  - الصف
+    { ayahs: 11,  type: 'مدنية', typeEn: 'Medinan' }, // 62  - الجمعة
+    { ayahs: 11,  type: 'مدنية', typeEn: 'Medinan' }, // 63  - المنافقون
+    { ayahs: 18,  type: 'مدنية', typeEn: 'Medinan' }, // 64  - التغابن
+    { ayahs: 12,  type: 'مدنية', typeEn: 'Medinan' }, // 65  - الطلاق
+    { ayahs: 12,  type: 'مدنية', typeEn: 'Medinan' }, // 66  - التحريم
+    { ayahs: 30,  type: 'مكية',  typeEn: 'Meccan'  }, // 67  - الملك
+    { ayahs: 52,  type: 'مكية',  typeEn: 'Meccan'  }, // 68  - القلم
+    { ayahs: 52,  type: 'مكية',  typeEn: 'Meccan'  }, // 69  - الحاقة
+    { ayahs: 44,  type: 'مكية',  typeEn: 'Meccan'  }, // 70  - المعارج
+    { ayahs: 28,  type: 'مكية',  typeEn: 'Meccan'  }, // 71  - نوح
+    { ayahs: 28,  type: 'مكية',  typeEn: 'Meccan'  }, // 72  - الجن
+    { ayahs: 20,  type: 'مكية',  typeEn: 'Meccan'  }, // 73  - المزمل
+    { ayahs: 56,  type: 'مكية',  typeEn: 'Meccan'  }, // 74  - المدثر
+    { ayahs: 40,  type: 'مكية',  typeEn: 'Meccan'  }, // 75  - القيامة
+    { ayahs: 31,  type: 'مدنية', typeEn: 'Medinan' }, // 76  - الإنسان
+    { ayahs: 50,  type: 'مكية',  typeEn: 'Meccan'  }, // 77  - المرسلات
+    { ayahs: 40,  type: 'مكية',  typeEn: 'Meccan'  }, // 78  - النبأ
+    { ayahs: 46,  type: 'مكية',  typeEn: 'Meccan'  }, // 79  - النازعات
+    { ayahs: 42,  type: 'مكية',  typeEn: 'Meccan'  }, // 80  - عبس
+    { ayahs: 29,  type: 'مكية',  typeEn: 'Meccan'  }, // 81  - التكوير
+    { ayahs: 19,  type: 'مكية',  typeEn: 'Meccan'  }, // 82  - الانفطار
+    { ayahs: 36,  type: 'مكية',  typeEn: 'Meccan'  }, // 83  - المطففين
+    { ayahs: 25,  type: 'مكية',  typeEn: 'Meccan'  }, // 84  - الانشقاق
+    { ayahs: 22,  type: 'مكية',  typeEn: 'Meccan'  }, // 85  - البروج
+    { ayahs: 17,  type: 'مكية',  typeEn: 'Meccan'  }, // 86  - الطارق
+    { ayahs: 19,  type: 'مكية',  typeEn: 'Meccan'  }, // 87  - الأعلى
+    { ayahs: 26,  type: 'مكية',  typeEn: 'Meccan'  }, // 88  - الغاشية
+    { ayahs: 30,  type: 'مكية',  typeEn: 'Meccan'  }, // 89  - الفجر
+    { ayahs: 20,  type: 'مكية',  typeEn: 'Meccan'  }, // 90  - البلد
+    { ayahs: 15,  type: 'مكية',  typeEn: 'Meccan'  }, // 91  - الشمس
+    { ayahs: 21,  type: 'مكية',  typeEn: 'Meccan'  }, // 92  - الليل
+    { ayahs: 11,  type: 'مكية',  typeEn: 'Meccan'  }, // 93  - الضحى
+    { ayahs: 8,   type: 'مكية',  typeEn: 'Meccan'  }, // 94  - الشرح
+    { ayahs: 8,   type: 'مكية',  typeEn: 'Meccan'  }, // 95  - التين
+    { ayahs: 19,  type: 'مكية',  typeEn: 'Meccan'  }, // 96  - العلق
+    { ayahs: 5,   type: 'مكية',  typeEn: 'Meccan'  }, // 97  - القدر
+    { ayahs: 8,   type: 'مدنية', typeEn: 'Medinan' }, // 98  - البينة
+    { ayahs: 8,   type: 'مدنية', typeEn: 'Medinan' }, // 99  - الزلزلة
+    { ayahs: 11,  type: 'مكية',  typeEn: 'Meccan'  }, // 100 - العاديات
+    { ayahs: 11,  type: 'مكية',  typeEn: 'Meccan'  }, // 101 - القارعة
+    { ayahs: 8,   type: 'مكية',  typeEn: 'Meccan'  }, // 102 - التكاثر
+    { ayahs: 3,   type: 'مكية',  typeEn: 'Meccan'  }, // 103 - العصر
+    { ayahs: 9,   type: 'مكية',  typeEn: 'Meccan'  }, // 104 - الهمزة
+    { ayahs: 5,   type: 'مكية',  typeEn: 'Meccan'  }, // 105 - الفيل
+    { ayahs: 4,   type: 'مكية',  typeEn: 'Meccan'  }, // 106 - قريش
+    { ayahs: 7,   type: 'مكية',  typeEn: 'Meccan'  }, // 107 - الماعون
+    { ayahs: 3,   type: 'مكية',  typeEn: 'Meccan'  }, // 108 - الكوثر
+    { ayahs: 6,   type: 'مكية',  typeEn: 'Meccan'  }, // 109 - الكافرون
+    { ayahs: 3,   type: 'مدنية', typeEn: 'Medinan' }, // 110 - النصر
+    { ayahs: 5,   type: 'مكية',  typeEn: 'Meccan'  }, // 111 - المسد
+    { ayahs: 4,   type: 'مكية',  typeEn: 'Meccan'  }, // 112 - الإخلاص
+    { ayahs: 5,   type: 'مكية',  typeEn: 'Meccan'  }, // 113 - الفلق
+    { ayahs: 6,   type: 'مكية',  typeEn: 'Meccan'  }, // 114 - الناس
 ];

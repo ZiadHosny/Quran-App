@@ -8,9 +8,11 @@ import { SurahType } from '../utils/types';
 import { useControllers } from '../hooks/useControllers';
 import { Surah } from '../components/Surah';
 import { usePlaylist } from '../hooks/usePlaylist';
+import { useTranslation } from '../hooks/useTranslation';
 
 export const QuranSuwar = () => {
   const params = useParams();
+  const { lang } = useTranslation();
   const { setIsPlaying, setRepeatSection } = useControllers();
   const {
     setCurrentSurah,
@@ -61,7 +63,7 @@ export const QuranSuwar = () => {
     quranSuwarFilter ?
       <>
         <Player />
-        <div className='playlist'>
+        <div className='playlist' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
           {quranSuwarFilter.map((surah) => (
             <Surah key={surah.id} surah={surah} />))}
         </div>

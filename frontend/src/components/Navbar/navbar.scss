@@ -61,7 +61,7 @@ nav {
     .action {
         position: fixed;
         top: 5px;
-        right: 30px;
+        inset-inline-end: 30px;
 
         .profile {
             position: relative;
@@ -73,8 +73,7 @@ nav {
 
             img {
                 position: absolute;
-                top: 0;
-                left: 0;
+                inset: 0;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -84,7 +83,7 @@ nav {
         .menu {
             position: absolute;
             top: 120px;
-            right: -10px;
+            inset-inline-end: -10px;
             padding: 10px 20px;
             background: #000;
             width: 200px;
@@ -104,7 +103,7 @@ nav {
                 content: "";
                 position: absolute;
                 top: -5px;
-                right: 28px;
+                inset-inline-end: 28px;
                 width: 20px;
                 height: 20px;
                 background: #000;

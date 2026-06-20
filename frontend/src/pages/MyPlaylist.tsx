@@ -14,7 +14,7 @@ export const MyPlaylist = () => {
     setSurahProgress,
   } = useSurah()
   const { getPlaylist, playlist } = usePlaylist()
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   useEffect(() => {
     setIsPlaying(false)
@@ -32,7 +32,7 @@ export const MyPlaylist = () => {
     playlist && playlist.length > 0 ?
       <>
         <Player />
-        <div className='playlist'>
+        <div className='playlist' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
           {playlist.map((surah) => (
             <Surah key={surah.id} surah={surah} />
           ))}

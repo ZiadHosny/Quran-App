@@ -26,8 +26,8 @@
 .box .icon {
     position: absolute;
     top: 50%;
-    right: 15px;
-    transform: translate(18%, -50%);
+    inset-inline-end: 15px;
+    transform: translateY(-50%);
     font-size: 17px;
     color: var(--yellow-color);
     transition: .2s;
