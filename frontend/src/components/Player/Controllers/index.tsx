@@ -62,8 +62,6 @@ export const Controllers = ({ surahElem }: SurahElemInput) => {
             <div className={`btn ${isRandom ? 'active' : ''}`} onClick={handleIsRandom}>
                 <FaRandom />
             </div>
-
-            <div className="btn" />
         </div>
     )
 }

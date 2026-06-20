@@ -6,6 +6,7 @@ export const Slider = ({
   percentage = 0,
   onChange,
   volume = false,
+  showIcon = true,
   startSection = 0,
   endSection = 0,
   repeatTimes = 0,
@@ -13,6 +14,7 @@ export const Slider = ({
   percentage: number;
   onChange: any;
   volume?: boolean;
+  showIcon?: boolean;
   startSection?: number;
   endSection?: number;
   repeatTimes?: number;
@@ -28,8 +30,8 @@ export const Slider = ({
 
   useEffect(() => {
     if (rangeRef.current && thumbRef.current) {
-      const rangeWidth = rangeRef.current.getBoundingClientRect().width;
-      const thumbWidth = thumbRef.current.getBoundingClientRect().width;
+      const rangeWidth = rangeRef.current.offsetWidth;
+      const thumbWidth = thumbRef.current.offsetWidth;
       const centerThumb = (thumbWidth / 100) * percentage * -1;
       const centerProgressBar =
         thumbWidth +
@@ -48,7 +50,7 @@ export const Slider = ({
     <div
       className={`slider-container-main ${volume ? 'volume-container' : 'slider-container'}`}
     >
-      {volume ? (
+      {volume && showIcon ? (
         percentage !== 0 ? (
           <VscUnmute
             size={17}
@@ -60,9 +62,7 @@ export const Slider = ({
             style={{ position: 'absolute', insetInlineStart: '-22px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }}
           />
         )
-      ) : (
-        <></>
-      )}
+      ) : null}
 
       <div
         className="progress-bar-cover"

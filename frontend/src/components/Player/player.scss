@@ -87,6 +87,79 @@ html[lang="ar"] {
     margin: auto;
 }
 
+.controls-row {
+    display: flex;
+    align-items: center;
+
+    .control {
+        flex: 1;
+    }
+}
+
+.volume-vertical-wrap {
+    position: relative;
+    flex-shrink: 0;
+    margin-inline-start: 10px;
+    display: flex;
+    align-items: center;
+
+    .vol-icon {
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: color 0.2s;
+        display: block;
+    }
+
+    &:hover .vol-icon {
+        color: var(--primary-color);
+    }
+
+    .vol-slider-area {
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%) translateY(6px);
+        opacity: 0;
+        pointer-events: none;
+        width: 30px;
+        height: 90px;
+        background: var(--player-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.22);
+        z-index: 10;
+        /* delay when hiding — gives time to move mouse to the card */
+        transition: opacity 0.2s ease 0.15s, transform 0.2s ease 0.15s;
+
+        /* invisible bridge that fills the gap between card and icon */
+        &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: -6px;
+            right: -6px;
+            height: 10px;
+        }
+
+        .volume-container {
+            position: absolute;
+            width: 70px;
+            margin: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+        }
+    }
+
+    &:hover .vol-slider-area {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+        /* no delay when showing */
+        transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+    }
+}
+
 .control {
     display: flex;
     align-items: center;

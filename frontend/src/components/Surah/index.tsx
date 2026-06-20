@@ -68,37 +68,29 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
                 </p>
             </div>
             <div className="option">
-                {isAuthenticated ?
-                    <>
-                        {
-                            isInPlaylist ?
-                                <MdLibraryAddCheck size={26} onClick={removeFromPlaylist} />
-                                :
-                                <MdLibraryAdd size={26} onClick={addToPlaylist} />
+                {isAuthenticated && (
+                    <div
+                        className={`icon-btn${isInPlaylist ? ' icon-btn--added' : ''}`}
+                        onClick={isInPlaylist ? removeFromPlaylist : addToPlaylist}
+                    >
+                        {isInPlaylist
+                            ? <MdLibraryAddCheck size={20} />
+                            : <MdLibraryAdd size={20} />
                         }
-                    </>
-                    :
-                    <></>
-                }
-                {downloadProgress ?
+                    </div>
+                )}
+                {downloadProgress ? (
                     <div className='downloadProgress'>
                         <h3 className='step'>
-                            %{
-                                addZeros({
-                                    number: Math.trunc(downloadProgress.step),
-                                    numOfZeros: 2
-                                })
-                            }
+                            %{addZeros({ number: Math.trunc(downloadProgress.step), numOfZeros: 2 })}
                         </h3>
                         <div className='mb'>{downloadProgress.totalMb}MB</div>
                     </div>
-                    :
-                    <FaDownload
-                        className='download'
-                        size={25}
-                        onClick={downloadSurahFn} />
-                }
-
+                ) : (
+                    <div className="icon-btn icon-btn--download" onClick={(e) => { e.stopPropagation(); downloadSurahFn(); }}>
+                        <FaDownload size={18} />
+                    </div>
+                )}
             </div>
             {
                 surah.surahPlayedCount ?

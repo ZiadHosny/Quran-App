@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { VscMute, VscUnmute } from 'react-icons/vsc';
 
 import './player.scss';
 import { useControllers } from '../../hooks/useControllers';
@@ -171,8 +172,18 @@ export const Player = () => {
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
     >
       <CurrentSurah imgRef={imgRef} surah={currentSurah} />
-      <Controllers surahElem={audioElem} />
-      <Slider onChange={handleOnchangeVolume} percentage={volume} volume />
+      <div className="controls-row">
+        <Controllers surahElem={audioElem} />
+        <div className="volume-vertical-wrap">
+          <div className="vol-slider-area">
+            <Slider onChange={handleOnchangeVolume} percentage={volume} volume showIcon={false} />
+          </div>
+          {volume > 0
+            ? <VscUnmute size={18} className="vol-icon" />
+            : <VscMute size={18} className="vol-icon" />
+          }
+        </div>
+      </div>
       <Slider
         onChange={handleOnChangeSurahSlider}
         percentage={surahSlider}
