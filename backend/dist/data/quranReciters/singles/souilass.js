@@ -9,6 +9,7 @@ const arrOfSuwar = [
 exports.reciterSouilass = {
     id: 'souilass',
     quranReciter: 'يونس اسويلص',
+    quranReciterEn: 'Yunus Asweyless',
     photo: 'https://i.pinimg.com/564x/dd/60/ca/dd60ca72855cee2c61b142d5f522542b.jpg',
 };
 const getSouilass = () => (0, generateList_1.generateSingleReciter)({

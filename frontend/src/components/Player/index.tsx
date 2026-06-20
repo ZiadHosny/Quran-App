@@ -49,6 +49,7 @@ export const Player = () => {
 
     const imgRef = useRef<HTMLInputElement>(null);
     const audioElem = useRef<HTMLAudioElement>(null);
+    const dashboardRef = useRef<HTMLDivElement>(null);
     // const [repeatSection, setRepeatSection] = useState(false)
     // const [startSection, setStartSection] = useState(0)
     // const [endSection, setEndSection] = useState(100)
@@ -145,8 +146,25 @@ export const Player = () => {
         return () => window.removeEventListener("scroll", handleResizeSingerImg);
     }, [resizeSingerImage]);
 
+    // Track player height so .playlist margin-top stays correct on mobile
+    useEffect(() => {
+        if (!dashboardRef.current) return;
+        const el = dashboardRef.current;
+
+        const update = () => {
+            const h = el.offsetHeight + 60; // offsetHeight includes padding; +60 for navbar
+            document.documentElement.style.setProperty('--player-height', `${h}px`);
+        };
+
+        update(); // set immediately on mount — no flash on first render
+
+        const observer = new ResizeObserver(update);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <div className='dashboard'>
+        <div className='dashboard' ref={dashboardRef}>
             <CurrentSurah imgRef={imgRef} surah={currentSurah} />
             <Controllers surahElem={audioElem} />
             <Slider onChange={handleOnchangeVolume} percentage={volume} volume />

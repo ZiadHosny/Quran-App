@@ -5,11 +5,13 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import './navbar.scss';
 import { Search } from './Search';
 import { Settings } from '../Settings';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export const Navbar = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const navigate = useNavigate();
   const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { t, lang } = useTranslation();
 
   const onClickLogin = async () => {
     await loginWithRedirect();
@@ -21,7 +23,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="flex-center-sb" style={{ zIndex: 3 }}>
+      <nav className="flex-center-sb" dir={lang === 'ar' ? 'rtl' : 'ltr'} style={{ zIndex: 3 }}>
         <img
           className="logo"
           src={'/images/quran512.png'}
@@ -41,7 +43,7 @@ export const Navbar = () => {
           </button>
           {!isAuthenticated && (
             <button onClick={onClickLogin} className="login">
-              Login
+              {t('login')}
             </button>
           )}
         </div>

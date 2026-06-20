@@ -13,10 +13,15 @@ import { useAppSelector } from './store/hooks';
 export const App = () => {
   const isBrowser = typeof window !== "undefined"
   const theme = useAppSelector(state => state.settings.theme);
+  const lang = useAppSelector(state => state.settings.lang);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', lang);
+  }, [lang]);
 
   return (
     <Auth0Provider

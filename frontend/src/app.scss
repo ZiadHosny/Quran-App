@@ -98,7 +98,7 @@ html {
 }
 
 .playlist {
-    margin-top: 500px;
+    margin-top: var(--player-height, 500px);
     padding: 12px;
 }
 

@@ -10,6 +10,7 @@ const arrOfSuwar = [
 exports.reciterAhmedKhadr = {
     id: 'ahmedKhadr',
     quranReciter: 'أحمد خضر',
+    quranReciterEn: 'Ahmad Khadr',
     photo: 'https://i.pinimg.com/564x/74/9c/dd/749cdd141bfa7444e7d6c5644ce3c62c.jpg',
 };
 const getAhmedKhadr = () => (0, generateList_1.generateSingleReciter)({

@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { settingsActions } from '../store/settings.store';
+import { Lang, settingsActions } from '../store/settings.store';
 
 export const useSettings = () => {
-    const { theme } = useAppSelector(state => state.settings);
+    const { theme, lang } = useAppSelector(state => state.settings);
     const dispatch = useAppDispatch();
 
     const toggleTheme = () => dispatch(settingsActions.toggleTheme());
+    const setLang = (l: Lang) => dispatch(settingsActions.setLang(l));
 
-    return { theme, toggleTheme };
+    return { theme, lang, toggleTheme, setLang };
 };

@@ -115,3 +115,29 @@ header {
     background-color: var(--primary-color);
     cursor: pointer;
 }
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px auto 0;
+    padding: 6px 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-family: 'Amiri', serif;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+
+    svg {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+}

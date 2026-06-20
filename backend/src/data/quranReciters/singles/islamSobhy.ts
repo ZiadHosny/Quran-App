@@ -11,8 +11,8 @@ const arrOfSuwar: number[] = [
 export const reciterIslamSobhy = {
   id: 'islamSobhy',
   quranReciter: 'إسلام صبحي',
-  photo:
-    'https://tvquran.com/uploads/authors/images/%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B5%D8%A8%D8%AD%D9%8A.jpg',
+  quranReciterEn: 'Islam Sobhi',
+  photo: 'https://tvquran.com/uploads/authors/images/%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B5%D8%A8%D8%AD%D9%8A.jpg',
 };
 
 export const getIslamSobhy = (): SuwarMap =>

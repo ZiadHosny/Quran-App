@@ -11,8 +11,8 @@ const arrOfSuwar: number[] = [
 export const reciterAhmedKhadr = {
   id: 'ahmedKhadr',
   quranReciter: 'أحمد خضر',
-  photo:
-    'https://i.pinimg.com/564x/74/9c/dd/749cdd141bfa7444e7d6c5644ce3c62c.jpg',
+  quranReciterEn: 'Ahmad Khadr',
+  photo: 'https://i.pinimg.com/564x/74/9c/dd/749cdd141bfa7444e7d6c5644ce3c62c.jpg',
 };
 
 export const getAhmedKhadr = (): SuwarMap =>

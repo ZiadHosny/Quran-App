@@ -9,8 +9,10 @@ export interface Surah {
   id: string;
   surahNumber: number;
   title: string;
+  titleEn?: string;
   url: string;
   quranReciter: string;
+  quranReciterEn?: string;
   photo: string;
 }
 
@@ -46,6 +48,7 @@ export type View = {
 export interface QuranReciter {
   id: string;
   quranReciter: string;
+  quranReciterEn?: string;
   photo: string;
 }
 

@@ -27,9 +27,10 @@ const allQuranReciters = () => {
         islamSobhy_1.reciterIslamSobhy,
         souilass_1.reciterSouilass,
     ];
-    return allReciters.map(({ id, photo, quranReciter }) => ({
+    return allReciters.map(({ id, photo, quranReciter, quranReciterEn }) => ({
         id,
         quranReciter,
+        quranReciterEn,
         photo,
     }));
 };

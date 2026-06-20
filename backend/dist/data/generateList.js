@@ -11,12 +11,8 @@ const generateUrl = ({ index, website, quranReciterInWebsite, websiteUrl, }) => 
     }
     else
         return 'WebsiteNotFound';
-    // if (website === 'islamic')
-    //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
-    // else if (website === 'surahQuran')
-    //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };
-const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite, websiteUrl, }) => {
+const generateList = ({ id, quranReciter, quranReciterEn, photo, website, quranReciterInWebsite, websiteUrl, }) => {
     const list = [];
     for (let i = 1; i <= 114; i++) {
         const url = generateUrl({
@@ -28,8 +24,10 @@ const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite,
         list.push({
             id: `${id}-${i.toString()}`,
             surahNumber: i,
-            title: suwar_1.QURAN_SUWAR[i - 1],
+            title: suwar_1.QURAN_SUWAR[i - 1].ar,
+            titleEn: suwar_1.QURAN_SUWAR[i - 1].en,
             quranReciter,
+            quranReciterEn,
             photo,
             url,
         });
@@ -39,10 +37,11 @@ const generateList = ({ id, quranReciter, photo, website, quranReciterInWebsite,
 exports.generateList = generateList;
 const generateSuwarForReciter = ({ quranReciters, website, }) => {
     let quran = {};
-    quranReciters.forEach(({ id, photo, quranReciter, quranReciterInWebsite, websiteUrl }) => {
+    quranReciters.forEach(({ id, photo, quranReciter, quranReciterEn, quranReciterInWebsite, websiteUrl }) => {
         quran[id] = (0, exports.generateList)({
             id,
             quranReciter,
+            quranReciterEn,
             photo,
             quranReciterInWebsite,
             website,
@@ -54,14 +53,16 @@ const generateSuwarForReciter = ({ quranReciters, website, }) => {
 exports.generateSuwarForReciter = generateSuwarForReciter;
 const generateSingleReciter = ({ arrOfSuwar, reciter, url, }) => {
     const reciterSuwar = [];
-    const { photo, quranReciter, id: reciterId } = reciter;
+    const { photo, quranReciter, quranReciterEn, id: reciterId } = reciter;
     arrOfSuwar.forEach((surahNumber) => {
         const surahIdWithZero = (0, addZeros_1.addZeros)({ number: surahNumber, numOfZeros: 3 });
         reciterSuwar.push({
             id: `${reciterId}-${surahNumber}`,
-            title: suwar_1.QURAN_SUWAR[surahNumber - 1],
+            title: suwar_1.QURAN_SUWAR[surahNumber - 1].ar,
+            titleEn: suwar_1.QURAN_SUWAR[surahNumber - 1].en,
             photo,
             quranReciter,
+            quranReciterEn,
             surahNumber,
             url: `${url}/${surahIdWithZero}.mp3`,
         });

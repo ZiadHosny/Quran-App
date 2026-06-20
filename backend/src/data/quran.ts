@@ -39,9 +39,10 @@ export const allQuranReciters = () => {
     reciterSouilass,
   ];
 
-  return allReciters.map(({ id, photo, quranReciter }) => ({
+  return allReciters.map(({ id, photo, quranReciter, quranReciterEn }) => ({
     id,
     quranReciter,
+    quranReciterEn,
     photo,
   }));
 };

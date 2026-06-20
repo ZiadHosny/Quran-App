@@ -5,6 +5,7 @@ import { BiSolidPlaylist } from 'react-icons/bi';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../../hooks/useSettings';
+import { useTranslation } from '../../hooks/useTranslation';
 import './settings.scss';
 
 type Props = {
@@ -13,7 +14,9 @@ type Props = {
 };
 
 export const Settings = ({ isOpen, onClose }: Props) => {
-    const { theme, toggleTheme } = useSettings();
+    const { theme, lang, toggleTheme, setLang } = useSettings();
+    const { t } = useTranslation();
+    const dir = lang === 'ar' ? 'rtl' : 'ltr';
     const { isAuthenticated, user, logout } = useAuth0();
     const isDark = theme === 'dark';
 
@@ -25,9 +28,9 @@ export const Settings = ({ isOpen, onClose }: Props) => {
     return (
         <>
             {isOpen && <div className="settings-overlay" onClick={onClose} />}
-            <div className={`settings-panel ${isOpen ? 'open' : ''}`}>
+            <div className={`settings-panel ${isOpen ? 'open' : ''}`} dir={dir}>
                 <div className="settings-header">
-                    <h3>Settings</h3>
+                    <h3>{t('settings')}</h3>
                     <button className="settings-close" onClick={onClose} aria-label="Close settings">
                         <IoClose size={22} />
                     </button>
@@ -44,17 +47,17 @@ export const Settings = ({ isOpen, onClose }: Props) => {
                                 </div>
                             </div>
 
-                            <p className="settings-section-label">Account</p>
+                            <p className="settings-section-label">{t('account')}</p>
                             <Link to="/myPlaylist" className="settings-row settings-link" onClick={onClose}>
                                 <div className="settings-label">
                                     <BiSolidPlaylist size={18} />
-                                    <span>My Playlist</span>
+                                    <span>{t('myPlaylist')}</span>
                                 </div>
                             </Link>
                             <div className="settings-row settings-logout" onClick={onLogout}>
                                 <div className="settings-label">
                                     <FiLogOut size={18} />
-                                    <span>Log out</span>
+                                    <span>{t('logout')}</span>
                                 </div>
                             </div>
 
@@ -62,11 +65,11 @@ export const Settings = ({ isOpen, onClose }: Props) => {
                         </>
                     )}
 
-                    <p className="settings-section-label">Appearance</p>
+                    <p className="settings-section-label">{t('appearance')}</p>
                     <div className="settings-row">
                         <div className="settings-label">
                             {isDark ? <BsMoon size={18} /> : <BsSun size={18} />}
-                            <span>{isDark ? 'Dark Mode' : 'Light Mode'}</span>
+                            <span>{isDark ? t('darkMode') : t('lightMode')}</span>
                         </div>
                         <button
                             className={`theme-toggle ${isDark ? 'active' : ''}`}
@@ -74,6 +77,26 @@ export const Settings = ({ isOpen, onClose }: Props) => {
                             aria-label="Toggle theme"
                         >
                             <span className="toggle-thumb" />
+                        </button>
+                    </div>
+
+                    <div className="settings-divider" />
+
+                    <p className="settings-section-label">{t('language')}</p>
+                    <div className="lang-switcher">
+                        <button
+                            className={`lang-btn ${lang === 'ar' ? 'active' : ''}`}
+                            onClick={() => setLang('ar')}
+                        >
+                            <span className="lang-flag">🇸🇦</span>
+                            <span>العربية</span>
+                        </button>
+                        <button
+                            className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                            onClick={() => setLang('en')}
+                        >
+                            <span className="lang-flag">🇺🇸</span>
+                            <span>English</span>
                         </button>
                     </div>
                 </div>

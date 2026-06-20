@@ -9,6 +9,7 @@
     position: fixed;
     top: 0;
     right: 0;
+    left: auto;
     height: 100vh;
     width: 280px;
     background-color: var(--card-color);
@@ -20,6 +21,17 @@
 
     &.open {
         transform: translateX(0);
+    }
+
+    &[dir="rtl"] {
+        right: auto;
+        left: 0;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+
+        &.open {
+            transform: translateX(0);
+        }
     }
 
     .settings-header {
@@ -161,5 +173,49 @@
 
     &.active .toggle-thumb {
         transform: translateX(24px);
+    }
+}
+
+.lang-switcher {
+    display: flex;
+    width: 100%;
+    background: var(--bg-color);
+    border: 1.5px solid var(--border-color);
+    border-radius: 100px;
+    padding: 3px;
+    gap: 3px;
+
+    .lang-btn {
+        flex: 1;
+        padding: 9px 0;
+        border-radius: 100px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+
+        .lang-flag {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        &:hover:not(.active) {
+            color: var(--text-color);
+            background: var(--border-color);
+        }
+
+        &.active {
+            background: var(--primary-color);
+            color: var(--on-primary);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        }
     }
 }

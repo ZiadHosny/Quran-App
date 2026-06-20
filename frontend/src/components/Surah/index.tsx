@@ -9,6 +9,7 @@ import { useSurah } from '../../hooks/useSurah'
 import { usePlaylist } from '../../hooks/usePlaylist'
 import { addZeros } from '../../utils/addZeros';
 import { useDownload } from '../../hooks/useDownload';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export const Surah = ({ surah }: { surah: SurahType }) => {
     const card = useRef<HTMLInputElement>(null);
@@ -17,6 +18,7 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
     const { isAuthenticated, } = useAuth0();
     const { checkDownload, downloadSurah } = useDownload()
     const { setCurrentSurah, currentSurah } = useSurah()
+    const { lang } = useTranslation();
 
     const isCurrentSurah = surah.id === currentSurah.id
 
@@ -57,8 +59,12 @@ export const Surah = ({ surah }: { surah: SurahType }) => {
             <h3>{addZeros({ number: surah.surahNumber, numOfZeros: 3 })}</h3>
             <div className="authorImage" style={{ backgroundImage: `url(${surah.photo})` }}></div>
             <div className="body">
-                <h3 className="arabic-font title">{surah.title}</h3>
-                <p className="arabic-font author">{surah.quranReciter}</p>
+                <h3 className={lang === 'en' ? 'title' : 'arabic-font title'}>
+                    {lang === 'en' && surah.titleEn ? surah.titleEn : surah.title}
+                </h3>
+                <p className="arabic-font author">
+                    {lang === 'en' && surah.quranReciterEn ? surah.quranReciterEn : surah.quranReciter}
+                </p>
             </div>
             <div className="option">
                 {isAuthenticated ?

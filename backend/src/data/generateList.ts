@@ -27,17 +27,15 @@ const generateUrl = ({
     return `${websiteUrl}/${quranReciterInWebsiteWithSurahId}`;
   }
   else return 'WebsiteNotFound';
-  // if (website === 'islamic')
-  //     return `${ISLAMIC}.${quranReciterInWebsite}/${index}.mp3`
-  // else if (website === 'surahQuran')
-  //     return `${SURAH_QURAN}__${quranReciterInWebsiteWithSurahId}`
 };
+
 interface GenerateListProps extends QuranReciterInWebsite {
   website: Website;
 }
 export const generateList = ({
   id,
   quranReciter,
+  quranReciterEn,
   photo,
   website,
   quranReciterInWebsite,
@@ -55,8 +53,10 @@ export const generateList = ({
     list.push({
       id: `${id}-${i.toString()}`,
       surahNumber: i,
-      title: QURAN_SUWAR[i - 1],
+      title: QURAN_SUWAR[i - 1].ar,
+      titleEn: QURAN_SUWAR[i - 1].en,
       quranReciter,
+      quranReciterEn,
       photo,
       url,
     });
@@ -70,10 +70,11 @@ export const generateSuwarForReciter = ({
 }: QuranRecitersWithWebsite): SuwarMap => {
   let quran: SuwarMap = {};
   quranReciters.forEach(
-    ({ id, photo, quranReciter, quranReciterInWebsite, websiteUrl }) => {
+    ({ id, photo, quranReciter, quranReciterEn, quranReciterInWebsite, websiteUrl }) => {
       quran[id] = generateList({
         id,
         quranReciter,
+        quranReciterEn,
         photo,
         quranReciterInWebsite,
         website,
@@ -97,14 +98,16 @@ export const generateSingleReciter = ({
   url,
 }: GenerateSingleReciterProps) => {
   const reciterSuwar: Surah[] = [];
-  const { photo, quranReciter, id: reciterId } = reciter;
+  const { photo, quranReciter, quranReciterEn, id: reciterId } = reciter;
   arrOfSuwar.forEach((surahNumber) => {
     const surahIdWithZero = addZeros({ number: surahNumber, numOfZeros: 3 });
     reciterSuwar.push({
       id: `${reciterId}-${surahNumber}`,
-      title: QURAN_SUWAR[surahNumber - 1],
+      title: QURAN_SUWAR[surahNumber - 1].ar,
+      titleEn: QURAN_SUWAR[surahNumber - 1].en,
       photo,
       quranReciter,
+      quranReciterEn,
       surahNumber,
       url: `${url}/${surahIdWithZero}.mp3`,
     });
