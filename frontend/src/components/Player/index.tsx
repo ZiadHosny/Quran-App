@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { VscMute, VscUnmute } from 'react-icons/vsc';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import './player.scss';
 import { useControllers } from '../../hooks/useControllers';
@@ -13,14 +14,18 @@ import { RepeatSection } from './RepeatSection';
 import { toast } from 'react-toastify';
 import { useMostPlayed } from '../../hooks/useMostPlayed';
 import { useTranslation } from '../../hooks/useTranslation';
+import { MiniPlayer } from '../MiniPlayer';
 
 export const Player = () => {
   const { addSurahToMostPlayed } = useMostPlayed();
   const { t, lang } = useTranslation();
   // useControllers
+  const [isMinimized, setIsMinimized] = useState(false);
+
   const {
     isPlaying,
     setIsPlaying,
+    handleIsPlaying,
     volume,
     onChangeVolume,
     repeatSection,
@@ -31,6 +36,7 @@ export const Player = () => {
     currentSurah,
     surahDuration,
     handlePlayAndPause,
+    handleNextSurah,
     resizeSingerImage,
     onSurahEnded,
     setSurahDuration,
@@ -166,11 +172,15 @@ export const Player = () => {
   }, []);
 
   return (
+    <>
     <div
-      className="dashboard"
+      className={`dashboard${isMinimized ? ' dashboard--minimized' : ''}`}
       ref={dashboardRef}
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
     >
+      <div className="player-handle" onClick={() => setIsMinimized(true)}>
+        <MdKeyboardArrowDown size={22} className="player-handle-icon" />
+      </div>
       <CurrentSurah imgRef={imgRef} surah={currentSurah} />
       <div className="controls-row">
         <Controllers surahElem={audioElem} />
@@ -216,5 +226,15 @@ export const Player = () => {
         ref={audioElem}
       />
     </div>
+    <MiniPlayer
+      isVisible={isMinimized}
+      surah={currentSurah}
+      isPlaying={isPlaying}
+      surahSlider={surahSlider}
+      onExpand={() => setIsMinimized(false)}
+      onPlayPause={handleIsPlaying}
+      onNext={() => handleNextSurah(audioElem.current)}
+    />
+    </>
   );
 };

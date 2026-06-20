@@ -109,24 +109,24 @@
     color: var(--on-primary);
 
     .option .icon-btn {
-        color: rgba(0, 0, 0, 0.72);
-        background: rgba(0, 0, 0, 0.1);
+        color: var(--on-primary);
+        background: color-mix(in srgb, var(--on-primary) 12%, transparent);
 
         &:hover {
-            background: rgba(0, 0, 0, 0.2);
+            background: color-mix(in srgb, var(--on-primary) 24%, transparent);
             transform: scale(1.08);
         }
 
         &.icon-btn--added {
-            background: rgba(0, 0, 0, 0.15);
+            background: color-mix(in srgb, var(--on-primary) 18%, transparent);
         }
 
         &.icon-btn--download {
-            color: rgba(0, 0, 0, 0.72);
-            background: rgba(0, 0, 0, 0.1);
+            color: var(--on-primary);
+            background: color-mix(in srgb, var(--on-primary) 12%, transparent);
 
             &:hover {
-                background: rgba(0, 0, 0, 0.2);
+                background: color-mix(in srgb, var(--on-primary) 24%, transparent);
             }
         }
     }
