@@ -11,6 +11,10 @@ header {
     h2 {
         color: var(--text-color);
         font-size: 20px;
+
+        @media (max-width: 899px) {
+            font-size: 16px;
+        }
     }
 }
 
@@ -55,6 +59,10 @@ header {
     position: relative;
     z-index: 1;
     padding: 16px 16px 14px;
+
+    @media (max-width: 899px) {
+        padding: 8px 14px 10px;
+    }
 }
 
 .player-handle {
@@ -138,6 +146,11 @@ html[lang="ar"] {
     display: flex;
     margin: auto;
     width: 200px;
+
+    @media (max-width: 899px) {
+        width: 64px;
+        margin: 0 auto 4px;
+    }
 }
 
 .cd-thumb {
@@ -235,6 +248,7 @@ html[lang="ar"] {
             pointer-events: auto;
             transform: translateX(-50%) translateY(0);
             transition: none;
+            height: 54px;
         }
 
         &:hover .vol-slider-area {
@@ -247,7 +261,7 @@ html[lang="ar"] {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 8px 0 4px;
+    padding: 6px 0 2px;
 }
 
 .control .btn {
@@ -315,8 +329,14 @@ html[lang="ar"] {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    margin: 10px auto 0;
-    padding: 6px 16px;
+    margin: 6px auto 0;
+    padding: 5px 14px;
+
+    @media (max-width: 899px) {
+        margin: 4px auto 0;
+        padding: 4px 12px;
+        font-size: 0.75rem;
+    }
     border: 1.5px solid var(--border-color);
     border-radius: 20px;
     background: transparent;
