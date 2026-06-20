@@ -57,6 +57,21 @@ html[lang="ar"] {
     }
 }
 
+.dashboard[dir="rtl"] .slider-container {
+    transform: scaleX(-1);
+}
+
+/* range inputs must be ltr inside rtl player so scaleX(-1) interaction works correctly */
+.dashboard[dir="rtl"] .range,
+.dashboard[dir="rtl"] .repeat-input {
+    direction: ltr;
+}
+
+/* flip repeat-range-wrap to match main surah slider rtl direction */
+.dashboard[dir="rtl"] .repeat-range-wrap {
+    transform: scaleX(-1);
+}
+
 .cd {
     display: flex;
     margin: auto;
