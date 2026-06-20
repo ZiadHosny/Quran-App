@@ -188,10 +188,9 @@ export const Player = () => {
           <div className="vol-slider-area">
             <Slider onChange={handleOnchangeVolume} percentage={volume} volume showIcon={false} />
           </div>
-          {volume > 0
-            ? <VscUnmute size={18} className="vol-icon" />
-            : <VscMute size={18} className="vol-icon" />
-          }
+          <div className="vol-icon">
+            {volume > 0 ? <VscUnmute /> : <VscMute />}
+          </div>
         </div>
       </div>
       <Slider

@@ -140,8 +140,17 @@ html[lang="ar"] {
     .vol-icon {
         color: var(--text-secondary);
         cursor: pointer;
-        transition: color 0.2s;
-        display: block;
+        transition: color 0.15s, background 0.15s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 50%;
+
+        &:active {
+            background: rgba(128, 128, 128, 0.15);
+        }
     }
 
     &:hover .vol-icon {
