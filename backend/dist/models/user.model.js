@@ -13,11 +13,17 @@ const SurahSchema = new mongoose_1.Schema({
     title: {
         ...StringRequiredType,
     },
+    titleEn: {
+        type: String,
+    },
     url: {
         ...StringRequiredType,
     },
     quranReciter: {
         ...StringRequiredType,
+    },
+    quranReciterEn: {
+        type: String,
     },
     photo: {
         ...StringRequiredType,

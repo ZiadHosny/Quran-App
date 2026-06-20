@@ -15,8 +15,10 @@ exports.progressSchema = joi_1.default.object({
         id: joi_1.default.string().required(),
         surahNumber: joi_1.default.number().required(),
         title: joi_1.default.string().required(),
+        titleEn: joi_1.default.string().optional(),
         url: joi_1.default.string().required(),
         quranReciter: joi_1.default.string().required(),
+        quranReciterEn: joi_1.default.string().optional(),
         photo: joi_1.default.string().required(),
     }),
 });
@@ -24,8 +26,10 @@ exports.SurahSchema = joi_1.default.object({
     id: joi_1.default.string().required(),
     surahNumber: joi_1.default.number().required(),
     title: joi_1.default.string().required(),
+    titleEn: joi_1.default.string().optional(),
     url: joi_1.default.string().required(),
     quranReciter: joi_1.default.string().required(),
+    quranReciterEn: joi_1.default.string().optional(),
     photo: joi_1.default.string().required(),
 });
 exports.RemoveSurahSchema = joi_1.default.object({

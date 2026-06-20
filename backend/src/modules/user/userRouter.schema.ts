@@ -11,8 +11,10 @@ export const progressSchema = Joi.object<UserProgress>({
     id: Joi.string().required(),
     surahNumber: Joi.number().required(),
     title: Joi.string().required(),
+    titleEn: Joi.string().optional(),
     url: Joi.string().required(),
     quranReciter: Joi.string().required(),
+    quranReciterEn: Joi.string().optional(),
     photo: Joi.string().required(),
   }),
 });
@@ -21,8 +23,10 @@ export const SurahSchema = Joi.object<Surah>({
   id: Joi.string().required(),
   surahNumber: Joi.number().required(),
   title: Joi.string().required(),
+  titleEn: Joi.string().optional(),
   url: Joi.string().required(),
   quranReciter: Joi.string().required(),
+  quranReciterEn: Joi.string().optional(),
   photo: Joi.string().required(),
 });
 
