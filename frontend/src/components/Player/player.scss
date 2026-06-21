@@ -169,6 +169,11 @@ html[lang="ar"] {
     .control {
         flex: 1;
     }
+
+    @media (max-width: 899px) {
+        align-items: flex-end;
+        padding-bottom: 2px;
+    }
 }
 
 .volume-vertical-wrap {
@@ -241,17 +246,48 @@ html[lang="ar"] {
         transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     }
 
-    /* ── Mobile: always visible, same icon position as buttons ── */
+    /* ── Mobile: inline column, slider above icon ── */
     @media (max-width: 899px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        margin-inline-start: 6px;
+
+        .vol-icon {
+            order: 2;
+            padding: 6px;
+            font-size: 18px;
+        }
+
         .vol-slider-area {
+            order: 1;
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
             opacity: 1;
             pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-            transition: none;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            width: 30px;
             height: 54px;
+            transition: none;
+
+            &::after { display: none; }
+
+            .volume-container {
+                position: absolute;
+                width: 54px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg);
+            }
         }
 
         &:hover .vol-slider-area {
+            transform: none;
             transition: none;
         }
     }
