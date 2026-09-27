@@ -43,18 +43,6 @@ export const Settings = ({ isOpen, onClose }: Props) => {
         <div className="settings-body">
           {isAuthenticated && user && (
             <>
-              <div className="settings-account">
-                <img
-                  src={user.picture}
-                  alt="profile"
-                  className="settings-avatar"
-                />
-                <div>
-                  <p className="settings-name">{user.name}</p>
-                  <p className="settings-email">{user.email}</p>
-                </div>
-              </div>
-
               <p className="settings-section-label">{t('account')}</p>
               <Link
                 to="/myPlaylist"
