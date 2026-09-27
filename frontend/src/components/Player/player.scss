@@ -115,6 +115,10 @@
     color: var(--text-secondary);
     white-space: nowrap;
     margin-inline-end: 4px;
+    /* force "current / duration" to stay in that visual order even inside
+       an RTL bar — otherwise the bidi algorithm swaps the two numbers */
+    direction: ltr;
+    unicode-bidi: isolate;
 
     @media (max-width: 699px) {
         font-size: 11px;
