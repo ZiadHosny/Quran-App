@@ -333,19 +333,21 @@ export const Player = () => {
         </div>
 
         <div className="pb-center">
-          <button className="pb-btn" onClick={() => prevSurah()} title={t('previous')}>
+          <button className="pb-btn pb-btn--transport" onClick={() => prevSurah()} title={t('previous')}>
             <MdSkipPrevious size={22} style={arrowStyle} />
           </button>
           <button className="pb-btn pb-btn--play" onClick={handleIsPlaying} title={t('playPause')}>
             {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
           </button>
-          <button className="pb-btn" onClick={() => handleNextSurah(audioElem.current)} title={t('next')}>
+          <button className="pb-btn pb-btn--transport" onClick={() => handleNextSurah(audioElem.current)} title={t('next')}>
             <MdSkipNext size={22} style={arrowStyle} />
           </button>
         </div>
 
         <div className="pb-side pb-side--controls">
-          <span className="pb-time">{currentTime} / {surahDuration}</span>
+          <span className="pb-time">
+            <span className="pb-time-current">{currentTime}</span> / {surahDuration}
+          </span>
 
           {!isMobile && (
             <>
