@@ -374,6 +374,23 @@ const mp3QuranReciter: Mp3Quran[] = [
     quranReciterInWebsite: 'kyat',
     server: 12,
   },
+  {
+    id: 'souilass',
+    quranReciter: 'يونس اسويلص',
+    quranReciterEn: 'Yunus Asweyless',
+    photo: 'https://i.pinimg.com/564x/dd/60/ca/dd60ca72855cee2c61b142d5f522542b.jpg',
+    quranReciterInWebsite: 'souilass/Rewayat-Warsh-A-n-Nafi',
+    server: 16,
+  },
+  {
+    id: 'islamSobhy',
+    quranReciter: 'إسلام صبحي',
+    quranReciterEn: 'Islam Sobhi',
+    photo: 'https://tvquran.com/uploads/authors/images/%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B5%D8%A8%D8%AD%D9%8A.jpg',
+    quranReciterInWebsite: 'islam/Rewayat-Hafs-A-n-Assem',
+    server: 14,
+  },
+
 ];
 
 export const mp3Quran = mp3QuranReciter.map(

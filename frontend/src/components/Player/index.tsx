@@ -20,7 +20,9 @@ export const Player = () => {
   const { addSurahToMostPlayed } = useMostPlayed();
   const { t, lang } = useTranslation();
   // useControllers
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth <= 899
+  );
 
   const {
     isPlaying,

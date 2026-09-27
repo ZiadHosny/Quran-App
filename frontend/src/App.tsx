@@ -8,12 +8,16 @@ import { clientId, domain } from "./utils/envs"
 import { Router } from './Router';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { Player } from './components/Player';
 import { useAppSelector } from './store/hooks';
+import { useSurah } from './hooks/useSurah';
+import { objIsEmpty } from './utils/obj';
 
 export const App = () => {
   const isBrowser = typeof window !== "undefined"
   const theme = useAppSelector(state => state.settings.theme);
   const lang = useAppSelector(state => state.settings.lang);
+  const { currentSurah } = useSurah();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -37,6 +41,7 @@ export const App = () => {
           <Router />
         </div>
       </main>
+      {!objIsEmpty(currentSurah) && <Player />}
       <Footer />
       <ToastContainer
         theme={theme === 'dark' ? 'dark' : 'light'}

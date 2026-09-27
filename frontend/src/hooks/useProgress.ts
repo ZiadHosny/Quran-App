@@ -41,17 +41,19 @@ export const useProgress = () => {
     const getAllQuranReciters = async () => {
         const id = setLoading({ msg: loadingReciters })
 
-        const token = await getToken(getIdTokenClaims);
-        const res = await getAllQuranRecitersFn({ token }) as { data: QuranReciterType[] }
+        try {
+            const token = await getToken(getIdTokenClaims);
+            const res = await getAllQuranRecitersFn({ token }) as { data: QuranReciterType[] }
 
-        if (res.data) {
-            const allQuranReciters = res.data
-            setQuranReciters(allQuranReciters)
-        } else {
-            setQuranReciters([])
+            if (res.data) {
+                const allQuranReciters = res.data
+                setQuranReciters(allQuranReciters)
+            } else {
+                setQuranReciters([])
+            }
+        } finally {
+            if (id) setLoading({ id })
         }
-
-        setLoading({ id })
     }
 
     const getProgress = async () => {

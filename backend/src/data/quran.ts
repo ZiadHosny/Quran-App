@@ -10,13 +10,9 @@ import {
 } from './quranReciters/singles/ahmedKhadr';
 import { getMp3Quran, mp3Quran } from './quranReciters/mp3Quran';
 import {
-  getIslamSobhy,
-  reciterIslamSobhy,
-} from './quranReciters/singles/islamSobhy';
-import {
-  getSouilass,
-  reciterSouilass,
-} from './quranReciters/singles/souilass';
+  getAhmadNuainaaMujawwad,
+  reciterAhmadNuainaaMujawwad,
+} from './quranReciters/singles/ahmadNuainaaMujawwad';
 
 export const getAllQuran = (): SuwarMap => {
   return {
@@ -24,8 +20,7 @@ export const getAllQuran = (): SuwarMap => {
     ...getMp3Quran(),
     ...getAbdelrahmanMosad(),
     ...getAhmedKhadr(),
-    ...getIslamSobhy(),
-    ...getSouilass(),
+    ...getAhmadNuainaaMujawwad(),
   };
 };
 
@@ -35,8 +30,7 @@ export const allQuranReciters = () => {
     ...mp3Quran,
     reciterAbdelrahmanMosad,
     reciterAhmedKhadr,
-    reciterIslamSobhy,
-    reciterSouilass,
+    reciterAhmadNuainaaMujawwad,
   ];
 
   return allReciters.map(({ id, photo, quranReciter, quranReciterEn }) => ({

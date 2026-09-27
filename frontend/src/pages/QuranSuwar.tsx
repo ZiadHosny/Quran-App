@@ -1,11 +1,8 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetAllSuwarByQuranReciterQuery } from '../store/quran.store';
-import { Player } from '../components/Player';
 import { useSurah } from '../hooks/useSurah';
 import { objIsEmpty } from '../utils/obj';
-import { SurahType } from '../utils/types';
-import { useControllers } from '../hooks/useControllers';
 import { Surah } from '../components/Surah';
 import { usePlaylist } from '../hooks/usePlaylist';
 import { useTranslation } from '../hooks/useTranslation';
@@ -13,13 +10,10 @@ import { useTranslation } from '../hooks/useTranslation';
 export const QuranSuwar = () => {
   const params = useParams();
   const { lang } = useTranslation();
-  const { setIsPlaying, setRepeatSection } = useControllers();
   const {
     setCurrentSurah,
     setSuwar,
     currentSurah,
-    setSurahDuration,
-    setSurahProgress,
     quranSuwarFilter
   } = useSurah()
   const { data: suwar } = useGetAllSuwarByQuranReciterQuery({ quranReciter: params.quranReciter! })
@@ -47,11 +41,6 @@ export const QuranSuwar = () => {
   // }, [isLoading])
 
   useEffect(() => {
-    setCurrentSurah({} as SurahType);
-    setIsPlaying(false)
-    setSurahDuration('')
-    setSurahProgress(0)
-    setRepeatSection({ times: 0, isRepeat: false, end: 100, start: 0 })
     const fn = async () => {
       await getPlaylist()
     }
@@ -61,13 +50,10 @@ export const QuranSuwar = () => {
 
   return (
     quranSuwarFilter ?
-      <>
-        <Player />
-        <div className='playlist' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-          {quranSuwarFilter.map((surah) => (
-            <Surah key={surah.id} surah={surah} />))}
-        </div>
-      </>
+      <div className='playlist' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+        {quranSuwarFilter.map((surah) => (
+          <Surah key={surah.id} surah={surah} />))}
+      </div>
       :
       <></>
   )
